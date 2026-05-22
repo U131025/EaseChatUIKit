@@ -169,7 +169,7 @@ let message_bubble_space = CGFloat(5)
         self.status.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
         
-    @objc public func refresh(entity: MessageEntity) {
+    @objc open func refresh(entity: MessageEntity) {
         self.towards = entity.message.direction == .send ? .right:.left
         self.entity = entity
         self.updateAxis(entity: entity)

@@ -1,0 +1,69 @@
+{
+  "name": "EaseChatUIKit",
+  "version": "0.1.0",
+  "summary": "A short description of EaseChatUIKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/zjc19891106/EaseChatUIKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zjc19891106": "984065974@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/zjc19891106/EaseChatUIKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "xcconfig": {
+    "LIBRARY_SEARCH_PATHS": "$(PODS_ROOT)/Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/**/*"
+  },
+  "static_framework": true,
+  "swift_versions": "5.0",
+  "prefix_header_contents": "# if __has_include (<EaseChatUIKit/EaseChatUIKit-Bridge.h>)\n#import <EaseChatUIKit/EaseChatUIKit-Bridge.h> \n# else\n#import \"EaseChatUIKit-Bridge.h\"\n# endif",
+  "public_header_files": "Sources/EaseChatUIKit/Classes/UI/Foundation/EaseChatUIKit-Bridge.h",
+  "preserve_paths": [
+    "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/**/*.a",
+    "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/vo-amrwbenc/lib/*.a"
+  ],
+  "vendored_libraries": [
+    "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/**/*.a",
+    "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/vo-amrwbenc/lib/*.a"
+  ],
+  "pod_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "user_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "frameworks": [
+    "UIKit",
+    "Foundation",
+    "Combine",
+    "AudioToolbox"
+  ],
+  "subspecs": [
+    {
+      "name": "Service",
+      "source_files": [
+        "Sources/EaseChatUIKit/Classes/Service/**/*"
+      ],
+      "dependencies": {
+        "Agora_Chat_iOS": []
+      }
+    },
+    {
+      "name": "UI",
+      "source_files": [
+        "Sources/EaseChatUIKit/Classes/UI/**/*.{h,swift}"
+      ],
+      "resources": [
+        "Sources/EaseChatUIKit/Classes/UI/**/*.bundle"
+      ]
+    }
+  ],
+  "swift_version": "5.0"
+}

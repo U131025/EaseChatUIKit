@@ -1,0 +1,2150 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		7A09EB58FA8B110D768DBACB9890287E /* Agora_Chat_iOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3F67A9F7D6A40524BDC9678B71E44C1F /* Build configuration list for PBXAggregateTarget "Agora_Chat_iOS" */;
+			buildPhases = (
+				CC395C5B771546891DE27BB22B3D68EF /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = Agora_Chat_iOS;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0175E74DF98B68129319DF037DE1271B /* EnumDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654A23A6E018AAC521154A915920B8E /* EnumDescriptor.swift */; };
+		0285EA32A14EF30E832840A754CBEA8D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7159D1E00A85354E759C22605808DA62 /* Layout.swift */; };
+		02F0D4CD98536E68174E9EC17E3B62CB /* UserServiceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EA2ADE792640D35AF809D74E4D26EF /* UserServiceImplement.swift */; };
+		04910ABDC920570CEDA16DB2CB8EE40F /* MessageBubbleWithArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB61CFC62935BD9882304D0B75E447 /* MessageBubbleWithArrow.swift */; };
+		0563C3E29B0821259CD09C8A63E828C1 /* ContactSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01197DBD6C38EAB07DDEC183D9DCFDD1 /* ContactSearchResultController.swift */; };
+		06925EE4856F7742D0ACE4A59D1329FC /* MultiDeviceServiceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA2D1DA416A281A676BD731BEFAC01A /* MultiDeviceServiceImplement.swift */; };
+		07149192068E42636F0363352F4F15DA /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A030195FF2E3107174B10782CBDF95 /* TextEditorView.swift */; };
+		0743C4B603825D5663C574D9FF7CB60A /* if_rom.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E5A797156E420895BC50A9E7B024802 /* if_rom.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		077E19203342C56590AEBD444EE151EF /* ConversationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56AC1CE6600FE147EB902994A8FD3B /* ConversationListCell.swift */; };
+		08709A31829D6D5E048761FBFF311134 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113468B0CB90CFFC6B95E29D85058BE0 /* PresentationController.swift */; };
+		0D2A8AD2E3B75D19AF272B7E032219C7 /* ControllerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A2B7232D9CB41B03465F724A6500C /* ControllerStack.swift */; };
+		0D6E75A7CCF4DB308F3B689E6BEBE71E /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D9B1E6C0DFAA5EFA673DEF791FF79 /* Contants.swift */; };
+		0DFD79688C2674D2D36B66A4DBE8C258 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9534C0EA63FEAFD965A2CCF8EBEFA /* PlaceHolderTextView.swift */; };
+		0F1D452D379F8E75E6910FC8407DD495 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A3F9BF78302DE7055B07CBDFCE3DD /* GroupService.swift */; };
+		10E9F8056AFC4B327C1B60B4E96A7206 /* SDKTypealiasWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DBED020CE5DA4AC691334E5F283E32 /* SDKTypealiasWrapper.swift */; };
+		11C7A2AB31EFA073EBC6CE9421CDFC34 /* EaseChatUIKit-Bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D74E8E4378AB00DFC805986FB85D0A /* EaseChatUIKit-Bridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11CD1AE260A3D6987059A943A3364840 /* ContactServiceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485CBAE13C3C7B9B910B7CEB31D92C64 /* ContactServiceImplement.swift */; };
+		1691EAB20B72334FA1338E6DFF549307 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EA3F5C2ECC68913ABE867257A6A7FE /* URLExtension.swift */; };
+		192C099AD6D0C360EC5A5C51FD3CCE2B /* EnumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A28221B269C8AA86988AC02545F528C /* EnumType.swift */; };
+		1AA2AAF58B7BF2615D87A866981309F4 /* ReportOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE1ACF74A48036133B6828F1303B4E /* ReportOptionsController.swift */; };
+		1BDFED13A6D91BF37B501E982D8EFDA5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AF9E1BE108B09A6D754CF76FFCD4E /* StringExtension.swift */; };
+		1C839C6FBCB860A496EF20304CA63BEC /* PullRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE04700C777E974EB86A7901D1A5AC /* PullRefresher.swift */; };
+		1D56D90CF8700866EA8ACF3051662C0E /* StructLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69137D9CF5DD9D4A027527B4820CA26 /* StructLayout.swift */; };
+		1D98AFC734E84B1D4BCE148252FC6B2F /* JoinedGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE631475B19E0DADFBA2E35C3B6431 /* JoinedGroupsViewController.swift */; };
+		20343547EEB515FAD5911A03854B0D8A /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F00821BB0F039DD197CB9F448CEB6D /* NotificationExtension.swift */; };
+		204C68D1526ECC79275457694B4DD8FC /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1457FE79F31F2F60F0A12B4D2596B01 /* NSObjectExtension.swift */; };
+		22C6E92BA84D0C6FCBD00E616FDB86C4 /* PresentedViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417F8D796B4341C1F27A240F7529B8BC /* PresentedViewType.swift */; };
+		230DC3C563EAFCCDC335973585E8F208 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2682FA6490605A5DB599720122B97CF /* Metadata.swift */; };
+		270B3F2D7CB1626EA004D02AAEEEB12C /* GroupListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073E65505E259C7D937122E8C1A65EA /* GroupListCell.swift */; };
+		273CCEE596F607B2EADCD23C4D9F6E1B /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF20E182608A775D91495D062FF3FA5 /* ActionSheet.swift */; };
+		27F08BCCB53784E9BB5ADC4A33556828 /* KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0665B608DC36A3FFECF4A87547B8E20E /* KJ.swift */; };
+		28B43C8A724EFADCF61D69DAE064FF31 /* String+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89263D00CB978EB4D2C479D07F59311E /* String+KJ.swift */; };
+		2AB7367B03FD9BB3751807070B50F3D9 /* ForeignClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81414EE26A1743B6362C59DD112035F /* ForeignClassType.swift */; };
+		2AD1D68151C9AABB02B8C0D6AF2815CA /* AudioMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F64D422B18FB2BAAD32D8D6F0DA88D4 /* AudioMessageView.swift */; };
+		2B2040B88D0F6ED7A42ACCB016632AA8 /* MessageInputEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170C938184E6ED390D562D406955C4A /* MessageInputEmojiView.swift */; };
+		2B403AE9DDFCFC2B64FECB43DCCDA5DF /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2334702A69678E183B280E6A939A6 /* ChatService.swift */; };
+		2F1AA946A61ABE2601D963F84910F822 /* EaseChatUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 610ACFB265B16E0DA39DD55D17A108F5 /* EaseChatUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F7E6755C3D89E463B91F67E84783698 /* ComponentsActionEventsRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DDB0C8A8EE7BD9EE723A0193C7018D /* ComponentsActionEventsRegister.swift */; };
+		304B9AC4118648C6CCA76798F196EF8C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8843959DA4CE711B74D604AAC3E11196 /* Theme.swift */; };
+		307F226153D8B2285B7AD2EFEE6FFA3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		34FD94091844D685D70C3A212EE77472 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDDA95CDB5FBFBB61610EA5C1BDC5F /* DateExtension.swift */; };
+		36D517325DF03909D66B43D1F78B28BA /* MultiDeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA0CF66BF43476881DEB01675929B0 /* MultiDeviceService.swift */; };
+		36FE690FCF600D08F1413475BD6ED337 /* MessageReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BFD21103E359CB2033380ACF2A27E /* MessageReplyView.swift */; };
+		37654D0BF9D682A29109A8E2BB8AE7FF /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBC56C4DDA477AA4213FD6F246D476 /* TextMessageCell.swift */; };
+		387DA2477EA40246D016D28DADF8D7EA /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A992A83FBD16E7BF22CBD0F6C4B8A /* BundleExtension.swift */; };
+		396E6649E6841BF1CC61CE263C6EFB2B /* ClassDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3F263E778078C2C3D2E25E84BF741E /* ClassDescriptor.swift */; };
+		39F63D711600B72CCCFCE0E2C6540548 /* AlertMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E54E188A84048747049439D0BFD4C3 /* AlertMessageCell.swift */; };
+		3A917BD6B9EE5661AFF331EAE424CB69 /* ImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361CFF45F8C12E582743CCE2ECE95BF4 /* ImageMessageCell.swift */; };
+		3D70D0DAD7C7B83EF12F14D0340C15E5 /* CALayerDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528295785D02FE938FDA2C2532CE8C51 /* CALayerDSL.swift */; };
+		40340DD37772298BCF41D85E1732D4FC /* ContactCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066D8262F9386C0EB5944A3B87AB6A8 /* ContactCardCell.swift */; };
+		4334344186FD76C12E368FA8B6B9A13B /* GroupParticipantsSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8FBFF43BEA930D0CD783E75AC598CF /* GroupParticipantsSelectCell.swift */; };
+		4334CF19229939B1E5215C6BF8E91A6F /* ActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F40898FBFBED8FBBDA20C4A27CE812 /* ActionSheetItem.swift */; };
+		447CC56283743D5FA5E44EEEC115EA37 /* MetaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8795BE0C5C62F20368D10A5C55E40009 /* MetaType.swift */; };
+		450EFCDDECD15B7728E9FA7D86470CA7 /* GroupServiceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4CDE32787C4B41CFD9F99A961C14F /* GroupServiceImplement.swift */; };
+		46CACE16450D8381254104FB6836EE7E /* EaseChatUIKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB0BBE99F54110121183CF00DF2309D /* EaseChatUIKit-dummy.m */; };
+		499230607B32C594B10D8F4F34A12A22 /* DetailInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14EE7572A27F95242DE2729160D9A1 /* DetailInfoHeader.swift */; };
+		4ABE7E0FF4815161C924090FD0804F2B /* DetailInfoHeaderExtensionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB18BE567E623B26556BAD20741353 /* DetailInfoHeaderExtensionCell.swift */; };
+		4B1BC21482D1FD864B09901AA157F02A /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F833328C593E1146FE2C9DA650D80F3 /* ContactService.swift */; };
+		4B5200F1F8377D0C20C4B490F3D18BC6 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6E9FB0F4A0B157915914747F221E69 /* ConversationViewModel.swift */; };
+		4C9C59E412312640EDD22227A4C4D885 /* ConsoleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906407EBBA925A73BAFB648A1747B3F /* ConsoleLog.swift */; };
+		4FCCD0638F674B3BE28B09E72E0347F9 /* BaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA7C30684810E9D88918E5F187E86E /* BaseType.swift */; };
+		4FFBFDEC036065690B1C4CE7645905CB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD54E8011334C344C8393B08C5B3495 /* UserService.swift */; };
+		55403DB6D9A0410F19548EF6713AEBC1 /* LanguageConvertor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BD309E82A664DA809E96D1CB424A86 /* LanguageConvertor.swift */; };
+		5714988B105813651C87DF70C00C209C /* UIButtonSafeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5E7D6B4967BFE991F8AD7CC50BD1EF /* UIButtonSafeExtension.swift */; };
+		59F0765291A99D35448B5E6F4D191A37 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922A8FDA74DD8C68F2F9CFED76141DE /* EmptyStateView.swift */; };
+		5AD034C915C7BBFEC6ED5F5F805319E3 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186895AB84758709646F648ACB9ACE5 /* Type.swift */; };
+		5DAFC48DC1E782AD696F51A154A15974 /* EnumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9807C1CA9129039D8AEDE4516AAFC2 /* EnumLayout.swift */; };
+		5E184FC27CB24039AD9CB8F223FDC300 /* lame.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC66420817C24B2DC6733113D0311A2 /* lame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FB2A7CD7B33F2464018D39B5E90AE70 /* EaseChatUIKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C9E87381643EB287252E04F8806E27 /* EaseChatUIKitClient.swift */; };
+		5FDA3F75A1A30AFE4CD51247D89F3A75 /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDBD5D9673B98D886D7D92CB5031B74 /* ModelType.swift */; };
+		612FE7C38E97E18EB2DC606D5A2D58B8 /* ReportOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CC053A51CEF5EFDF26A3707FCBDC6 /* ReportOptionCell.swift */; };
+		61465F44579B3C05B274528FB6186AC0 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE9F45A39199A8C76B40FB6B60EB0C /* Appearance.swift */; };
+		61CD536A7C2FB8F7129189D12E428505 /* Dictionary+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E29F6B1F851AB10F2F462A6198C2DD /* Dictionary+KJ.swift */; };
+		6213BC2BF0EEEE212A76BD6D616632BD /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AD3441CB77EAE1A37CCFCDCEE08B4 /* MessageListView.swift */; };
+		62F24012359AF60DC93798C56A31FBC3 /* ConversationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA335C54D62C972A0B1A4AA7226F90 /* ConversationListController.swift */; };
+		6324297A07DABB5F5BBDD07A6B63B92C /* EaseChatUIKitContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4028F983DFB05B725AEBBC20888F4D /* EaseChatUIKitContext.swift */; };
+		63338F6DD9717DC913C95FCF4F8AAEC9 /* NewContactRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD1DB12D0F087A6B0467FAF5648FFB /* NewContactRequestController.swift */; };
+		636A7238FB1897D7177A206887D5714C /* GroupParticipantsRemoveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A39F8A81864574405808281F078DF /* GroupParticipantsRemoveController.swift */; };
+		63E6AAA27C79A430875C359FFE4C9FE1 /* NewContactRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C46AA73D0DF0ECF18BDA34E6B3A9716 /* NewContactRequestCell.swift */; };
+		6444383449796726FA11A889B65A74D7 /* ConvertibleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE92A1C1EDA5C97203B2B94E53BA5C /* ConvertibleEnum.swift */; };
+		6569246022A879F17A77D634D6CE20FC /* ContactListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D2F6EBC71593D40C0BB34E1AECAC6 /* ContactListHeaderCell.swift */; };
+		6605E08A771150C1FC6E8AA89205296C /* PresentationEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE325B487AA1299BEAFDF77AB39C6FD /* PresentationEnums.swift */; };
+		6654D39CED368199051BFDF518A705F7 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497DC32D4A81B2B6D9773D3E1E38E705 /* ImageView.swift */; };
+		666056BB350CB82783B2838F7E0AA5B6 /* TupleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E8DA3AFCB46714B743DFBC3EA91E3 /* TupleLayout.swift */; };
+		6716B102FDC200E52C0DAC63EAAC6E08 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1EBD08FECD4732ECDF3278ADECCCE /* ContactCardView.swift */; };
+		689413D91E3A389044B8A9D325E19809 /* FontTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEC57562D53E827E9B896602B07F3E /* FontTheme.swift */; };
+		68A6CA762710298F8FAD529DD7E1AB81 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37980DEFF6CC4408AA005B9F9BEE1246 /* ArrayExtension.swift */; };
+		69BF2E2684C087AC46858C1A564AA4DA /* MessageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700EEF1EAAD2BFAD520A53E729F0F96 /* MessageListController.swift */; };
+		69DFC44DE2690A34526F679E536F2CBD /* NSAttributedStringFunctionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086FCD18CED52D43536ED3B8ADADD2C /* NSAttributedStringFunctionBuilder.swift */; };
+		6D3C732907F866A27F7D3DE886789248 /* UIViewFunctionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778C0F23D60A136AB0C978CE4C10040C /* UIViewFunctionBuilder.swift */; };
+		7000D3067CB3D0AB07E8F837E3154B99 /* FileMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1AFFEB4C085B9A57D08B926313321 /* FileMessageView.swift */; };
+		71FE2EDA95ED1E6336DC367DA8C0E916 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD2CA8DBA9904F29E382DF029C070A /* Kind.swift */; };
+		72E2135FF823E976C6266062A3BAE659 /* EaseChatNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744C0E2A69D8EB40A9A5CC4008C5ADE /* EaseChatNavigationBar.swift */; };
+		7496F87D739EE0953575438EA904748A /* ConvertAMR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4FF3E9FFC126D44DCFA4EE0A3646A /* ConvertAMR.swift */; };
+		7563AA5D8D3167C3442C8270322FECCB /* GroupParticipantsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8C79C3DA21AFB1630968226466FDE5 /* GroupParticipantsController.swift */; };
+		758328F58848EFF61275B88D30BB2590 /* Pods-EaseChatUIKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 577E00F9587BA12A7B2DA3EA6F5FDCEE /* Pods-EaseChatUIKit_Example-dummy.m */; };
+		773CDCB3B9D7601C11161A5877E75BE4 /* PresentationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69F0159E3D45AB5667AFE0DA9A6711 /* PresentationAnimation.swift */; };
+		78A8AC58B986B5440C7F173BC10A1A24 /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58210DAD050A197EF74F69B5A958CC2E /* PropertyWrapper.swift */; };
+		793BA1A94DF837D1391770E781536DB6 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1085D0AB0526301D214798BA690A297 /* Values.swift */; };
+		7962396241079B810F4AAD2A498C5CCC /* TypeProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0EC2C5DCAB8D7A0EE67D31D113CBAE /* TypeProxy.swift */; };
+		7A01491377D87F9E5E628B8AA1B7C0D7 /* MessageBubbleMultiCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CD993B84E91ADE86BE804698555358 /* MessageBubbleMultiCorner.swift */; };
+		7D2C6B6B090911717E5CB4BE37355E28 /* CrossDissolveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B61F95E82340693E76CF0D4F1C13B /* CrossDissolveAnimation.swift */; };
+		7E414DD1F3922927EDBBEC24BD8D151A /* GroupMemberAttributesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB22A53502C35DCD8D488609522C6E87 /* GroupMemberAttributesCache.swift */; };
+		7EE74AB393E30625DD1193D7F902B38E /* FunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C40DFA27DCF9E99C8EEC99782F5553 /* FunctionType.swift */; };
+		7F58FB1C9C73F349B826956F97D7DF51 /* KakaJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B32031567E3989EB9325C12A28813A4C /* KakaJSON-dummy.m */; };
+		7FB01EDE63DA2557A19B127B31EBCA7F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E24C2CD7E8D2B1DF20B5194C8A4F5 /* Parser.swift */; };
+		800CD3900604A1EFFE79607E65B9A475 /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778E9AA27854660A5A67749C5DAA944 /* BaseLayout.swift */; };
+		82922995AC2CEA2146FC1AAD7C02809F /* MessageAudioRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D72941F71EB51E0A63BF99A1B603FDD /* MessageAudioRecordView.swift */; };
+		837D30239F158E30BA0B5BE008CDEA71 /* Pods-EaseChatUIKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC328F5884DC1248A25DDAB8DE74CA0 /* Pods-EaseChatUIKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85C24790BCEBE27F77B93F79AAFA2153 /* ClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60DE0243ACFC31A915E1E474079C345 /* ClassType.swift */; };
+		86923983BA1EB757F8D3A1C7C3EC0F28 /* MessageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9FB7F51E40487735795EE196CE883 /* MessageEditor.swift */; };
+		885C10639DD2666BDAF8075F501F4D83 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9FA70E4D860B216CE1148576422F2 /* ImageLoader.swift */; };
+		8977B9427C350175BE5C440A5BFA5DA8 /* Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9ACE0164DE0D1B55C49F5E146B6817 /* Convertible.swift */; };
+		8BB2D4D39501160B8621A5A9FD51BE80 /* ProtocolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800B84E72586974A7076F575E8F790F1 /* ProtocolType.swift */; };
+		8C26DC57708831E2B116032E963DED1F /* Array+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF931F3D488259E261DFB15CFE216785 /* Array+KJ.swift */; };
+		8CCA23100EBF7F0561EBB53C6B1AB240 /* FieldList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23744B113328858DC8769F2DD80ED30C /* FieldList.swift */; };
+		8D0B7F2E3997EFD9FED3A62F39688C49 /* RippleAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11E26E08CE6AF3390A432535D1901E /* RippleAnimationView.swift */; };
+		8FC86480318ABAA1B57378E4AC3412B9 /* ObjCClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE38EC7977D3913B2DC9F5C921D0CE77 /* ObjCClassType.swift */; };
+		90EABAAE5F4800ABD1127BE8E2810C33 /* AmrCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 41E17696003EF7DB0E24C07EE61EC04D /* AmrCodec.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9353F6038698C35BE7426523C100EB21 /* Notification+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D1FB54B26693C5DDA4BD32E7AD9E5 /* Notification+Presentation.swift */; };
+		957BB232DE6420E3F68F91E566C8BFE0 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CCA9D68A968B71005A94388093B582 /* MessageCell.swift */; };
+		95C1620822B8266ADDEB4E533DB06E7D /* ConversationServiceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E16AEE3EB311B52AD2F3B60954E7A6 /* ConversationServiceImplement.swift */; };
+		9672C4266D21EFAC446C043290D48368 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD242508BDC460C17DC572FB5CAB8BD /* OptionalType.swift */; };
+		9B0648361E459DA8EBBFCF50EB55C5A4 /* FlipHorizontalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA678B8A192329FC60A2D5C89F5EE39E /* FlipHorizontalAnimation.swift */; };
+		9B3A24105600A3B13E89803ECD510929 /* GroupParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61A1C2F4F5ABA81E5B391E41DB86E1D /* GroupParticipantCell.swift */; };
+		9CD941BC9DE43ADE22FB0BA433944D50 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D244376E28CF9931C8D30C5025234 /* UIColorExtension.swift */; };
+		9CF1B0C8378023C4ECDAE06160F9FC83 /* DialogContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D23AF7696CCDD1B7BFB177F16B04DB /* DialogContainerViewController.swift */; };
+		9E25107B3FDDCFD6A37594D31A39D006 /* UIKitDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406075397EBA8115EE2BAC4415B062B7 /* UIKitDSL.swift */; };
+		9FB1579D2C1F435DC1F16B1FD19948B4 /* VideoMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C3440282683CEDE473284A52B791C /* VideoMessageCell.swift */; };
+		9FD8E95BBE5B4190A9D4C8A683BD6650 /* Optional+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08EE5B2C2B0C0B070DF1153C77C4CC /* Optional+KJ.swift */; };
+		A15A99CB200570F4BEE3B4E41BB6ACE0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155D4DC6DB0EAD351833DEAD83B7D3C /* Logger.swift */; };
+		A3E63F02FA6ED53C1DF03F31461FEC34 /* ChatServiceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508275362459219576F09C159E4EC861 /* ChatServiceImplement.swift */; };
+		A55CF7956805E176C7014409D874780D /* PageContainersDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06F9F981E6765D44E2524DDC45CA7C /* PageContainersDialogController.swift */; };
+		A66E836221F5031B7D2DA07C1B13DD5F /* AudioMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57A8D64F1A05EB12DB4B4AFF55DB4 /* AudioMessageCell.swift */; };
+		A696A40250681AFFE7D5988B0FCE20A6 /* ContactListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39E13057978A69EE1A27BB27EEAF27F /* ContactListHeader.swift */; };
+		A6EFA28F258E49A6219F5898E615A85D /* CrossZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C664CF5A4DF14AF8CC049D84EB5320E /* CrossZoomAnimation.swift */; };
+		A764122784553047BFFAF5D269DCBA2F /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5445D457822A0E5FCB554EC40FD04CD /* DetailInfoView.swift */; };
+		A7CA258607B310CBD0E59E9E05AF489F /* ComponentsRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B39D4E0CBC29F70B5754815CCF8AF /* ComponentsRegister.swift */; };
+		A8A7A7580460A175352AF3610E89F4DF /* ChatEmojiConvertor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DD5CE41691ACB809691B59C78CB5E /* ChatEmojiConvertor.swift */; };
+		A96F541765A2AE1BD3B55FE7E9E010F2 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64131892B6A652B88FB777A7AA2B3152 /* PresentationSegue.swift */; };
+		AACDB5BCA0B2DA0599F8C9083BBDFA14 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C9AA457F4AA9011E0EFCC0C4B2F12 /* ColorTheme.swift */; };
+		AB442363453E5E9159FB4E9343A477EF /* MessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241A38DBF8F5484E4B396F8773F811E /* MessageInputBar.swift */; };
+		AC86CF87EFA09C51B054817C354E2149 /* FunctionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6494B6A7A67E3E98ED3D3785D3F0176 /* FunctionLayout.swift */; };
+		ACC43EE75F689C0A86C6802C1642EF02 /* AudioTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1AA9B62671D125C6449F65833BC3A /* AudioTools.swift */; };
+		AD4C43AFFDB3359B325A2FBD2264555C /* PageContainerTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36957827FF010B650FD94CACAC5F6F83 /* PageContainerTitleBar.swift */; };
+		AE248DD6C92F07EB7500B12FA257D7D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		AEBCFE3747852FEFFAFCC60B17ECC08B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22279EB8AFA404D3CE1612D172ECB12F /* LoadingView.swift */; };
+		B415EE28B7C32DCF9547D8AC2F783A6B /* interf_dec.h in Headers */ = {isa = PBXBuildFile; fileRef = 53E380F741C698723BF79D5842697EE4 /* interf_dec.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7AF428422CD4F6146F648C9EB05A9B8 /* GroupInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117F2412CB4472D6BA28F8297BB88C3 /* GroupInfoEditViewController.swift */; };
+		B8A6DA295893FFE415E980BE94DCEBB6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B267D4B6A5D3473DA629B9F9DE441 /* UITableViewExtension.swift */; };
+		BD7840E9C977C30F34D876C461509A02 /* UIViewControllerExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74705D76E366EAEB7358F2F513045DE9 /* UIViewControllerExtentsion.swift */; };
+		BE39847CA71EC889D99AD66CB92B1003 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FBE510415B9B6E881D7EDF01CFAA88 /* UIViewController+Presentation.swift */; };
+		BED58196FC8233B859E23EE23F67EBAE /* enc_if.h in Headers */ = {isa = PBXBuildFile; fileRef = EE607F8F39B44643E1252036EDE21142 /* enc_if.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C259A149BF5A7C0D4F08067D3541C04F /* Data+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07328A08943E8D8A260B2453BAC55097 /* Data+KJ.swift */; };
+		C44EF485A8C536D23BB3D80AF8D351C3 /* StructType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655F232959B76279B8424BA958131BEC /* StructType.swift */; };
+		C46FC941E50700999319D6420D88ADED /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E9AE5FD8A21B0559A2CF7EEDBDA670 /* Model.swift */; };
+		C5F4F8078F2B5EEC2EFEBB0BED39AA7C /* SearchConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D537949AC1611506A3E8A72117B3621A /* SearchConversationsController.swift */; };
+		C7CF80C4B945ECC06BDC85B59801737E /* TupleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ADB9E4F46428226D108DDF3D4082FA /* TupleType.swift */; };
+		C8534401EE1F8E2CBF9DBB390ABA2805 /* dec_if.h in Headers */ = {isa = PBXBuildFile; fileRef = DA54CC504277562409B7EA63E361E55F /* dec_if.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB08A99318396F06C2660A426F34B0E4 /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87115113F311E717F7E84914A808C741 /* MessageListViewModel.swift */; };
+		CBCB612EC7FF791AC9A5BB10A62E3205 /* ConvertibleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542B5C3EA2834A7425AE392D1C3E1290 /* ConvertibleConfig.swift */; };
+		CC2F67E0336B2819351810993DA1D45B /* NSObject+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632DA1533C6CE1E052A20A0B4A2273DB /* NSObject+KJ.swift */; };
+		CE1B451BD48F0C5DD87ADAEF2A425C33 /* SearchHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFA5804684EAFAE95233DA8FD8AD398 /* SearchHeaderBar.swift */; };
+		CE4EF9A860FAA65D7C370B8D8A00FD71 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEAECFD92C7BA635A3CF236B15F25E2 /* ContactCell.swift */; };
+		CFE763860BEA04CF40A00FED03BD9B07 /* EaseProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527C5FC252439A341D95D47F28DCC23 /* EaseProfileProtocol.swift */; };
+		D36AE4DCA1568D9FC722D95211D88DA5 /* StructDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B409160F4BA455EA25F0AD9586B278A /* StructDescriptor.swift */; };
+		D5B1D2A1641A78FCC85707BE0BF62105 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844428F4FC9E950F7E63FD2CA9DB86A /* ImageCacheManager.swift */; };
+		D5CD02D7A7F39264E190B0D902148980 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED7DF5D8F7F67BA0D40D126D8DF9D9 /* DataExtension.swift */; };
+		D6C203DE07D9ECD6485ACD26A739619B /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814240ACF6B6B343F795D2D72B5725F0 /* ContactView.swift */; };
+		D84A38061FF9DCA80CB70A8A04160366 /* ContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EE98CB33CAFDB6E897B1A1A6ECF10 /* ContactInfoViewController.swift */; };
+		D93E68193AC09C373A2E0D58FCA1AA60 /* MediaConvertor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745489AEDA8928B70AFC84C49BE5A3C /* MediaConvertor.swift */; };
+		D979D99F501D1CA45B3F2D7F272948AA /* FieldDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DC0CC1149059873BB6C7244B89D76 /* FieldDescriptor.swift */; };
+		DAE706AF29B5D9BCB9DC1CD97605F9D6 /* Pointer+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4A2D81AB77C90E429AA4C7F48B34C /* Pointer+KJ.swift */; };
+		DC6AEA9BED0DF9D5C290D6BB664ACA1E /* UIContextualActionChatUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3534355DC922AFE903D31D36738D9 /* UIContextualActionChatUIKit.swift */; };
+		DCF3B571A4B035F096C6E31E00FCBBD4 /* ProtocolLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E53A43D27AC78F19272EB0A391CABC6 /* ProtocolLayout.swift */; };
+		E0783A69F1FBA8D26F633C8973DD46BF /* FileMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14DF3E34471EBF33EFE7C30C9A23D7 /* FileMessageCell.swift */; };
+		E0C7218D4044DC8A022259D7FFF539EF /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E831D31D9BB0E6229E3788A25531A5 /* ContactViewController.swift */; };
+		E70E71A4E20D5DA2D43E03BA4C0ED466 /* ConversationSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC40CC0D197F9A64606EF9BC63D382 /* ConversationSearchCell.swift */; };
+		E86CBA7165CFA13CE965BF3B8D4056DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		EAFEFC5AC966E42BBD17705DFBEC088E /* KakaJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7944EB06EB5F526C7E79E2DE190294DA /* KakaJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBFECBBBC9B1FC2DC6CD3685D71D96DA /* interf_enc.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D1DCF1C1C7FC163E990A816B63C823 /* interf_enc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECBBF43E76AC3CAF8103D66CF80E1953 /* UIScrollPullExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9350EB090819DBC70D408AC2CB5CF /* UIScrollPullExtension.swift */; };
+		EDB3446271737AD2F80456D189E55030 /* DialogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591B02411520E323A40F4DC2EB9CD813 /* DialogManager.swift */; };
+		EE34C051C5A66E29DBD5AA22E5FFCA39 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A1B42A1D287FDFD05BC990E881166 /* AlertViewController.swift */; };
+		EEB251DB9F26522D42FC8006AB8D96E1 /* MessageInputReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD4593FA1763C49D67040FCDF8A1E2 /* MessageInputReplyView.swift */; };
+		EF75FBD47CFE9968C4AFFD5F8EAB4179 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD3DAD6C79D60C822F26674AB2147C /* DictionaryExtension.swift */; };
+		F0B0E6864CD8632A640BC74CA624C839 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3378B2A27996D52F2C7AEFD1BF26D /* Property.swift */; };
+		F12A1FED396E028D68BDDA339EC51A01 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5982CEAFB0456B7549D733D90DBA78 /* ContactViewModel.swift */; };
+		F1F7C75538857332CE2A0416520FF4FF /* ConversationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C5163EFB3CA7E7FAF1DFB51F38906F /* ConversationList.swift */; };
+		F3B9D832536BC17A38FA51F82E4B48BE /* Descriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3625E8C7E4ECA8989BD71FC6A7D39721 /* Descriptor.swift */; };
+		F3BD07E01F1D83D4FC6B3571D061D36A /* DispatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B476B6666AEE4DF7C92A5193E62DE99 /* DispatchExtension.swift */; };
+		F4544CB0A0DCE9EF11AAE5D49BCEBEFF /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0001CF8A2875E5E2700DD221DD95901 /* PageContainer.swift */; };
+		F6528C2DD4C05D7B276DD77246715AAC /* UIAppliactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28639DD2187DEB1885C30B5799056CBE /* UIAppliactionExtension.swift */; };
+		F6FF4C414AC91982B43BFB14C38CC21E /* SectionIndexList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CB9CFE7460F8CF3E0086E127FDA0 /* SectionIndexList.swift */; };
+		F909D8B1E44C2CC674F8BA8E70180CC3 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1229CF1A322C6785C36A574B6DF905D /* ConversationService.swift */; };
+		FAB31972300821CF2033E0F09B331C2A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E3385035286A9A18FE8D45DABD95C /* JSON.swift */; };
+		FAEAFC9B9069C83EE2AD264A705D3471 /* DetailInfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D00CE52FA0EB10B042FE5174A5731 /* DetailInfoListCell.swift */; };
+		FBE191AE52E1E6716F31BA67B70DA90C /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F34EB445F19BF46B82403C0C2E11E0 /* MessageEntity.swift */; };
+		FD2C21F150CEF514BF3080E47F5E4EC3 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9988E85B8A5F9122DFF82A5F1E3D29D3 /* Coding.swift */; };
+		FD69DF57BE5995EECA4BE9C279AEFE85 /* ClassLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF623777EBE4AAB2076835580C2F9238 /* ClassLayout.swift */; };
+		FE91F91A5BB753D80A4AAF17CE611C4E /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBCFFE5F3748711CCE4E20B8BA3BDD3 /* GroupInfoViewController.swift */; };
+		FFB168309AB0F2A84542546F4BBEB172 /* JSONSerialization+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD097F3E8A215B2441B24EEE0DCCE8 /* JSONSerialization+KJ.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C01DEF2B67AB453C3A6138CE79364E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25FEE10C6E3A039D9C04BB397323B94A;
+			remoteInfo = KakaJSON;
+		};
+		7232867092C25EDFA1364ED729B921B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A09EB58FA8B110D768DBACB9890287E;
+			remoteInfo = Agora_Chat_iOS;
+		};
+		74BF245256524989455D8308937E7BFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A09EB58FA8B110D768DBACB9890287E;
+			remoteInfo = Agora_Chat_iOS;
+		};
+		C9EA964887E96AE9D6764E2BB7F8BF90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F153BA76078C52397BEEEE38F849ADEA;
+			remoteInfo = EaseChatUIKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01197DBD6C38EAB07DDEC183D9DCFDD1 /* ContactSearchResultController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactSearchResultController.swift; sourceTree = "<group>"; };
+		01EF213CD9624197BA501E55B4CBCE48 /* KakaJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KakaJSON.release.xcconfig; sourceTree = "<group>"; };
+		042D244376E28CF9931C8D30C5025234 /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		0507ED3D3A1BB91549B1CA11797AD412 /* Pods-EaseChatUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EaseChatUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		0665B608DC36A3FFECF4A87547B8E20E /* KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KJ.swift; path = Sources/KakaJSON/Convert/KJ.swift; sourceTree = "<group>"; };
+		07328A08943E8D8A260B2453BAC55097 /* Data+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+KJ.swift"; path = "Sources/KakaJSON/Extension/Data+KJ.swift"; sourceTree = "<group>"; };
+		07F401FB9EAD44272084C5A837C83C51 /* EaseChatUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EaseChatUIKit.debug.xcconfig; sourceTree = "<group>"; };
+		0A9807C1CA9129039D8AEDE4516AAFC2 /* EnumLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumLayout.swift; path = Sources/KakaJSON/Metadata/Layout/EnumLayout.swift; sourceTree = "<group>"; };
+		0D72941F71EB51E0A63BF99A1B603FDD /* MessageAudioRecordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageAudioRecordView.swift; sourceTree = "<group>"; };
+		0DBCFFE5F3748711CCE4E20B8BA3BDD3 /* GroupInfoViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
+		0F833328C593E1146FE2C9DA650D80F3 /* ContactService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
+		113468B0CB90CFFC6B95E29D85058BE0 /* PresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		139A992A83FBD16E7BF22CBD0F6C4B8A /* BundleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		19E9AE5FD8A21B0559A2CF7EEDBDA670 /* Model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Sources/KakaJSON/Global/Model.swift; sourceTree = "<group>"; };
+		1A28221B269C8AA86988AC02545F528C /* EnumType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumType.swift; path = Sources/KakaJSON/Metadata/Type/EnumType.swift; sourceTree = "<group>"; };
+		1AB3378B2A27996D52F2C7AEFD1BF26D /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Sources/KakaJSON/Metadata/Property.swift; sourceTree = "<group>"; };
+		1ADA930D9DFF0CA2052E4B82E4298A9D /* KakaJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "KakaJSON-Info.plist"; sourceTree = "<group>"; };
+		1C46AA73D0DF0ECF18BDA34E6B3A9716 /* NewContactRequestCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewContactRequestCell.swift; sourceTree = "<group>"; };
+		1DB029497D7B55787D848EE3ECE02518 /* libvo-amrwbenc.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libvo-amrwbenc.a"; path = "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/vo-amrwbenc/lib/libvo-amrwbenc.a"; sourceTree = "<group>"; };
+		1DD242508BDC460C17DC572FB5CAB8BD /* OptionalType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OptionalType.swift; path = Sources/KakaJSON/Metadata/Type/OptionalType.swift; sourceTree = "<group>"; };
+		1DEAECFD92C7BA635A3CF236B15F25E2 /* ContactCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		1DEE631475B19E0DADFBA2E35C3B6431 /* JoinedGroupsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JoinedGroupsViewController.swift; sourceTree = "<group>"; };
+		1E53A43D27AC78F19272EB0A391CABC6 /* ProtocolLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtocolLayout.swift; path = Sources/KakaJSON/Metadata/Layout/ProtocolLayout.swift; sourceTree = "<group>"; };
+		1EFD1DB12D0F087A6B0467FAF5648FFB /* NewContactRequestController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewContactRequestController.swift; sourceTree = "<group>"; };
+		20DB18BE567E623B26556BAD20741353 /* DetailInfoHeaderExtensionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailInfoHeaderExtensionCell.swift; sourceTree = "<group>"; };
+		22279EB8AFA404D3CE1612D172ECB12F /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		226D1FB54B26693C5DDA4BD32E7AD9E5 /* Notification+Presentation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Notification+Presentation.swift"; sourceTree = "<group>"; };
+		23744B113328858DC8769F2DD80ED30C /* FieldList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FieldList.swift; path = Sources/KakaJSON/Metadata/Layout/FieldList.swift; sourceTree = "<group>"; };
+		24B9350EB090819DBC70D408AC2CB5CF /* UIScrollPullExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIScrollPullExtension.swift; sourceTree = "<group>"; };
+		27DD4593FA1763C49D67040FCDF8A1E2 /* MessageInputReplyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageInputReplyView.swift; sourceTree = "<group>"; };
+		28639DD2187DEB1885C30B5799056CBE /* UIAppliactionExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIAppliactionExtension.swift; sourceTree = "<group>"; };
+		28C5163EFB3CA7E7FAF1DFB51F38906F /* ConversationList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationList.swift; sourceTree = "<group>"; };
+		297FD76E89AC5E4FDEE0E64B394316D7 /* enc_if.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = enc_if.h; sourceTree = "<group>"; };
+		29A030195FF2E3107174B10782CBDF95 /* TextEditorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
+		2C664CF5A4DF14AF8CC049D84EB5320E /* CrossZoomAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CrossZoomAnimation.swift; sourceTree = "<group>"; };
+		2DFA5804684EAFAE95233DA8FD8AD398 /* SearchHeaderBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchHeaderBar.swift; sourceTree = "<group>"; };
+		2EB0BBE99F54110121183CF00DF2309D /* EaseChatUIKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EaseChatUIKit-dummy.m"; sourceTree = "<group>"; };
+		2F3F263E778078C2C3D2E25E84BF741E /* ClassDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassDescriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/ClassDescriptor.swift; sourceTree = "<group>"; };
+		2FC1AA9B62671D125C6449F65833BC3A /* AudioTools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AudioTools.swift; sourceTree = "<group>"; };
+		2FDEC57562D53E827E9B896602B07F3E /* FontTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontTheme.swift; sourceTree = "<group>"; };
+		33ADB9E4F46428226D108DDF3D4082FA /* TupleType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TupleType.swift; path = Sources/KakaJSON/Metadata/Type/TupleType.swift; sourceTree = "<group>"; };
+		361CFF45F8C12E582743CCE2ECE95BF4 /* ImageMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageMessageCell.swift; sourceTree = "<group>"; };
+		3625E8C7E4ECA8989BD71FC6A7D39721 /* Descriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Descriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/Descriptor.swift; sourceTree = "<group>"; };
+		3666A3B5692816E9A57069A29121D09B /* KakaJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KakaJSON.debug.xcconfig; sourceTree = "<group>"; };
+		36957827FF010B650FD94CACAC5F6F83 /* PageContainerTitleBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PageContainerTitleBar.swift; sourceTree = "<group>"; };
+		37980DEFF6CC4408AA005B9F9BEE1246 /* ArrayExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		37D23AF7696CCDD1B7BFB177F16B04DB /* DialogContainerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogContainerViewController.swift; sourceTree = "<group>"; };
+		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3AE325B487AA1299BEAFDF77AB39C6FD /* PresentationEnums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentationEnums.swift; sourceTree = "<group>"; };
+		3FF20E182608A775D91495D062FF3FA5 /* ActionSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
+		406075397EBA8115EE2BAC4415B062B7 /* UIKitDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIKitDSL.swift; sourceTree = "<group>"; };
+		406BFD21103E359CB2033380ACF2A27E /* MessageReplyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageReplyView.swift; sourceTree = "<group>"; };
+		4155D4DC6DB0EAD351833DEAD83B7D3C /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Sources/KakaJSON/Convert/Logger.swift; sourceTree = "<group>"; };
+		417F8D796B4341C1F27A240F7529B8BC /* PresentedViewType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentedViewType.swift; sourceTree = "<group>"; };
+		41C1E0CE1FED04D0EBF31EA82A614135 /* dec_if.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		41E17696003EF7DB0E24C07EE61EC04D /* AmrCodec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AmrCodec.h; sourceTree = "<group>"; };
+		422A38AC4B4F36D04D13744958684A09 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		45E831D31D9BB0E6229E3788A25531A5 /* ContactViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		4844428F4FC9E950F7E63FD2CA9DB86A /* ImageCacheManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		485CBAE13C3C7B9B910B7CEB31D92C64 /* ContactServiceImplement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactServiceImplement.swift; sourceTree = "<group>"; };
+		497DC32D4A81B2B6D9773D3E1E38E705 /* ImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		49EA2ADE792640D35AF809D74E4D26EF /* UserServiceImplement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserServiceImplement.swift; sourceTree = "<group>"; };
+		4A11E26E08CE6AF3390A432535D1901E /* RippleAnimationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RippleAnimationView.swift; sourceTree = "<group>"; };
+		4B993BE5B950BF7A5441B4134D35C3EF /* AgoraChat.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = AgoraChat.xcframework; sourceTree = "<group>"; };
+		4D19520C4604F545899E7C78C7E10AB5 /* EaseChatUIKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EaseChatUIKit.modulemap; sourceTree = "<group>"; };
+		4F08EE5B2C2B0C0B070DF1153C77C4CC /* Optional+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Optional+KJ.swift"; path = "Sources/KakaJSON/Extension/Optional+KJ.swift"; sourceTree = "<group>"; };
+		4F0CEB419B199B537C0E3A2BCE3F9E1C /* EaseChatUIKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EaseChatUIKit; path = EaseChatUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		505D48DCEF8539BC87C3C2DF43851E9C /* Agora_Chat_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Agora_Chat_iOS.debug.xcconfig; sourceTree = "<group>"; };
+		508275362459219576F09C159E4EC861 /* ChatServiceImplement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatServiceImplement.swift; sourceTree = "<group>"; };
+		509D2F6EBC71593D40C0BB34E1AECAC6 /* ContactListHeaderCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactListHeaderCell.swift; sourceTree = "<group>"; };
+		50BE9F45A39199A8C76B40FB6B60EB0C /* Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		5170C938184E6ED390D562D406955C4A /* MessageInputEmojiView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageInputEmojiView.swift; sourceTree = "<group>"; };
+		51F34EB445F19BF46B82403C0C2E11E0 /* MessageEntity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
+		528295785D02FE938FDA2C2532CE8C51 /* CALayerDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CALayerDSL.swift; sourceTree = "<group>"; };
+		53E2334702A69678E183B280E6A939A6 /* ChatService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		53E380F741C698723BF79D5842697EE4 /* interf_dec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		542B5C3EA2834A7425AE392D1C3E1290 /* ConvertibleConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConvertibleConfig.swift; path = Sources/KakaJSON/Convert/ConvertibleConfig.swift; sourceTree = "<group>"; };
+		572E3385035286A9A18FE8D45DABD95C /* JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/KakaJSON/Global/JSON.swift; sourceTree = "<group>"; };
+		577E00F9587BA12A7B2DA3EA6F5FDCEE /* Pods-EaseChatUIKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EaseChatUIKit_Example-dummy.m"; sourceTree = "<group>"; };
+		58210DAD050A197EF74F69B5A958CC2E /* PropertyWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
+		58E54E188A84048747049439D0BFD4C3 /* AlertMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertMessageCell.swift; sourceTree = "<group>"; };
+		58ED7DF5D8F7F67BA0D40D126D8DF9D9 /* DataExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		591B02411520E323A40F4DC2EB9CD813 /* DialogManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogManager.swift; sourceTree = "<group>"; };
+		5B476B6666AEE4DF7C92A5193E62DE99 /* DispatchExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DispatchExtension.swift; sourceTree = "<group>"; };
+		5B6A3F9BF78302DE7055B07CBDFCE3DD /* GroupService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		5CB5054FB8FFBFF8A0208C23CF36FE84 /* Agora_Chat_iOS-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Agora_Chat_iOS-xcframeworks.sh"; sourceTree = "<group>"; };
+		5D496EB3E8699256B91AA2F78ADB5812 /* EaseChatUIKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EaseChatUIKit-Info.plist"; sourceTree = "<group>"; };
+		610ACFB265B16E0DA39DD55D17A108F5 /* EaseChatUIKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EaseChatUIKit-umbrella.h"; sourceTree = "<group>"; };
+		632DA1533C6CE1E052A20A0B4A2273DB /* NSObject+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+KJ.swift"; path = "Sources/KakaJSON/Extension/NSObject+KJ.swift"; sourceTree = "<group>"; };
+		63BD097F3E8A215B2441B24EEE0DCCE8 /* JSONSerialization+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "JSONSerialization+KJ.swift"; path = "Sources/KakaJSON/Extension/JSONSerialization+KJ.swift"; sourceTree = "<group>"; };
+		64131892B6A652B88FB777A7AA2B3152 /* PresentationSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
+		655F232959B76279B8424BA958131BEC /* StructType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructType.swift; path = Sources/KakaJSON/Metadata/Type/StructType.swift; sourceTree = "<group>"; };
+		656B267D4B6A5D3473DA629B9F9DE441 /* UITableViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		67F3534355DC922AFE903D31D36738D9 /* UIContextualActionChatUIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIContextualActionChatUIKit.swift; sourceTree = "<group>"; };
+		6A8C79C3DA21AFB1630968226466FDE5 /* GroupParticipantsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupParticipantsController.swift; sourceTree = "<group>"; };
+		6DAE04700C777E974EB86A7901D1A5AC /* PullRefresher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PullRefresher.swift; sourceTree = "<group>"; };
+		6F64D422B18FB2BAAD32D8D6F0DA88D4 /* AudioMessageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AudioMessageView.swift; sourceTree = "<group>"; };
+		7117F2412CB4472D6BA28F8297BB88C3 /* GroupInfoEditViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupInfoEditViewController.swift; sourceTree = "<group>"; };
+		7159D1E00A85354E759C22605808DA62 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Sources/KakaJSON/Metadata/Layout/Layout.swift; sourceTree = "<group>"; };
+		7186895AB84758709646F648ACB9ACE5 /* Type.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Type.swift; path = Sources/KakaJSON/Metadata/Type/Type.swift; sourceTree = "<group>"; };
+		718AD3441CB77EAE1A37CCFCDCEE08B4 /* MessageListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
+		71A1EBD08FECD4732ECDF3278ADECCCE /* ContactCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
+		7241A38DBF8F5484E4B396F8773F811E /* MessageInputBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageInputBar.swift; sourceTree = "<group>"; };
+		72CCA9D68A968B71005A94388093B582 /* MessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		74705D76E366EAEB7358F2F513045DE9 /* UIViewControllerExtentsion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtentsion.swift; sourceTree = "<group>"; };
+		7654A23A6E018AAC521154A915920B8E /* EnumDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumDescriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/EnumDescriptor.swift; sourceTree = "<group>"; };
+		778C0F23D60A136AB0C978CE4C10040C /* UIViewFunctionBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIViewFunctionBuilder.swift; sourceTree = "<group>"; };
+		7879258622940F55DEFDFC2E3C166755 /* interf_dec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		78FE1ACF74A48036133B6828F1303B4E /* ReportOptionsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReportOptionsController.swift; sourceTree = "<group>"; };
+		7944EB06EB5F526C7E79E2DE190294DA /* KakaJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KakaJSON-umbrella.h"; sourceTree = "<group>"; };
+		7A1EE98CB33CAFDB6E897B1A1A6ECF10 /* ContactInfoViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactInfoViewController.swift; sourceTree = "<group>"; };
+		7A9AF9E1BE108B09A6D754CF76FFCD4E /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		7B409160F4BA455EA25F0AD9586B278A /* StructDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructDescriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/StructDescriptor.swift; sourceTree = "<group>"; };
+		7C5E7D6B4967BFE991F8AD7CC50BD1EF /* UIButtonSafeExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIButtonSafeExtension.swift; sourceTree = "<group>"; };
+		7D3ECBBFDE3A5E800F07584A97048F05 /* KakaJSON */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KakaJSON; path = KakaJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E06F9F981E6765D44E2524DDC45CA7C /* PageContainersDialogController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PageContainersDialogController.swift; sourceTree = "<group>"; };
+		7E5A797156E420895BC50A9E7B024802 /* if_rom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		800B84E72586974A7076F575E8F790F1 /* ProtocolType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtocolType.swift; path = Sources/KakaJSON/Metadata/Type/ProtocolType.swift; sourceTree = "<group>"; };
+		803B61F95E82340693E76CF0D4F1C13B /* CrossDissolveAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CrossDissolveAnimation.swift; sourceTree = "<group>"; };
+		814240ACF6B6B343F795D2D72B5725F0 /* ContactView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		82AB1F59C061A673F640677961653DB8 /* KakaJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KakaJSON-prefix.pch"; sourceTree = "<group>"; };
+		833A659E8C2E2ECEC214835D9E5D5B44 /* Pods-EaseChatUIKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EaseChatUIKit_Example-resources.sh"; sourceTree = "<group>"; };
+		84C57A8D64F1A05EB12DB4B4AFF55DB4 /* AudioMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AudioMessageCell.swift; sourceTree = "<group>"; };
+		857A39F8A81864574405808281F078DF /* GroupParticipantsRemoveController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupParticipantsRemoveController.swift; sourceTree = "<group>"; };
+		860B39D4E0CBC29F70B5754815CCF8AF /* ComponentsRegister.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentsRegister.swift; sourceTree = "<group>"; };
+		86C40DFA27DCF9E99C8EEC99782F5553 /* FunctionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FunctionType.swift; path = Sources/KakaJSON/Metadata/Type/FunctionType.swift; sourceTree = "<group>"; };
+		8700EEF1EAAD2BFAD520A53E729F0F96 /* MessageListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
+		87115113F311E717F7E84914A808C741 /* MessageListViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		8744C0E2A69D8EB40A9A5CC4008C5ADE /* EaseChatNavigationBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EaseChatNavigationBar.swift; sourceTree = "<group>"; };
+		8795BE0C5C62F20368D10A5C55E40009 /* MetaType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetaType.swift; path = Sources/KakaJSON/Metadata/Type/MetaType.swift; sourceTree = "<group>"; };
+		8843959DA4CE711B74D604AAC3E11196 /* Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		89263D00CB978EB4D2C479D07F59311E /* String+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+KJ.swift"; path = "Sources/KakaJSON/Extension/String+KJ.swift"; sourceTree = "<group>"; };
+		8930E558C79A64C2FE5452C43282E0E8 /* KakaJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KakaJSON.modulemap; sourceTree = "<group>"; };
+		89F40898FBFBED8FBBDA20C4A27CE812 /* ActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionSheetItem.swift; sourceTree = "<group>"; };
+		8A7E8D6F3453FE2FF012090A71D2CE18 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8BB4FED1B7DC06FDF8896DA2C70BA7A2 /* Agora_Chat_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Agora_Chat_iOS.release.xcconfig; sourceTree = "<group>"; };
+		8C5E8DA3AFCB46714B743DFBC3EA91E3 /* TupleLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TupleLayout.swift; path = Sources/KakaJSON/Metadata/Layout/TupleLayout.swift; sourceTree = "<group>"; };
+		8DDBC56C4DDA477AA4213FD6F246D476 /* TextMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextMessageCell.swift; sourceTree = "<group>"; };
+		8E56AC1CE6600FE147EB902994A8FD3B /* ConversationListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationListCell.swift; sourceTree = "<group>"; };
+		8E7D9B1E6C0DFAA5EFA673DEF791FF79 /* Contants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
+		9073E65505E259C7D937122E8C1A65EA /* GroupListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupListCell.swift; sourceTree = "<group>"; };
+		940352FE4E6D1BB37628D46EF4F19FA6 /* Pods-EaseChatUIKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EaseChatUIKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9527C5FC252439A341D95D47F28DCC23 /* EaseProfileProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EaseProfileProtocol.swift; sourceTree = "<group>"; };
+		95C9E87381643EB287252E04F8806E27 /* EaseChatUIKitClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EaseChatUIKitClient.swift; sourceTree = "<group>"; };
+		9988E85B8A5F9122DFF82A5F1E3D29D3 /* Coding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coding.swift; path = Sources/KakaJSON/Global/Coding.swift; sourceTree = "<group>"; };
+		99DDB0C8A8EE7BD9EE723A0193C7018D /* ComponentsActionEventsRegister.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentsActionEventsRegister.swift; sourceTree = "<group>"; };
+		9A14DF3E34471EBF33EFE7C30C9A23D7 /* FileMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FileMessageCell.swift; sourceTree = "<group>"; };
+		9A4CC053A51CEF5EFDF26A3707FCBDC6 /* ReportOptionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReportOptionCell.swift; sourceTree = "<group>"; };
+		9B9EDADFCDE6DCC2B8C716E978CDF49A /* Pods-EaseChatUIKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EaseChatUIKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9BC328F5884DC1248A25DDAB8DE74CA0 /* Pods-EaseChatUIKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EaseChatUIKit_Example-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F0A775C35C5D502194E762A7E369095 /* Pods-EaseChatUIKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EaseChatUIKit_Example-frameworks.sh"; sourceTree = "<group>"; };
+		A086FCD18CED52D43536ED3B8ADADD2C /* NSAttributedStringFunctionBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NSAttributedStringFunctionBuilder.swift; sourceTree = "<group>"; };
+		A2682FA6490605A5DB599720122B97CF /* Metadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Metadata.swift; path = Sources/KakaJSON/Metadata/Metadata.swift; sourceTree = "<group>"; };
+		A2F00821BB0F039DD197CB9F448CEB6D /* NotificationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		A5445D457822A0E5FCB554EC40FD04CD /* DetailInfoView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
+		A6B9534C0EA63FEAFD965A2CCF8EBEFA /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
+		AAD1AFFEB4C085B9A57D08B926313321 /* FileMessageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FileMessageView.swift; sourceTree = "<group>"; };
+		AC8FBFF43BEA930D0CD783E75AC598CF /* GroupParticipantsSelectCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupParticipantsSelectCell.swift; sourceTree = "<group>"; };
+		AD6E9FB0F4A0B157915914747F221E69 /* ConversationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		AF623777EBE4AAB2076835580C2F9238 /* ClassLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassLayout.swift; path = Sources/KakaJSON/Metadata/Layout/ClassLayout.swift; sourceTree = "<group>"; };
+		B1085D0AB0526301D214798BA690A297 /* Values.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Values.swift; path = Sources/KakaJSON/Convert/Values.swift; sourceTree = "<group>"; };
+		B1457FE79F31F2F60F0A12B4D2596B01 /* NSObjectExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		B32031567E3989EB9325C12A28813A4C /* KakaJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KakaJSON-dummy.m"; sourceTree = "<group>"; };
+		B3E29F6B1F851AB10F2F462A6198C2DD /* Dictionary+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Dictionary+KJ.swift"; path = "Sources/KakaJSON/Extension/Dictionary+KJ.swift"; sourceTree = "<group>"; };
+		B41DD5CE41691ACB809691B59C78CB5E /* ChatEmojiConvertor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatEmojiConvertor.swift; sourceTree = "<group>"; };
+		B44C4920B3A4DE805621405635D72FB4 /* Pods-EaseChatUIKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EaseChatUIKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		B5754F872712F869CC4FE54B522007B0 /* Pods-EaseChatUIKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EaseChatUIKit_Example.modulemap"; sourceTree = "<group>"; };
+		B60DE0243ACFC31A915E1E474079C345 /* ClassType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassType.swift; path = Sources/KakaJSON/Metadata/Type/ClassType.swift; sourceTree = "<group>"; };
+		B61A1C2F4F5ABA81E5B391E41DB86E1D /* GroupParticipantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupParticipantCell.swift; sourceTree = "<group>"; };
+		B664DE6B1563BE4A16E40558D102C5EA /* AmrCodec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AmrCodec.h; sourceTree = "<group>"; };
+		B9D4FF3E9FFC126D44DCFA4EE0A3646A /* ConvertAMR.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConvertAMR.swift; sourceTree = "<group>"; };
+		BA678B8A192329FC60A2D5C89F5EE39E /* FlipHorizontalAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FlipHorizontalAnimation.swift; sourceTree = "<group>"; };
+		BACD3DAD6C79D60C822F26674AB2147C /* DictionaryExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		BC5982CEAFB0456B7549D733D90DBA78 /* ContactViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		BCC66420817C24B2DC6733113D0311A2 /* lame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		BD2E24C2CD7E8D2B1DF20B5194C8A4F5 /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BE9ACE0164DE0D1B55C49F5E146B6817 /* Convertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Convertible.swift; path = Sources/KakaJSON/Convert/Convertible.swift; sourceTree = "<group>"; };
+		C03AC69C73F128ABCAC66AC310178FA8 /* EaseChatUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EaseChatUIKit.release.xcconfig; sourceTree = "<group>"; };
+		C18A1B42A1D287FDFD05BC990E881166 /* AlertViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		C1D1DCF1C1C7FC163E990A816B63C823 /* interf_enc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		C3EA7C30684810E9D88918E5F187E86E /* BaseType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseType.swift; path = Sources/KakaJSON/Metadata/Type/BaseType.swift; sourceTree = "<group>"; };
+		C4EC40CC0D197F9A64606EF9BC63D382 /* ConversationSearchCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationSearchCell.swift; sourceTree = "<group>"; };
+		C69137D9CF5DD9D4A027527B4820CA26 /* StructLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructLayout.swift; path = Sources/KakaJSON/Metadata/Layout/StructLayout.swift; sourceTree = "<group>"; };
+		C7DDDA95CDB5FBFBB61610EA5C1BDC5F /* DateExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		C8E16AEE3EB311B52AD2F3B60954E7A6 /* ConversationServiceImplement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationServiceImplement.swift; sourceTree = "<group>"; };
+		C8EB61CFC62935BD9882304D0B75E447 /* MessageBubbleWithArrow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageBubbleWithArrow.swift; sourceTree = "<group>"; };
+		C991877065D5DD1A58812C5E55266D81 /* EaseChatUIKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = EaseChatUIKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CDDBD5D9673B98D886D7D92CB5031B74 /* ModelType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModelType.swift; path = Sources/KakaJSON/Metadata/Type/ModelType.swift; sourceTree = "<group>"; };
+		CF69F0159E3D45AB5667AFE0DA9A6711 /* PresentationAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentationAnimation.swift; sourceTree = "<group>"; };
+		CFBAF6023933997BEDB35CFF348EBD2F /* libopencore-amrnb.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libopencore-amrnb.a"; path = "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/opencore-amr/lib/libopencore-amrnb.a"; sourceTree = "<group>"; };
+		D0001CF8A2875E5E2700DD221DD95901 /* PageContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
+		D03DC0CC1149059873BB6C7244B89D76 /* FieldDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FieldDescriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/FieldDescriptor.swift; sourceTree = "<group>"; };
+		D066D8262F9386C0EB5944A3B87AB6A8 /* ContactCardCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactCardCell.swift; sourceTree = "<group>"; };
+		D0DD2CA8DBA9904F29E382DF029C070A /* Kind.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kind.swift; path = Sources/KakaJSON/Metadata/Type/Kind.swift; sourceTree = "<group>"; };
+		D0FBE510415B9B6E881D7EDF01CFAA88 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
+		D180829E3463B944BB2701EB8B4DCA8F /* libopencore-amrwb.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libopencore-amrwb.a"; path = "Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/opencore-amr/lib/libopencore-amrwb.a"; sourceTree = "<group>"; };
+		D1DBED020CE5DA4AC691334E5F283E32 /* SDKTypealiasWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SDKTypealiasWrapper.swift; sourceTree = "<group>"; };
+		D2BA335C54D62C972A0B1A4AA7226F90 /* ConversationListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationListController.swift; sourceTree = "<group>"; };
+		D37951FDA551496E666ADCBF8587C359 /* if_rom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		D39E13057978A69EE1A27BB27EEAF27F /* ContactListHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContactListHeader.swift; sourceTree = "<group>"; };
+		D537949AC1611506A3E8A72117B3621A /* SearchConversationsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchConversationsController.swift; sourceTree = "<group>"; };
+		D6494B6A7A67E3E98ED3D3785D3F0176 /* FunctionLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FunctionLayout.swift; path = Sources/KakaJSON/Metadata/Layout/FunctionLayout.swift; sourceTree = "<group>"; };
+		D6CE92A1C1EDA5C97203B2B94E53BA5C /* ConvertibleEnum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConvertibleEnum.swift; path = Sources/KakaJSON/Convert/ConvertibleEnum.swift; sourceTree = "<group>"; };
+		D71CF29AB2CCC7F66BDB60F3511A26CA /* EaseChatUIKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EaseChatUIKit-prefix.pch"; sourceTree = "<group>"; };
+		D906407EBBA925A73BAFB648A1747B3F /* ConsoleLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConsoleLog.swift; sourceTree = "<group>"; };
+		D99C9AA457F4AA9011E0EFCC0C4B2F12 /* ColorTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		D9B4CDE32787C4B41CFD9F99A961C14F /* GroupServiceImplement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupServiceImplement.swift; sourceTree = "<group>"; };
+		DA54CC504277562409B7EA63E361E55F /* dec_if.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		DAD54E8011334C344C8393B08C5B3495 /* UserService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DB22A53502C35DCD8D488609522C6E87 /* GroupMemberAttributesCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupMemberAttributesCache.swift; sourceTree = "<group>"; };
+		DC4C3440282683CEDE473284A52B791C /* VideoMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideoMessageCell.swift; sourceTree = "<group>"; };
+		DE38EC7977D3913B2DC9F5C921D0CE77 /* ObjCClassType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjCClassType.swift; path = Sources/KakaJSON/Metadata/Type/ObjCClassType.swift; sourceTree = "<group>"; };
+		DEC14ECF21E9C41F9EB80F03A9C7EC45 /* interf_enc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		DFA9FA70E4D860B216CE1148576422F2 /* ImageLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		E1229CF1A322C6785C36A574B6DF905D /* ConversationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
+		E2EA3F5C2ECC68913ABE867257A6A7FE /* URLExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		E6D74E8E4378AB00DFC805986FB85D0A /* EaseChatUIKit-Bridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EaseChatUIKit-Bridge.h"; sourceTree = "<group>"; };
+		E778E9AA27854660A5A67749C5DAA944 /* BaseLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseLayout.swift; path = Sources/KakaJSON/Metadata/Layout/BaseLayout.swift; sourceTree = "<group>"; };
+		E7CD993B84E91ADE86BE804698555358 /* MessageBubbleMultiCorner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageBubbleMultiCorner.swift; sourceTree = "<group>"; };
+		EBA6B3736D329814A2C1C63B7FAEB82D /* Pods-EaseChatUIKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EaseChatUIKit_Example-Info.plist"; sourceTree = "<group>"; };
+		EC5D00CE52FA0EB10B042FE5174A5731 /* DetailInfoListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailInfoListCell.swift; sourceTree = "<group>"; };
+		ECA2D1DA416A281A676BD731BEFAC01A /* MultiDeviceServiceImplement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MultiDeviceServiceImplement.swift; sourceTree = "<group>"; };
+		EE0EC2C5DCAB8D7A0EE67D31D113CBAE /* TypeProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TypeProxy.swift; path = Sources/KakaJSON/Convert/TypeProxy.swift; sourceTree = "<group>"; };
+		EE14EE7572A27F95242DE2729160D9A1 /* DetailInfoHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailInfoHeader.swift; sourceTree = "<group>"; };
+		EE607F8F39B44643E1252036EDE21142 /* enc_if.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = enc_if.h; sourceTree = "<group>"; };
+		EF931F3D488259E261DFB15CFE216785 /* Array+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+KJ.swift"; path = "Sources/KakaJSON/Extension/Array+KJ.swift"; sourceTree = "<group>"; };
+		F1B9FB7F51E40487735795EE196CE883 /* MessageEditor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MessageEditor.swift; sourceTree = "<group>"; };
+		F482CB9CFE7460F8CF3E0086E127FDA0 /* SectionIndexList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SectionIndexList.swift; sourceTree = "<group>"; };
+		F5DD74ECC3AD6E0A51E90D595AFB95CF /* EaseChatResource.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = EaseChatResource.bundle; path = Sources/EaseChatUIKit/Classes/UI/Resources/EaseChatResource.bundle; sourceTree = "<group>"; };
+		F6BD309E82A664DA809E96D1CB424A86 /* LanguageConvertor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LanguageConvertor.swift; sourceTree = "<group>"; };
+		F745489AEDA8928B70AFC84C49BE5A3C /* MediaConvertor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaConvertor.swift; sourceTree = "<group>"; };
+		F75A2B7232D9CB41B03465F724A6500C /* ControllerStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ControllerStack.swift; sourceTree = "<group>"; };
+		F81414EE26A1743B6362C59DD112035F /* ForeignClassType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ForeignClassType.swift; path = Sources/KakaJSON/Metadata/Type/ForeignClassType.swift; sourceTree = "<group>"; };
+		F922A8FDA74DD8C68F2F9CFED76141DE /* EmptyStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		FCE4A2D81AB77C90E429AA4C7F48B34C /* Pointer+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Pointer+KJ.swift"; path = "Sources/KakaJSON/Extension/Pointer+KJ.swift"; sourceTree = "<group>"; };
+		FCEA0CF66BF43476881DEB01675929B0 /* MultiDeviceService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MultiDeviceService.swift; sourceTree = "<group>"; };
+		FD76B55AC336AF5ADB30EEA8B000BF1A /* Pods-EaseChatUIKit_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-EaseChatUIKit_Example"; path = Pods_EaseChatUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4028F983DFB05B725AEBBC20888F4D /* EaseChatUIKitContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EaseChatUIKitContext.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23B39FFA31A7FAB1E73A0F9A0CF33F38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE248DD6C92F07EB7500B12FA257D7D9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7121B681F1C766B6C47C7D238F4479D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E86CBA7165CFA13CE965BF3B8D4056DF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F537098D2CC86D39BFB7738B137D3FBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				307F226153D8B2285B7AD2EFEE6FFA3E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0186E11BA2B41365838AC00F10AC8E0A /* KakaJSON */ = {
+			isa = PBXGroup;
+			children = (
+				EF931F3D488259E261DFB15CFE216785 /* Array+KJ.swift */,
+				E778E9AA27854660A5A67749C5DAA944 /* BaseLayout.swift */,
+				C3EA7C30684810E9D88918E5F187E86E /* BaseType.swift */,
+				2F3F263E778078C2C3D2E25E84BF741E /* ClassDescriptor.swift */,
+				AF623777EBE4AAB2076835580C2F9238 /* ClassLayout.swift */,
+				B60DE0243ACFC31A915E1E474079C345 /* ClassType.swift */,
+				9988E85B8A5F9122DFF82A5F1E3D29D3 /* Coding.swift */,
+				BE9ACE0164DE0D1B55C49F5E146B6817 /* Convertible.swift */,
+				542B5C3EA2834A7425AE392D1C3E1290 /* ConvertibleConfig.swift */,
+				D6CE92A1C1EDA5C97203B2B94E53BA5C /* ConvertibleEnum.swift */,
+				07328A08943E8D8A260B2453BAC55097 /* Data+KJ.swift */,
+				3625E8C7E4ECA8989BD71FC6A7D39721 /* Descriptor.swift */,
+				B3E29F6B1F851AB10F2F462A6198C2DD /* Dictionary+KJ.swift */,
+				7654A23A6E018AAC521154A915920B8E /* EnumDescriptor.swift */,
+				0A9807C1CA9129039D8AEDE4516AAFC2 /* EnumLayout.swift */,
+				1A28221B269C8AA86988AC02545F528C /* EnumType.swift */,
+				D03DC0CC1149059873BB6C7244B89D76 /* FieldDescriptor.swift */,
+				23744B113328858DC8769F2DD80ED30C /* FieldList.swift */,
+				F81414EE26A1743B6362C59DD112035F /* ForeignClassType.swift */,
+				D6494B6A7A67E3E98ED3D3785D3F0176 /* FunctionLayout.swift */,
+				86C40DFA27DCF9E99C8EEC99782F5553 /* FunctionType.swift */,
+				572E3385035286A9A18FE8D45DABD95C /* JSON.swift */,
+				63BD097F3E8A215B2441B24EEE0DCCE8 /* JSONSerialization+KJ.swift */,
+				D0DD2CA8DBA9904F29E382DF029C070A /* Kind.swift */,
+				0665B608DC36A3FFECF4A87547B8E20E /* KJ.swift */,
+				7159D1E00A85354E759C22605808DA62 /* Layout.swift */,
+				4155D4DC6DB0EAD351833DEAD83B7D3C /* Logger.swift */,
+				A2682FA6490605A5DB599720122B97CF /* Metadata.swift */,
+				8795BE0C5C62F20368D10A5C55E40009 /* MetaType.swift */,
+				19E9AE5FD8A21B0559A2CF7EEDBDA670 /* Model.swift */,
+				CDDBD5D9673B98D886D7D92CB5031B74 /* ModelType.swift */,
+				632DA1533C6CE1E052A20A0B4A2273DB /* NSObject+KJ.swift */,
+				DE38EC7977D3913B2DC9F5C921D0CE77 /* ObjCClassType.swift */,
+				4F08EE5B2C2B0C0B070DF1153C77C4CC /* Optional+KJ.swift */,
+				1DD242508BDC460C17DC572FB5CAB8BD /* OptionalType.swift */,
+				FCE4A2D81AB77C90E429AA4C7F48B34C /* Pointer+KJ.swift */,
+				1AB3378B2A27996D52F2C7AEFD1BF26D /* Property.swift */,
+				1E53A43D27AC78F19272EB0A391CABC6 /* ProtocolLayout.swift */,
+				800B84E72586974A7076F575E8F790F1 /* ProtocolType.swift */,
+				89263D00CB978EB4D2C479D07F59311E /* String+KJ.swift */,
+				7B409160F4BA455EA25F0AD9586B278A /* StructDescriptor.swift */,
+				C69137D9CF5DD9D4A027527B4820CA26 /* StructLayout.swift */,
+				655F232959B76279B8424BA958131BEC /* StructType.swift */,
+				8C5E8DA3AFCB46714B743DFBC3EA91E3 /* TupleLayout.swift */,
+				33ADB9E4F46428226D108DDF3D4082FA /* TupleType.swift */,
+				7186895AB84758709646F648ACB9ACE5 /* Type.swift */,
+				EE0EC2C5DCAB8D7A0EE67D31D113CBAE /* TypeProxy.swift */,
+				B1085D0AB0526301D214798BA690A297 /* Values.swift */,
+				A0B9E607EFF3D84C30EA812C98469EB4 /* Support Files */,
+			);
+			name = KakaJSON;
+			path = KakaJSON;
+			sourceTree = "<group>";
+		};
+		0518BF7067B6353B92FA1AD99BDE2059 /* DialogComponent */ = {
+			isa = PBXGroup;
+			children = (
+				233E3551FF6D031AE4319FCC11EA4C0A /* Animation */,
+				EF8B6F6113AD3E0FA78BE150E2092072 /* DialogManager */,
+			);
+			name = DialogComponent;
+			path = DialogComponent;
+			sourceTree = "<group>";
+		};
+		1670D569D0413DE29ED68BCA204D185D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D39E13057978A69EE1A27BB27EEAF27F /* ContactListHeader.swift */,
+				814240ACF6B6B343F795D2D72B5725F0 /* ContactView.swift */,
+				EE14EE7572A27F95242DE2729160D9A1 /* DetailInfoHeader.swift */,
+				A5445D457822A0E5FCB554EC40FD04CD /* DetailInfoView.swift */,
+				F482CB9CFE7460F8CF3E0086E127FDA0 /* SectionIndexList.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		189C43C910E9C2D7D3244C4FCA1EE1D8 /* third-party */ = {
+			isa = PBXGroup;
+			children = (
+				41E17696003EF7DB0E24C07EE61EC04D /* AmrCodec.h */,
+				BCC66420817C24B2DC6733113D0311A2 /* lame.h */,
+				A4F1138C48F3B4C6A834AFABDCE1CAE1 /* opencore-amr */,
+				1902BEEE22302B98EF6D57B298C82471 /* vo-amrwbenc */,
+			);
+			name = "third-party";
+			path = "third-party";
+			sourceTree = "<group>";
+		};
+		1902BEEE22302B98EF6D57B298C82471 /* vo-amrwbenc */ = {
+			isa = PBXGroup;
+			children = (
+				70E22FA7AAF99E7B741478CD2D100248 /* vo-amrwbenc */,
+			);
+			name = "vo-amrwbenc";
+			path = "vo-amrwbenc";
+			sourceTree = "<group>";
+		};
+		1B6375C2E9215CFB4A6526BBC35D4F9C /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				50BE9F45A39199A8C76B40FB6B60EB0C /* Appearance.swift */,
+				2FC1AA9B62671D125C6449F65833BC3A /* AudioTools.swift */,
+				528295785D02FE938FDA2C2532CE8C51 /* CALayerDSL.swift */,
+				B41DD5CE41691ACB809691B59C78CB5E /* ChatEmojiConvertor.swift */,
+				99DDB0C8A8EE7BD9EE723A0193C7018D /* ComponentsActionEventsRegister.swift */,
+				860B39D4E0CBC29F70B5754815CCF8AF /* ComponentsRegister.swift */,
+				8E7D9B1E6C0DFAA5EFA673DEF791FF79 /* Contants.swift */,
+				F75A2B7232D9CB41B03465F724A6500C /* ControllerStack.swift */,
+				8744C0E2A69D8EB40A9A5CC4008C5ADE /* EaseChatNavigationBar.swift */,
+				F922A8FDA74DD8C68F2F9CFED76141DE /* EmptyStateView.swift */,
+				4844428F4FC9E950F7E63FD2CA9DB86A /* ImageCacheManager.swift */,
+				DFA9FA70E4D860B216CE1148576422F2 /* ImageLoader.swift */,
+				497DC32D4A81B2B6D9773D3E1E38E705 /* ImageView.swift */,
+				F6BD309E82A664DA809E96D1CB424A86 /* LanguageConvertor.swift */,
+				22279EB8AFA404D3CE1612D172ECB12F /* LoadingView.swift */,
+				F745489AEDA8928B70AFC84C49BE5A3C /* MediaConvertor.swift */,
+				A086FCD18CED52D43536ED3B8ADADD2C /* NSAttributedStringFunctionBuilder.swift */,
+				A6B9534C0EA63FEAFD965A2CCF8EBEFA /* PlaceHolderTextView.swift */,
+				6DAE04700C777E974EB86A7901D1A5AC /* PullRefresher.swift */,
+				4A11E26E08CE6AF3390A432535D1901E /* RippleAnimationView.swift */,
+				2DFA5804684EAFAE95233DA8FD8AD398 /* SearchHeaderBar.swift */,
+				67F3534355DC922AFE903D31D36738D9 /* UIContextualActionChatUIKit.swift */,
+				406075397EBA8115EE2BAC4415B062B7 /* UIKitDSL.swift */,
+				778C0F23D60A136AB0C978CE4C10040C /* UIViewFunctionBuilder.swift */,
+				189C43C910E9C2D7D3244C4FCA1EE1D8 /* third-party */,
+			);
+			name = Commons;
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		1B6790E14698BA15F6CFB9DC85E83AFE /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				505F5480580439B970046E034253F1B7 /* Cells */,
+				582C10677BBE54BE923C48277082F198 /* Controllers */,
+				F037F1002D7C3E9DC97BCB825B2F3EE4 /* ViewModel */,
+				DBAC5E952D74751FE36A4293D44AF16A /* Views */,
+			);
+			name = Conversation;
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		1FFF1DEFD19CB5B7AA47D13E9EE65B0B /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				41C1E0CE1FED04D0EBF31EA82A614135 /* dec_if.h */,
+				D37951FDA551496E666ADCBF8587C359 /* if_rom.h */,
+			);
+			name = "opencore-amrwb";
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		233E3551FF6D031AE4319FCC11EA4C0A /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				803B61F95E82340693E76CF0D4F1C13B /* CrossDissolveAnimation.swift */,
+				2C664CF5A4DF14AF8CC049D84EB5320E /* CrossZoomAnimation.swift */,
+				BA678B8A192329FC60A2D5C89F5EE39E /* FlipHorizontalAnimation.swift */,
+				CF69F0159E3D45AB5667AFE0DA9A6711 /* PresentationAnimation.swift */,
+			);
+			name = Animation;
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		2B9F9A338A547D88BDC4A4AAB0B80097 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A1EE98CB33CAFDB6E897B1A1A6ECF10 /* ContactInfoViewController.swift */,
+				01197DBD6C38EAB07DDEC183D9DCFDD1 /* ContactSearchResultController.swift */,
+				45E831D31D9BB0E6229E3788A25531A5 /* ContactViewController.swift */,
+				7117F2412CB4472D6BA28F8297BB88C3 /* GroupInfoEditViewController.swift */,
+				0DBCFFE5F3748711CCE4E20B8BA3BDD3 /* GroupInfoViewController.swift */,
+				6A8C79C3DA21AFB1630968226466FDE5 /* GroupParticipantsController.swift */,
+				857A39F8A81864574405808281F078DF /* GroupParticipantsRemoveController.swift */,
+				1DEE631475B19E0DADFBA2E35C3B6431 /* JoinedGroupsViewController.swift */,
+				1EFD1DB12D0F087A6B0467FAF5648FFB /* NewContactRequestController.swift */,
+			);
+			name = Controllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2FA388B4D94EEC6BBBEBCD1DBA1A6ACE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC5982CEAFB0456B7549D733D90DBA78 /* ContactViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		32B44DA16BE76155E1A792F8247C54F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6F64D422B18FB2BAAD32D8D6F0DA88D4 /* AudioMessageView.swift */,
+				71A1EBD08FECD4732ECDF3278ADECCCE /* ContactCardView.swift */,
+				AAD1AFFEB4C085B9A57D08B926313321 /* FileMessageView.swift */,
+				0D72941F71EB51E0A63BF99A1B603FDD /* MessageAudioRecordView.swift */,
+				E7CD993B84E91ADE86BE804698555358 /* MessageBubbleMultiCorner.swift */,
+				C8EB61CFC62935BD9882304D0B75E447 /* MessageBubbleWithArrow.swift */,
+				F1B9FB7F51E40487735795EE196CE883 /* MessageEditor.swift */,
+				7241A38DBF8F5484E4B396F8773F811E /* MessageInputBar.swift */,
+				5170C938184E6ED390D562D406955C4A /* MessageInputEmojiView.swift */,
+				27DD4593FA1763C49D67040FCDF8A1E2 /* MessageInputReplyView.swift */,
+				718AD3441CB77EAE1A37CCFCDCEE08B4 /* MessageListView.swift */,
+				406BFD21103E359CB2033380ACF2A27E /* MessageReplyView.swift */,
+				29A030195FF2E3107174B10782CBDF95 /* TextEditorView.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		332D5CED393F82AB7D23EE63125D1E1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B993BE5B950BF7A5441B4134D35C3EF /* AgoraChat.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3783AA0EC1514E20929B1CB804901A22 /* Implement */ = {
+			isa = PBXGroup;
+			children = (
+				508275362459219576F09C159E4EC861 /* ChatServiceImplement.swift */,
+				485CBAE13C3C7B9B910B7CEB31D92C64 /* ContactServiceImplement.swift */,
+				C8E16AEE3EB311B52AD2F3B60954E7A6 /* ConversationServiceImplement.swift */,
+				FF4028F983DFB05B725AEBBC20888F4D /* EaseChatUIKitContext.swift */,
+				DB22A53502C35DCD8D488609522C6E87 /* GroupMemberAttributesCache.swift */,
+				D9B4CDE32787C4B41CFD9F99A961C14F /* GroupServiceImplement.swift */,
+				ECA2D1DA416A281A676BD731BEFAC01A /* MultiDeviceServiceImplement.swift */,
+				D1DBED020CE5DA4AC691334E5F283E32 /* SDKTypealiasWrapper.swift */,
+				49EA2ADE792640D35AF809D74E4D26EF /* UserServiceImplement.swift */,
+			);
+			name = Implement;
+			path = Sources/EaseChatUIKit/Classes/Service/Implement;
+			sourceTree = "<group>";
+		};
+		378B434C523B7B8A6D635CE4FB81D97A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F0CEB419B199B537C0E3A2BCE3F9E1C /* EaseChatUIKit */,
+				7D3ECBBFDE3A5E800F07584A97048F05 /* KakaJSON */,
+				FD76B55AC336AF5ADB30EEA8B000BF1A /* Pods-EaseChatUIKit_Example */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3952130AF58FE73767CF261CC2674241 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1DEAECFD92C7BA635A3CF236B15F25E2 /* ContactCell.swift */,
+				509D2F6EBC71593D40C0BB34E1AECAC6 /* ContactListHeaderCell.swift */,
+				20DB18BE567E623B26556BAD20741353 /* DetailInfoHeaderExtensionCell.swift */,
+				EC5D00CE52FA0EB10B042FE5174A5731 /* DetailInfoListCell.swift */,
+				9073E65505E259C7D937122E8C1A65EA /* GroupListCell.swift */,
+				B61A1C2F4F5ABA81E5B391E41DB86E1D /* GroupParticipantCell.swift */,
+				AC8FBFF43BEA930D0CD783E75AC598CF /* GroupParticipantsSelectCell.swift */,
+				1C46AA73D0DF0ECF18BDA34E6B3A9716 /* NewContactRequestCell.swift */,
+			);
+			name = Cells;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3C32A7739E20741C7DD1BC1B1BF75F1F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				37980DEFF6CC4408AA005B9F9BEE1246 /* ArrayExtension.swift */,
+				139A992A83FBD16E7BF22CBD0F6C4B8A /* BundleExtension.swift */,
+				58ED7DF5D8F7F67BA0D40D126D8DF9D9 /* DataExtension.swift */,
+				C7DDDA95CDB5FBFBB61610EA5C1BDC5F /* DateExtension.swift */,
+				BACD3DAD6C79D60C822F26674AB2147C /* DictionaryExtension.swift */,
+				5B476B6666AEE4DF7C92A5193E62DE99 /* DispatchExtension.swift */,
+				A2F00821BB0F039DD197CB9F448CEB6D /* NotificationExtension.swift */,
+				B1457FE79F31F2F60F0A12B4D2596B01 /* NSObjectExtension.swift */,
+				7A9AF9E1BE108B09A6D754CF76FFCD4E /* StringExtension.swift */,
+				28639DD2187DEB1885C30B5799056CBE /* UIAppliactionExtension.swift */,
+				7C5E7D6B4967BFE991F8AD7CC50BD1EF /* UIButtonSafeExtension.swift */,
+				042D244376E28CF9931C8D30C5025234 /* UIColorExtension.swift */,
+				24B9350EB090819DBC70D408AC2CB5CF /* UIScrollPullExtension.swift */,
+				656B267D4B6A5D3473DA629B9F9DE441 /* UITableViewExtension.swift */,
+				74705D76E366EAEB7358F2F513045DE9 /* UIViewControllerExtentsion.swift */,
+				E2EA3F5C2ECC68913ABE867257A6A7FE /* URLExtension.swift */,
+			);
+			name = Extension;
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		424194053CD86B9AEF91DFFD4D427A17 /* EaseChatUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				52E59767131F752370437E9406BF1F9D /* Frameworks */,
+				8C8E7FC4C1B5D8D8755F693ADC0E5378 /* Pod */,
+				DD9D068E45A31FF9FE8E41232E4556BD /* Service */,
+				C0142043412FDE87B4A9FFA14FBA7792 /* Support Files */,
+				B5D4CFA6B229A72FB127FDD5EF74F06A /* UI */,
+			);
+			name = EaseChatUIKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		4A4AC01F091230FAD61B8E6A3D17D3AE /* vo-amrwbenc */ = {
+			isa = PBXGroup;
+			children = (
+				C3ED992B5B5884123E1B6B52EAE96665 /* vo-amrwbenc */,
+			);
+			name = "vo-amrwbenc";
+			path = "vo-amrwbenc";
+			sourceTree = "<group>";
+		};
+		505F5480580439B970046E034253F1B7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8E56AC1CE6600FE147EB902994A8FD3B /* ConversationListCell.swift */,
+				C4EC40CC0D197F9A64606EF9BC63D382 /* ConversationSearchCell.swift */,
+			);
+			name = Cells;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		52E59767131F752370437E9406BF1F9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFBAF6023933997BEDB35CFF348EBD2F /* libopencore-amrnb.a */,
+				D180829E3463B944BB2701EB8B4DCA8F /* libopencore-amrwb.a */,
+				1DB029497D7B55787D848EE3ECE02518 /* libvo-amrwbenc.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5532010A766745F45A7EF2016F33BCD1 /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				53E380F741C698723BF79D5842697EE4 /* interf_dec.h */,
+				C1D1DCF1C1C7FC163E990A816B63C823 /* interf_enc.h */,
+			);
+			name = "opencore-amrnb";
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		579C860C2CF4516A23E5B36AAB92A121 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				424194053CD86B9AEF91DFFD4D427A17 /* EaseChatUIKit */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		582C10677BBE54BE923C48277082F198 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D2BA335C54D62C972A0B1A4AA7226F90 /* ConversationListController.swift */,
+				D537949AC1611506A3E8A72117B3621A /* SearchConversationsController.swift */,
+			);
+			name = Controllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5AF98C6547A2D2514344C2BAB13E1D7C /* Agora_Chat_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				332D5CED393F82AB7D23EE63125D1E1A /* Frameworks */,
+				B8CC86CCDF9D1914478CAC9F6CBD9A00 /* Support Files */,
+			);
+			name = Agora_Chat_iOS;
+			path = Agora_Chat_iOS;
+			sourceTree = "<group>";
+		};
+		6B2A430C6C3FCC01852913033D036D6A /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				7879258622940F55DEFDFC2E3C166755 /* interf_dec.h */,
+				DEC14ECF21E9C41F9EB80F03A9C7EC45 /* interf_enc.h */,
+			);
+			name = "opencore-amrnb";
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		70E22FA7AAF99E7B741478CD2D100248 /* vo-amrwbenc */ = {
+			isa = PBXGroup;
+			children = (
+				EE607F8F39B44643E1252036EDE21142 /* enc_if.h */,
+			);
+			name = "vo-amrwbenc";
+			path = "vo-amrwbenc";
+			sourceTree = "<group>";
+		};
+		8AF9243444443D761830221D40E72448 /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				DA54CC504277562409B7EA63E361E55F /* dec_if.h */,
+				7E5A797156E420895BC50A9E7B024802 /* if_rom.h */,
+			);
+			name = "opencore-amrwb";
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		8C8E7FC4C1B5D8D8755F693ADC0E5378 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				C991877065D5DD1A58812C5E55266D81 /* EaseChatUIKit.podspec */,
+				8A7E8D6F3453FE2FF012090A71D2CE18 /* LICENSE */,
+				422A38AC4B4F36D04D13744958684A09 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9C520BA3EF5E51FCCD414C27F5505A74 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				D906407EBBA925A73BAFB648A1747B3F /* ConsoleLog.swift */,
+				B9D4FF3E9FFC126D44DCFA4EE0A3646A /* ConvertAMR.swift */,
+				E6D74E8E4378AB00DFC805986FB85D0A /* EaseChatUIKit-Bridge.h */,
+				BD2E24C2CD7E8D2B1DF20B5194C8A4F5 /* Parser.swift */,
+				58210DAD050A197EF74F69B5A958CC2E /* PropertyWrapper.swift */,
+				B412EE2AE001EBA2AA9FBB9CB0EAADA6 /* third-party */,
+			);
+			name = Foundation;
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		9F0941540AE42FBDC1A5B93A66624760 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EAE5F17BC7651322F6F141CE8F0A12BA /* Chat */,
+				CF3560A31729589E3DB543A68177DDDF /* Contact */,
+				1B6790E14698BA15F6CFB9DC85E83AFE /* Conversation */,
+			);
+			name = Components;
+			path = Sources/EaseChatUIKit/Classes/UI/Components;
+			sourceTree = "<group>";
+		};
+		A0B9E607EFF3D84C30EA812C98469EB4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8930E558C79A64C2FE5452C43282E0E8 /* KakaJSON.modulemap */,
+				B32031567E3989EB9325C12A28813A4C /* KakaJSON-dummy.m */,
+				1ADA930D9DFF0CA2052E4B82E4298A9D /* KakaJSON-Info.plist */,
+				82AB1F59C061A673F640677961653DB8 /* KakaJSON-prefix.pch */,
+				7944EB06EB5F526C7E79E2DE190294DA /* KakaJSON-umbrella.h */,
+				3666A3B5692816E9A57069A29121D09B /* KakaJSON.debug.xcconfig */,
+				01EF213CD9624197BA501E55B4CBCE48 /* KakaJSON.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KakaJSON";
+			sourceTree = "<group>";
+		};
+		A188010835EEBAD446AC54E50600DC35 /* opencore-amr */ = {
+			isa = PBXGroup;
+			children = (
+				6B2A430C6C3FCC01852913033D036D6A /* opencore-amrnb */,
+				1FFF1DEFD19CB5B7AA47D13E9EE65B0B /* opencore-amrwb */,
+			);
+			name = "opencore-amr";
+			path = "opencore-amr";
+			sourceTree = "<group>";
+		};
+		A4F1138C48F3B4C6A834AFABDCE1CAE1 /* opencore-amr */ = {
+			isa = PBXGroup;
+			children = (
+				5532010A766745F45A7EF2016F33BCD1 /* opencore-amrnb */,
+				8AF9243444443D761830221D40E72448 /* opencore-amrwb */,
+			);
+			name = "opencore-amr";
+			path = "opencore-amr";
+			sourceTree = "<group>";
+		};
+		A6A16A9A52EB38ED1E4896D9E78C7F0F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				51F34EB445F19BF46B82403C0C2E11E0 /* MessageEntity.swift */,
+				87115113F311E717F7E84914A808C741 /* MessageListViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFE49250DBFE65F8DF855674B9680BEF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				D99C9AA457F4AA9011E0EFCC0C4B2F12 /* ColorTheme.swift */,
+				2FDEC57562D53E827E9B896602B07F3E /* FontTheme.swift */,
+				8843959DA4CE711B74D604AAC3E11196 /* Theme.swift */,
+			);
+			name = Theme;
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		B412EE2AE001EBA2AA9FBB9CB0EAADA6 /* third-party */ = {
+			isa = PBXGroup;
+			children = (
+				B664DE6B1563BE4A16E40558D102C5EA /* AmrCodec.h */,
+				A188010835EEBAD446AC54E50600DC35 /* opencore-amr */,
+				4A4AC01F091230FAD61B8E6A3D17D3AE /* vo-amrwbenc */,
+			);
+			name = "third-party";
+			path = "third-party";
+			sourceTree = "<group>";
+		};
+		B5D4CFA6B229A72FB127FDD5EF74F06A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F5DD74ECC3AD6E0A51E90D595AFB95CF /* EaseChatResource.bundle */,
+				9F0941540AE42FBDC1A5B93A66624760 /* Components */,
+				C6E30D2C675CF31A0246BFD7B3DD9E51 /* Core */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B8CC86CCDF9D1914478CAC9F6CBD9A00 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CB5054FB8FFBFF8A0208C23CF36FE84 /* Agora_Chat_iOS-xcframeworks.sh */,
+				505D48DCEF8539BC87C3C2DF43851E9C /* Agora_Chat_iOS.debug.xcconfig */,
+				8BB4FED1B7DC06FDF8896DA2C70BA7A2 /* Agora_Chat_iOS.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Agora_Chat_iOS";
+			sourceTree = "<group>";
+		};
+		BA13CBBB7D5015793220C7F4213B207D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8700EEF1EAAD2BFAD520A53E729F0F96 /* MessageListController.swift */,
+				78FE1ACF74A48036133B6828F1303B4E /* ReportOptionsController.swift */,
+			);
+			name = Controllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C0142043412FDE87B4A9FFA14FBA7792 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D19520C4604F545899E7C78C7E10AB5 /* EaseChatUIKit.modulemap */,
+				2EB0BBE99F54110121183CF00DF2309D /* EaseChatUIKit-dummy.m */,
+				5D496EB3E8699256B91AA2F78ADB5812 /* EaseChatUIKit-Info.plist */,
+				D71CF29AB2CCC7F66BDB60F3511A26CA /* EaseChatUIKit-prefix.pch */,
+				610ACFB265B16E0DA39DD55D17A108F5 /* EaseChatUIKit-umbrella.h */,
+				07F401FB9EAD44272084C5A837C83C51 /* EaseChatUIKit.debug.xcconfig */,
+				C03AC69C73F128ABCAC66AC310178FA8 /* EaseChatUIKit.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/EaseChatUIKit";
+			sourceTree = "<group>";
+		};
+		C3ED992B5B5884123E1B6B52EAE96665 /* vo-amrwbenc */ = {
+			isa = PBXGroup;
+			children = (
+				297FD76E89AC5E4FDEE0E64B394316D7 /* enc_if.h */,
+			);
+			name = "vo-amrwbenc";
+			path = "vo-amrwbenc";
+			sourceTree = "<group>";
+		};
+		C6E30D2C675CF31A0246BFD7B3DD9E51 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3C32A7739E20741C7DD1BC1B1BF75F1F /* Extension */,
+				9C520BA3EF5E51FCCD414C27F5505A74 /* Foundation */,
+				AFE49250DBFE65F8DF855674B9680BEF /* Theme */,
+				F04A098FC0679D98D2846AB2ECF708AB /* UIKit */,
+			);
+			name = Core;
+			path = Sources/EaseChatUIKit/Classes/UI/Core;
+			sourceTree = "<group>";
+		};
+		C81AF809577826132665D6BC56442493 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB110A8F1724B35D35968AA531B1A58A /* Pods-EaseChatUIKit_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CB110A8F1724B35D35968AA531B1A58A /* Pods-EaseChatUIKit_Example */ = {
+			isa = PBXGroup;
+			children = (
+				B5754F872712F869CC4FE54B522007B0 /* Pods-EaseChatUIKit_Example.modulemap */,
+				940352FE4E6D1BB37628D46EF4F19FA6 /* Pods-EaseChatUIKit_Example-acknowledgements.markdown */,
+				B44C4920B3A4DE805621405635D72FB4 /* Pods-EaseChatUIKit_Example-acknowledgements.plist */,
+				577E00F9587BA12A7B2DA3EA6F5FDCEE /* Pods-EaseChatUIKit_Example-dummy.m */,
+				9F0A775C35C5D502194E762A7E369095 /* Pods-EaseChatUIKit_Example-frameworks.sh */,
+				EBA6B3736D329814A2C1C63B7FAEB82D /* Pods-EaseChatUIKit_Example-Info.plist */,
+				833A659E8C2E2ECEC214835D9E5D5B44 /* Pods-EaseChatUIKit_Example-resources.sh */,
+				9BC328F5884DC1248A25DDAB8DE74CA0 /* Pods-EaseChatUIKit_Example-umbrella.h */,
+				0507ED3D3A1BB91549B1CA11797AD412 /* Pods-EaseChatUIKit_Example.debug.xcconfig */,
+				9B9EDADFCDE6DCC2B8C716E978CDF49A /* Pods-EaseChatUIKit_Example.release.xcconfig */,
+			);
+			name = "Pods-EaseChatUIKit_Example";
+			path = "Target Support Files/Pods-EaseChatUIKit_Example";
+			sourceTree = "<group>";
+		};
+		CD5BDCEB8D0EF444B77BF0607A3C8A72 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5AF98C6547A2D2514344C2BAB13E1D7C /* Agora_Chat_iOS */,
+				0186E11BA2B41365838AC00F10AC8E0A /* KakaJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				579C860C2CF4516A23E5B36AAB92A121 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				CD5BDCEB8D0EF444B77BF0607A3C8A72 /* Pods */,
+				378B434C523B7B8A6D635CE4FB81D97A /* Products */,
+				C81AF809577826132665D6BC56442493 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		CF3560A31729589E3DB543A68177DDDF /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				3952130AF58FE73767CF261CC2674241 /* Cells */,
+				2B9F9A338A547D88BDC4A4AAB0B80097 /* Controllers */,
+				2FA388B4D94EEC6BBBEBCD1DBA1A6ACE /* ViewModel */,
+				1670D569D0413DE29ED68BCA204D185D /* Views */,
+			);
+			name = Contact;
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4801F62A6B08CD9B5410329F1A18FDE /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4F22CF1FB8E1A48BCAD5BBFF422061C /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				95C9E87381643EB287252E04F8806E27 /* EaseChatUIKitClient.swift */,
+			);
+			name = Client;
+			path = Sources/EaseChatUIKit/Classes/Service/Client;
+			sourceTree = "<group>";
+		};
+		D7101C4C3BCF30C54A0B6E09F5A5F7B8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				58E54E188A84048747049439D0BFD4C3 /* AlertMessageCell.swift */,
+				84C57A8D64F1A05EB12DB4B4AFF55DB4 /* AudioMessageCell.swift */,
+				D066D8262F9386C0EB5944A3B87AB6A8 /* ContactCardCell.swift */,
+				9A14DF3E34471EBF33EFE7C30C9A23D7 /* FileMessageCell.swift */,
+				361CFF45F8C12E582743CCE2ECE95BF4 /* ImageMessageCell.swift */,
+				72CCA9D68A968B71005A94388093B582 /* MessageCell.swift */,
+				9A4CC053A51CEF5EFDF26A3707FCBDC6 /* ReportOptionCell.swift */,
+				8DDBC56C4DDA477AA4213FD6F246D476 /* TextMessageCell.swift */,
+				DC4C3440282683CEDE473284A52B791C /* VideoMessageCell.swift */,
+			);
+			name = Cells;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DBAC5E952D74751FE36A4293D44AF16A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28C5163EFB3CA7E7FAF1DFB51F38906F /* ConversationList.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD9D068E45A31FF9FE8E41232E4556BD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D4F22CF1FB8E1A48BCAD5BBFF422061C /* Client */,
+				3783AA0EC1514E20929B1CB804901A22 /* Implement */,
+				E37139E3B5856E625B5DDCC3193D3043 /* Protocol */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		E37139E3B5856E625B5DDCC3193D3043 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				53E2334702A69678E183B280E6A939A6 /* ChatService.swift */,
+				0F833328C593E1146FE2C9DA650D80F3 /* ContactService.swift */,
+				E1229CF1A322C6785C36A574B6DF905D /* ConversationService.swift */,
+				9527C5FC252439A341D95D47F28DCC23 /* EaseProfileProtocol.swift */,
+				5B6A3F9BF78302DE7055B07CBDFCE3DD /* GroupService.swift */,
+				FCEA0CF66BF43476881DEB01675929B0 /* MultiDeviceService.swift */,
+				DAD54E8011334C344C8393B08C5B3495 /* UserService.swift */,
+			);
+			name = Protocol;
+			path = Sources/EaseChatUIKit/Classes/Service/Protocol;
+			sourceTree = "<group>";
+		};
+		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EAE5F17BC7651322F6F141CE8F0A12BA /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D7101C4C3BCF30C54A0B6E09F5A5F7B8 /* Cells */,
+				BA13CBBB7D5015793220C7F4213B207D /* Controllers */,
+				A6A16A9A52EB38ED1E4896D9E78C7F0F /* ViewModel */,
+				32B44DA16BE76155E1A792F8247C54F5 /* Views */,
+			);
+			name = Chat;
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		EF8B6F6113AD3E0FA78BE150E2092072 /* DialogManager */ = {
+			isa = PBXGroup;
+			children = (
+				3FF20E182608A775D91495D062FF3FA5 /* ActionSheet.swift */,
+				89F40898FBFBED8FBBDA20C4A27CE812 /* ActionSheetItem.swift */,
+				C18A1B42A1D287FDFD05BC990E881166 /* AlertViewController.swift */,
+				37D23AF7696CCDD1B7BFB177F16B04DB /* DialogContainerViewController.swift */,
+				591B02411520E323A40F4DC2EB9CD813 /* DialogManager.swift */,
+				226D1FB54B26693C5DDA4BD32E7AD9E5 /* Notification+Presentation.swift */,
+				D0001CF8A2875E5E2700DD221DD95901 /* PageContainer.swift */,
+				7E06F9F981E6765D44E2524DDC45CA7C /* PageContainersDialogController.swift */,
+				36957827FF010B650FD94CACAC5F6F83 /* PageContainerTitleBar.swift */,
+				113468B0CB90CFFC6B95E29D85058BE0 /* PresentationController.swift */,
+				3AE325B487AA1299BEAFDF77AB39C6FD /* PresentationEnums.swift */,
+				64131892B6A652B88FB777A7AA2B3152 /* PresentationSegue.swift */,
+				417F8D796B4341C1F27A240F7529B8BC /* PresentedViewType.swift */,
+				D0FBE510415B9B6E881D7EDF01CFAA88 /* UIViewController+Presentation.swift */,
+			);
+			name = DialogManager;
+			path = DialogManager;
+			sourceTree = "<group>";
+		};
+		F037F1002D7C3E9DC97BCB825B2F3EE4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD6E9FB0F4A0B157915914747F221E69 /* ConversationViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F04A098FC0679D98D2846AB2ECF708AB /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				1B6375C2E9215CFB4A6526BBC35D4F9C /* Commons */,
+				0518BF7067B6353B92FA1AD99BDE2059 /* DialogComponent */,
+			);
+			name = UIKit;
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		470E5CDBEA85E26D552C5B07ED42D957 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFEFC5AC966E42BBD17705DFBEC088E /* KakaJSON-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		753806572E66C7D596CF819F58091A8E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837D30239F158E30BA0B5BE008CDEA71 /* Pods-EaseChatUIKit_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F527B83ACA4DE2FC3A56672393DD9058 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90EABAAE5F4800ABD1127BE8E2810C33 /* AmrCodec.h in Headers */,
+				90EABAAE5F4800ABD1127BE8E2810C33 /* AmrCodec.h in Headers */,
+				C8534401EE1F8E2CBF9DBB390ABA2805 /* dec_if.h in Headers */,
+				C8534401EE1F8E2CBF9DBB390ABA2805 /* dec_if.h in Headers */,
+				11C7A2AB31EFA073EBC6CE9421CDFC34 /* EaseChatUIKit-Bridge.h in Headers */,
+				2F1AA946A61ABE2601D963F84910F822 /* EaseChatUIKit-umbrella.h in Headers */,
+				BED58196FC8233B859E23EE23F67EBAE /* enc_if.h in Headers */,
+				BED58196FC8233B859E23EE23F67EBAE /* enc_if.h in Headers */,
+				0743C4B603825D5663C574D9FF7CB60A /* if_rom.h in Headers */,
+				0743C4B603825D5663C574D9FF7CB60A /* if_rom.h in Headers */,
+				B415EE28B7C32DCF9547D8AC2F783A6B /* interf_dec.h in Headers */,
+				B415EE28B7C32DCF9547D8AC2F783A6B /* interf_dec.h in Headers */,
+				EBFECBBBC9B1FC2DC6CD3685D71D96DA /* interf_enc.h in Headers */,
+				EBFECBBBC9B1FC2DC6CD3685D71D96DA /* interf_enc.h in Headers */,
+				5E184FC27CB24039AD9CB8F223FDC300 /* lame.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0038B6550963B257441E12A2B0F1A416 /* Pods-EaseChatUIKit_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2EA021914282D8169A1A202878D1E4D /* Build configuration list for PBXNativeTarget "Pods-EaseChatUIKit_Example" */;
+			buildPhases = (
+				753806572E66C7D596CF819F58091A8E /* Headers */,
+				566695614A09B418684D74020EBED2AE /* Sources */,
+				F537098D2CC86D39BFB7738B137D3FBD /* Frameworks */,
+				3265C93F2AA4825F658CE46D6C1B58B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55FF370B511CF008D78868B293CB4FCF /* PBXTargetDependency */,
+				6032787DEAD44EFA0944D426703DE36B /* PBXTargetDependency */,
+				FB7C5074D4100225D803EB5312ADDCB4 /* PBXTargetDependency */,
+			);
+			name = "Pods-EaseChatUIKit_Example";
+			productName = Pods_EaseChatUIKit_Example;
+			productReference = FD76B55AC336AF5ADB30EEA8B000BF1A /* Pods-EaseChatUIKit_Example */;
+			productType = "com.apple.product-type.framework";
+		};
+		25FEE10C6E3A039D9C04BB397323B94A /* KakaJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 781B2FD538B3406401FEF54788FD2EBC /* Build configuration list for PBXNativeTarget "KakaJSON" */;
+			buildPhases = (
+				470E5CDBEA85E26D552C5B07ED42D957 /* Headers */,
+				4E31FD0773D58C73DDB5CC5A7BE9B8A4 /* Sources */,
+				23B39FFA31A7FAB1E73A0F9A0CF33F38 /* Frameworks */,
+				83544CC7679AD0BDCEFADF2579B5DE7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KakaJSON;
+			productName = KakaJSON;
+			productReference = 7D3ECBBFDE3A5E800F07584A97048F05 /* KakaJSON */;
+			productType = "com.apple.product-type.framework";
+		};
+		F153BA76078C52397BEEEE38F849ADEA /* EaseChatUIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC7245C8F7EE297E17BF66E85CD24E39 /* Build configuration list for PBXNativeTarget "EaseChatUIKit" */;
+			buildPhases = (
+				F527B83ACA4DE2FC3A56672393DD9058 /* Headers */,
+				10F6B36250D96CB261B355D5E54EFCB0 /* Sources */,
+				7121B681F1C766B6C47C7D238F4479D2 /* Frameworks */,
+				32B6125E45E06CFBDFA58CE73354E6D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				514D86D8C91213819C327B3AA5D3E7A3 /* PBXTargetDependency */,
+			);
+			name = EaseChatUIKit;
+			productName = EaseChatUIKit;
+			productReference = 4F0CEB419B199B537C0E3A2BCE3F9E1C /* EaseChatUIKit */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 378B434C523B7B8A6D635CE4FB81D97A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A09EB58FA8B110D768DBACB9890287E /* Agora_Chat_iOS */,
+				F153BA76078C52397BEEEE38F849ADEA /* EaseChatUIKit */,
+				25FEE10C6E3A039D9C04BB397323B94A /* KakaJSON */,
+				0038B6550963B257441E12A2B0F1A416 /* Pods-EaseChatUIKit_Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3265C93F2AA4825F658CE46D6C1B58B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32B6125E45E06CFBDFA58CE73354E6D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83544CC7679AD0BDCEFADF2579B5DE7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC395C5B771546891DE27BB22B3D68EF /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Agora_Chat_iOS/Agora_Chat_iOS-xcframeworks.sh",
+				"${PODS_ROOT}/Agora_Chat_iOS/AgoraChat.xcframework",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputPaths = (
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Agora_Chat_iOS/AgoraChat.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Agora_Chat_iOS/Agora_Chat_iOS-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10F6B36250D96CB261B355D5E54EFCB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				273CCEE596F607B2EADCD23C4D9F6E1B /* ActionSheet.swift in Sources */,
+				4334CF19229939B1E5215C6BF8E91A6F /* ActionSheetItem.swift in Sources */,
+				39F63D711600B72CCCFCE0E2C6540548 /* AlertMessageCell.swift in Sources */,
+				EE34C051C5A66E29DBD5AA22E5FFCA39 /* AlertViewController.swift in Sources */,
+				61465F44579B3C05B274528FB6186AC0 /* Appearance.swift in Sources */,
+				68A6CA762710298F8FAD529DD7E1AB81 /* ArrayExtension.swift in Sources */,
+				A66E836221F5031B7D2DA07C1B13DD5F /* AudioMessageCell.swift in Sources */,
+				2AD1D68151C9AABB02B8C0D6AF2815CA /* AudioMessageView.swift in Sources */,
+				ACC43EE75F689C0A86C6802C1642EF02 /* AudioTools.swift in Sources */,
+				387DA2477EA40246D016D28DADF8D7EA /* BundleExtension.swift in Sources */,
+				3D70D0DAD7C7B83EF12F14D0340C15E5 /* CALayerDSL.swift in Sources */,
+				A8A7A7580460A175352AF3610E89F4DF /* ChatEmojiConvertor.swift in Sources */,
+				2B403AE9DDFCFC2B64FECB43DCCDA5DF /* ChatService.swift in Sources */,
+				A3E63F02FA6ED53C1DF03F31461FEC34 /* ChatServiceImplement.swift in Sources */,
+				AACDB5BCA0B2DA0599F8C9083BBDFA14 /* ColorTheme.swift in Sources */,
+				2F7E6755C3D89E463B91F67E84783698 /* ComponentsActionEventsRegister.swift in Sources */,
+				A7CA258607B310CBD0E59E9E05AF489F /* ComponentsRegister.swift in Sources */,
+				4C9C59E412312640EDD22227A4C4D885 /* ConsoleLog.swift in Sources */,
+				40340DD37772298BCF41D85E1732D4FC /* ContactCardCell.swift in Sources */,
+				6716B102FDC200E52C0DAC63EAAC6E08 /* ContactCardView.swift in Sources */,
+				CE4EF9A860FAA65D7C370B8D8A00FD71 /* ContactCell.swift in Sources */,
+				D84A38061FF9DCA80CB70A8A04160366 /* ContactInfoViewController.swift in Sources */,
+				A696A40250681AFFE7D5988B0FCE20A6 /* ContactListHeader.swift in Sources */,
+				6569246022A879F17A77D634D6CE20FC /* ContactListHeaderCell.swift in Sources */,
+				0563C3E29B0821259CD09C8A63E828C1 /* ContactSearchResultController.swift in Sources */,
+				4B1BC21482D1FD864B09901AA157F02A /* ContactService.swift in Sources */,
+				11CD1AE260A3D6987059A943A3364840 /* ContactServiceImplement.swift in Sources */,
+				D6C203DE07D9ECD6485ACD26A739619B /* ContactView.swift in Sources */,
+				E0C7218D4044DC8A022259D7FFF539EF /* ContactViewController.swift in Sources */,
+				F12A1FED396E028D68BDDA339EC51A01 /* ContactViewModel.swift in Sources */,
+				0D6E75A7CCF4DB308F3B689E6BEBE71E /* Contants.swift in Sources */,
+				0D2A8AD2E3B75D19AF272B7E032219C7 /* ControllerStack.swift in Sources */,
+				F1F7C75538857332CE2A0416520FF4FF /* ConversationList.swift in Sources */,
+				077E19203342C56590AEBD444EE151EF /* ConversationListCell.swift in Sources */,
+				62F24012359AF60DC93798C56A31FBC3 /* ConversationListController.swift in Sources */,
+				E70E71A4E20D5DA2D43E03BA4C0ED466 /* ConversationSearchCell.swift in Sources */,
+				F909D8B1E44C2CC674F8BA8E70180CC3 /* ConversationService.swift in Sources */,
+				95C1620822B8266ADDEB4E533DB06E7D /* ConversationServiceImplement.swift in Sources */,
+				4B5200F1F8377D0C20C4B490F3D18BC6 /* ConversationViewModel.swift in Sources */,
+				7496F87D739EE0953575438EA904748A /* ConvertAMR.swift in Sources */,
+				7D2C6B6B090911717E5CB4BE37355E28 /* CrossDissolveAnimation.swift in Sources */,
+				A6EFA28F258E49A6219F5898E615A85D /* CrossZoomAnimation.swift in Sources */,
+				D5CD02D7A7F39264E190B0D902148980 /* DataExtension.swift in Sources */,
+				34FD94091844D685D70C3A212EE77472 /* DateExtension.swift in Sources */,
+				499230607B32C594B10D8F4F34A12A22 /* DetailInfoHeader.swift in Sources */,
+				4ABE7E0FF4815161C924090FD0804F2B /* DetailInfoHeaderExtensionCell.swift in Sources */,
+				FAEAFC9B9069C83EE2AD264A705D3471 /* DetailInfoListCell.swift in Sources */,
+				A764122784553047BFFAF5D269DCBA2F /* DetailInfoView.swift in Sources */,
+				9CF1B0C8378023C4ECDAE06160F9FC83 /* DialogContainerViewController.swift in Sources */,
+				EDB3446271737AD2F80456D189E55030 /* DialogManager.swift in Sources */,
+				EF75FBD47CFE9968C4AFFD5F8EAB4179 /* DictionaryExtension.swift in Sources */,
+				F3BD07E01F1D83D4FC6B3571D061D36A /* DispatchExtension.swift in Sources */,
+				72E2135FF823E976C6266062A3BAE659 /* EaseChatNavigationBar.swift in Sources */,
+				46CACE16450D8381254104FB6836EE7E /* EaseChatUIKit-dummy.m in Sources */,
+				5FB2A7CD7B33F2464018D39B5E90AE70 /* EaseChatUIKitClient.swift in Sources */,
+				6324297A07DABB5F5BBDD07A6B63B92C /* EaseChatUIKitContext.swift in Sources */,
+				CFE763860BEA04CF40A00FED03BD9B07 /* EaseProfileProtocol.swift in Sources */,
+				59F0765291A99D35448B5E6F4D191A37 /* EmptyStateView.swift in Sources */,
+				E0783A69F1FBA8D26F633C8973DD46BF /* FileMessageCell.swift in Sources */,
+				7000D3067CB3D0AB07E8F837E3154B99 /* FileMessageView.swift in Sources */,
+				9B0648361E459DA8EBBFCF50EB55C5A4 /* FlipHorizontalAnimation.swift in Sources */,
+				689413D91E3A389044B8A9D325E19809 /* FontTheme.swift in Sources */,
+				B7AF428422CD4F6146F648C9EB05A9B8 /* GroupInfoEditViewController.swift in Sources */,
+				FE91F91A5BB753D80A4AAF17CE611C4E /* GroupInfoViewController.swift in Sources */,
+				270B3F2D7CB1626EA004D02AAEEEB12C /* GroupListCell.swift in Sources */,
+				7E414DD1F3922927EDBBEC24BD8D151A /* GroupMemberAttributesCache.swift in Sources */,
+				9B3A24105600A3B13E89803ECD510929 /* GroupParticipantCell.swift in Sources */,
+				7563AA5D8D3167C3442C8270322FECCB /* GroupParticipantsController.swift in Sources */,
+				636A7238FB1897D7177A206887D5714C /* GroupParticipantsRemoveController.swift in Sources */,
+				4334344186FD76C12E368FA8B6B9A13B /* GroupParticipantsSelectCell.swift in Sources */,
+				0F1D452D379F8E75E6910FC8407DD495 /* GroupService.swift in Sources */,
+				450EFCDDECD15B7728E9FA7D86470CA7 /* GroupServiceImplement.swift in Sources */,
+				D5B1D2A1641A78FCC85707BE0BF62105 /* ImageCacheManager.swift in Sources */,
+				885C10639DD2666BDAF8075F501F4D83 /* ImageLoader.swift in Sources */,
+				3A917BD6B9EE5661AFF331EAE424CB69 /* ImageMessageCell.swift in Sources */,
+				6654D39CED368199051BFDF518A705F7 /* ImageView.swift in Sources */,
+				1D98AFC734E84B1D4BCE148252FC6B2F /* JoinedGroupsViewController.swift in Sources */,
+				55403DB6D9A0410F19548EF6713AEBC1 /* LanguageConvertor.swift in Sources */,
+				AEBCFE3747852FEFFAFCC60B17ECC08B /* LoadingView.swift in Sources */,
+				D93E68193AC09C373A2E0D58FCA1AA60 /* MediaConvertor.swift in Sources */,
+				82922995AC2CEA2146FC1AAD7C02809F /* MessageAudioRecordView.swift in Sources */,
+				7A01491377D87F9E5E628B8AA1B7C0D7 /* MessageBubbleMultiCorner.swift in Sources */,
+				04910ABDC920570CEDA16DB2CB8EE40F /* MessageBubbleWithArrow.swift in Sources */,
+				957BB232DE6420E3F68F91E566C8BFE0 /* MessageCell.swift in Sources */,
+				86923983BA1EB757F8D3A1C7C3EC0F28 /* MessageEditor.swift in Sources */,
+				FBE191AE52E1E6716F31BA67B70DA90C /* MessageEntity.swift in Sources */,
+				AB442363453E5E9159FB4E9343A477EF /* MessageInputBar.swift in Sources */,
+				2B2040B88D0F6ED7A42ACCB016632AA8 /* MessageInputEmojiView.swift in Sources */,
+				EEB251DB9F26522D42FC8006AB8D96E1 /* MessageInputReplyView.swift in Sources */,
+				69BF2E2684C087AC46858C1A564AA4DA /* MessageListController.swift in Sources */,
+				6213BC2BF0EEEE212A76BD6D616632BD /* MessageListView.swift in Sources */,
+				CB08A99318396F06C2660A426F34B0E4 /* MessageListViewModel.swift in Sources */,
+				36FE690FCF600D08F1413475BD6ED337 /* MessageReplyView.swift in Sources */,
+				36D517325DF03909D66B43D1F78B28BA /* MultiDeviceService.swift in Sources */,
+				06925EE4856F7742D0ACE4A59D1329FC /* MultiDeviceServiceImplement.swift in Sources */,
+				63E6AAA27C79A430875C359FFE4C9FE1 /* NewContactRequestCell.swift in Sources */,
+				63338F6DD9717DC913C95FCF4F8AAEC9 /* NewContactRequestController.swift in Sources */,
+				9353F6038698C35BE7426523C100EB21 /* Notification+Presentation.swift in Sources */,
+				20343547EEB515FAD5911A03854B0D8A /* NotificationExtension.swift in Sources */,
+				69DFC44DE2690A34526F679E536F2CBD /* NSAttributedStringFunctionBuilder.swift in Sources */,
+				204C68D1526ECC79275457694B4DD8FC /* NSObjectExtension.swift in Sources */,
+				F4544CB0A0DCE9EF11AAE5D49BCEBEFF /* PageContainer.swift in Sources */,
+				A55CF7956805E176C7014409D874780D /* PageContainersDialogController.swift in Sources */,
+				AD4C43AFFDB3359B325A2FBD2264555C /* PageContainerTitleBar.swift in Sources */,
+				7FB01EDE63DA2557A19B127B31EBCA7F /* Parser.swift in Sources */,
+				0DFD79688C2674D2D36B66A4DBE8C258 /* PlaceHolderTextView.swift in Sources */,
+				773CDCB3B9D7601C11161A5877E75BE4 /* PresentationAnimation.swift in Sources */,
+				08709A31829D6D5E048761FBFF311134 /* PresentationController.swift in Sources */,
+				6605E08A771150C1FC6E8AA89205296C /* PresentationEnums.swift in Sources */,
+				A96F541765A2AE1BD3B55FE7E9E010F2 /* PresentationSegue.swift in Sources */,
+				22C6E92BA84D0C6FCBD00E616FDB86C4 /* PresentedViewType.swift in Sources */,
+				78A8AC58B986B5440C7F173BC10A1A24 /* PropertyWrapper.swift in Sources */,
+				1C839C6FBCB860A496EF20304CA63BEC /* PullRefresher.swift in Sources */,
+				612FE7C38E97E18EB2DC606D5A2D58B8 /* ReportOptionCell.swift in Sources */,
+				1AA2AAF58B7BF2615D87A866981309F4 /* ReportOptionsController.swift in Sources */,
+				8D0B7F2E3997EFD9FED3A62F39688C49 /* RippleAnimationView.swift in Sources */,
+				10E9F8056AFC4B327C1B60B4E96A7206 /* SDKTypealiasWrapper.swift in Sources */,
+				C5F4F8078F2B5EEC2EFEBB0BED39AA7C /* SearchConversationsController.swift in Sources */,
+				CE1B451BD48F0C5DD87ADAEF2A425C33 /* SearchHeaderBar.swift in Sources */,
+				F6FF4C414AC91982B43BFB14C38CC21E /* SectionIndexList.swift in Sources */,
+				1BDFED13A6D91BF37B501E982D8EFDA5 /* StringExtension.swift in Sources */,
+				07149192068E42636F0363352F4F15DA /* TextEditorView.swift in Sources */,
+				37654D0BF9D682A29109A8E2BB8AE7FF /* TextMessageCell.swift in Sources */,
+				304B9AC4118648C6CCA76798F196EF8C /* Theme.swift in Sources */,
+				F6528C2DD4C05D7B276DD77246715AAC /* UIAppliactionExtension.swift in Sources */,
+				5714988B105813651C87DF70C00C209C /* UIButtonSafeExtension.swift in Sources */,
+				9CD941BC9DE43ADE22FB0BA433944D50 /* UIColorExtension.swift in Sources */,
+				DC6AEA9BED0DF9D5C290D6BB664ACA1E /* UIContextualActionChatUIKit.swift in Sources */,
+				9E25107B3FDDCFD6A37594D31A39D006 /* UIKitDSL.swift in Sources */,
+				ECBBF43E76AC3CAF8103D66CF80E1953 /* UIScrollPullExtension.swift in Sources */,
+				B8A6DA295893FFE415E980BE94DCEBB6 /* UITableViewExtension.swift in Sources */,
+				BE39847CA71EC889D99AD66CB92B1003 /* UIViewController+Presentation.swift in Sources */,
+				BD7840E9C977C30F34D876C461509A02 /* UIViewControllerExtentsion.swift in Sources */,
+				6D3C732907F866A27F7D3DE886789248 /* UIViewFunctionBuilder.swift in Sources */,
+				1691EAB20B72334FA1338E6DFF549307 /* URLExtension.swift in Sources */,
+				4FFBFDEC036065690B1C4CE7645905CB /* UserService.swift in Sources */,
+				02F0D4CD98536E68174E9EC17E3B62CB /* UserServiceImplement.swift in Sources */,
+				9FB1579D2C1F435DC1F16B1FD19948B4 /* VideoMessageCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E31FD0773D58C73DDB5CC5A7BE9B8A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C26DC57708831E2B116032E963DED1F /* Array+KJ.swift in Sources */,
+				800CD3900604A1EFFE79607E65B9A475 /* BaseLayout.swift in Sources */,
+				4FCCD0638F674B3BE28B09E72E0347F9 /* BaseType.swift in Sources */,
+				396E6649E6841BF1CC61CE263C6EFB2B /* ClassDescriptor.swift in Sources */,
+				FD69DF57BE5995EECA4BE9C279AEFE85 /* ClassLayout.swift in Sources */,
+				85C24790BCEBE27F77B93F79AAFA2153 /* ClassType.swift in Sources */,
+				FD2C21F150CEF514BF3080E47F5E4EC3 /* Coding.swift in Sources */,
+				8977B9427C350175BE5C440A5BFA5DA8 /* Convertible.swift in Sources */,
+				CBCB612EC7FF791AC9A5BB10A62E3205 /* ConvertibleConfig.swift in Sources */,
+				6444383449796726FA11A889B65A74D7 /* ConvertibleEnum.swift in Sources */,
+				C259A149BF5A7C0D4F08067D3541C04F /* Data+KJ.swift in Sources */,
+				F3B9D832536BC17A38FA51F82E4B48BE /* Descriptor.swift in Sources */,
+				61CD536A7C2FB8F7129189D12E428505 /* Dictionary+KJ.swift in Sources */,
+				0175E74DF98B68129319DF037DE1271B /* EnumDescriptor.swift in Sources */,
+				5DAFC48DC1E782AD696F51A154A15974 /* EnumLayout.swift in Sources */,
+				192C099AD6D0C360EC5A5C51FD3CCE2B /* EnumType.swift in Sources */,
+				D979D99F501D1CA45B3F2D7F272948AA /* FieldDescriptor.swift in Sources */,
+				8CCA23100EBF7F0561EBB53C6B1AB240 /* FieldList.swift in Sources */,
+				2AB7367B03FD9BB3751807070B50F3D9 /* ForeignClassType.swift in Sources */,
+				AC86CF87EFA09C51B054817C354E2149 /* FunctionLayout.swift in Sources */,
+				7EE74AB393E30625DD1193D7F902B38E /* FunctionType.swift in Sources */,
+				FAB31972300821CF2033E0F09B331C2A /* JSON.swift in Sources */,
+				FFB168309AB0F2A84542546F4BBEB172 /* JSONSerialization+KJ.swift in Sources */,
+				7F58FB1C9C73F349B826956F97D7DF51 /* KakaJSON-dummy.m in Sources */,
+				71FE2EDA95ED1E6336DC367DA8C0E916 /* Kind.swift in Sources */,
+				27F08BCCB53784E9BB5ADC4A33556828 /* KJ.swift in Sources */,
+				0285EA32A14EF30E832840A754CBEA8D /* Layout.swift in Sources */,
+				A15A99CB200570F4BEE3B4E41BB6ACE0 /* Logger.swift in Sources */,
+				230DC3C563EAFCCDC335973585E8F208 /* Metadata.swift in Sources */,
+				447CC56283743D5FA5E44EEEC115EA37 /* MetaType.swift in Sources */,
+				C46FC941E50700999319D6420D88ADED /* Model.swift in Sources */,
+				5FDA3F75A1A30AFE4CD51247D89F3A75 /* ModelType.swift in Sources */,
+				CC2F67E0336B2819351810993DA1D45B /* NSObject+KJ.swift in Sources */,
+				8FC86480318ABAA1B57378E4AC3412B9 /* ObjCClassType.swift in Sources */,
+				9FD8E95BBE5B4190A9D4C8A683BD6650 /* Optional+KJ.swift in Sources */,
+				9672C4266D21EFAC446C043290D48368 /* OptionalType.swift in Sources */,
+				DAE706AF29B5D9BCB9DC1CD97605F9D6 /* Pointer+KJ.swift in Sources */,
+				F0B0E6864CD8632A640BC74CA624C839 /* Property.swift in Sources */,
+				DCF3B571A4B035F096C6E31E00FCBBD4 /* ProtocolLayout.swift in Sources */,
+				8BB2D4D39501160B8621A5A9FD51BE80 /* ProtocolType.swift in Sources */,
+				28B43C8A724EFADCF61D69DAE064FF31 /* String+KJ.swift in Sources */,
+				D36AE4DCA1568D9FC722D95211D88DA5 /* StructDescriptor.swift in Sources */,
+				1D56D90CF8700866EA8ACF3051662C0E /* StructLayout.swift in Sources */,
+				C44EF485A8C536D23BB3D80AF8D351C3 /* StructType.swift in Sources */,
+				666056BB350CB82783B2838F7E0AA5B6 /* TupleLayout.swift in Sources */,
+				C7CF80C4B945ECC06BDC85B59801737E /* TupleType.swift in Sources */,
+				5AD034C915C7BBFEC6ED5F5F805319E3 /* Type.swift in Sources */,
+				7962396241079B810F4AAD2A498C5CCC /* TypeProxy.swift in Sources */,
+				793BA1A94DF837D1391770E781536DB6 /* Values.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		566695614A09B418684D74020EBED2AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				758328F58848EFF61275B88D30BB2590 /* Pods-EaseChatUIKit_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		514D86D8C91213819C327B3AA5D3E7A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Agora_Chat_iOS;
+			target = 7A09EB58FA8B110D768DBACB9890287E /* Agora_Chat_iOS */;
+			targetProxy = 7232867092C25EDFA1364ED729B921B7 /* PBXContainerItemProxy */;
+		};
+		55FF370B511CF008D78868B293CB4FCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Agora_Chat_iOS;
+			target = 7A09EB58FA8B110D768DBACB9890287E /* Agora_Chat_iOS */;
+			targetProxy = 74BF245256524989455D8308937E7BFB /* PBXContainerItemProxy */;
+		};
+		6032787DEAD44EFA0944D426703DE36B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EaseChatUIKit;
+			target = F153BA76078C52397BEEEE38F849ADEA /* EaseChatUIKit */;
+			targetProxy = C9EA964887E96AE9D6764E2BB7F8BF90 /* PBXContainerItemProxy */;
+		};
+		FB7C5074D4100225D803EB5312ADDCB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KakaJSON;
+			target = 25FEE10C6E3A039D9C04BB397323B94A /* KakaJSON */;
+			targetProxy = 4C01DEF2B67AB453C3A6138CE79364E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07BE53331AAD382047CD8CEDCC16BA59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C03AC69C73F128ABCAC66AC310178FA8 /* EaseChatUIKit.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JC854K845H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				GCC_PREFIX_HEADER = "Target Support Files/EaseChatUIKit/EaseChatUIKit-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/EaseChatUIKit/EaseChatUIKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/EaseChatUIKit/EaseChatUIKit.modulemap";
+				PRODUCT_MODULE_NAME = EaseChatUIKit;
+				PRODUCT_NAME = EaseChatUIKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		41BA40B4D5C353F77AD2E10983654A0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B9EDADFCDE6DCC2B8C716E978CDF49A /* Pods-EaseChatUIKit_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JC854K845H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				INFOPLIST_FILE = "Target Support Files/Pods-EaseChatUIKit_Example/Pods-EaseChatUIKit_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EaseChatUIKit_Example/Pods-EaseChatUIKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4508F55045875816DF9DB8BB5CEDE039 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3666A3B5692816E9A57069A29121D09B /* KakaJSON.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JC854K845H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				GCC_PREFIX_HEADER = "Target Support Files/KakaJSON/KakaJSON-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/KakaJSON/KakaJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KakaJSON/KakaJSON.modulemap";
+				PRODUCT_MODULE_NAME = KakaJSON;
+				PRODUCT_NAME = KakaJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		726D3A346A1704F835842C5E5FD20CA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01EF213CD9624197BA501E55B4CBCE48 /* KakaJSON.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JC854K845H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				GCC_PREFIX_HEADER = "Target Support Files/KakaJSON/KakaJSON-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/KakaJSON/KakaJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KakaJSON/KakaJSON.modulemap";
+				PRODUCT_MODULE_NAME = KakaJSON;
+				PRODUCT_NAME = KakaJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8D4D7020974120C0A08FA4C2274842AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07F401FB9EAD44272084C5A837C83C51 /* EaseChatUIKit.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JC854K845H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				GCC_PREFIX_HEADER = "Target Support Files/EaseChatUIKit/EaseChatUIKit-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/EaseChatUIKit/EaseChatUIKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/EaseChatUIKit/EaseChatUIKit.modulemap";
+				PRODUCT_MODULE_NAME = EaseChatUIKit;
+				PRODUCT_NAME = EaseChatUIKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		AED3CE0321C43D8B127B1FD05EAB2BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0507ED3D3A1BB91549B1CA11797AD412 /* Pods-EaseChatUIKit_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JC854K845H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				INFOPLIST_FILE = "Target Support Files/Pods-EaseChatUIKit_Example/Pods-EaseChatUIKit_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EaseChatUIKit_Example/Pods-EaseChatUIKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C6A73B0526359AABC9EBCB737F77C91F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BB4FED1B7DC06FDF8896DA2C70BA7A2 /* Agora_Chat_iOS.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				DEVELOPMENT_TEAM = JC854K845H;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CA6EB50C9C8B1FA24C424E62F0EDE15C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 505D48DCEF8539BC87C3C2DF43851E9C /* Agora_Chat_iOS.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				DEVELOPMENT_TEAM = JC854K845H;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F67A9F7D6A40524BDC9678B71E44C1F /* Build configuration list for PBXAggregateTarget "Agora_Chat_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA6EB50C9C8B1FA24C424E62F0EDE15C /* Debug */,
+				C6A73B0526359AABC9EBCB737F77C91F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		781B2FD538B3406401FEF54788FD2EBC /* Build configuration list for PBXNativeTarget "KakaJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4508F55045875816DF9DB8BB5CEDE039 /* Debug */,
+				726D3A346A1704F835842C5E5FD20CA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC7245C8F7EE297E17BF66E85CD24E39 /* Build configuration list for PBXNativeTarget "EaseChatUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D4D7020974120C0A08FA4C2274842AF /* Debug */,
+				07BE53331AAD382047CD8CEDCC16BA59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2EA021914282D8169A1A202878D1E4D /* Build configuration list for PBXNativeTarget "Pods-EaseChatUIKit_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AED3CE0321C43D8B127B1FD05EAB2BC2 /* Debug */,
+				41BA40B4D5C353F77AD2E10983654A0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,17 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
+EXCLUDED_ARCHS[sdk=iphonesimulator*] = arm64
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/EaseChatUIKit" "${PODS_CONFIGURATION_BUILD_DIR}/KakaJSON" "${PODS_ROOT}/Agora_Chat_iOS" "${PODS_XCFRAMEWORKS_BUILD_DIR}/Agora_Chat_iOS"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/EaseChatUIKit/EaseChatUIKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KakaJSON/KakaJSON.framework/Headers"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/../../Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/opencore-amr/lib" "${PODS_ROOT}/../../Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/vo-amrwbenc/lib" "${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift $(PODS_ROOT)/Sources/EaseChatUIKit/Classes/UI/Core/Foundation/third-party/**/*
+OTHER_LDFLAGS = $(inherited) -ObjC -l"opencore-amrnb" -l"opencore-amrwb" -l"vo-amrwbenc" -framework "AgoraChat" -framework "AudioToolbox" -framework "Combine" -framework "EaseChatUIKit" -framework "Foundation" -framework "KakaJSON" -framework "UIKit"
+OTHER_MODULE_VERIFIER_FLAGS = $(inherited) "-F${PODS_CONFIGURATION_BUILD_DIR}/Agora_Chat_iOS" "-F${PODS_CONFIGURATION_BUILD_DIR}/EaseChatUIKit" "-F${PODS_CONFIGURATION_BUILD_DIR}/KakaJSON"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+PODS_XCFRAMEWORKS_BUILD_DIR = $(PODS_CONFIGURATION_BUILD_DIR)/XCFrameworkIntermediates
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

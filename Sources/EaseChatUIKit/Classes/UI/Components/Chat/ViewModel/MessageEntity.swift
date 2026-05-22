@@ -344,6 +344,12 @@ extension ChatMessage {
                 if body.event == EaseChatUIKit_alert_message {
                     text = "[Alert]"
                 }
+                if body.event == "article" || body.event == "merchantArticle" {
+                    text = "[Article]"
+                }
+                if body.event == "order" {
+                    text = "[Order]"
+                }
             }
         default: break
         }

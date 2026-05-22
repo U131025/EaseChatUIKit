@@ -1,0 +1,31 @@
+PODS:
+  - Agora_Chat_iOS (1.3.1)
+  - EaseChatUIKit (0.1.0):
+    - EaseChatUIKit/Service (= 0.1.0)
+    - EaseChatUIKit/UI (= 0.1.0)
+  - EaseChatUIKit/Service (0.1.0):
+    - Agora_Chat_iOS
+  - EaseChatUIKit/UI (0.1.0)
+  - KakaJSON (1.1.2)
+
+DEPENDENCIES:
+  - EaseChatUIKit (from `../`)
+  - KakaJSON (~> 1.1.2)
+
+SPEC REPOS:
+  trunk:
+    - Agora_Chat_iOS
+    - KakaJSON
+
+EXTERNAL SOURCES:
+  EaseChatUIKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Agora_Chat_iOS: e5f6df4c3247c5a831ca25c83d5db22b40e2b555
+  EaseChatUIKit: b2a74170411a6d845f65784c5c3b33f4b60e889d
+  KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
+
+PODFILE CHECKSUM: b30914524c79175a44753eb1159573408c2b6a07
+
+COCOAPODS: 1.16.2

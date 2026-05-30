@@ -118,7 +118,7 @@ extension ConversationList: UITableViewDelegate,UITableViewDataSource {
         }
     }
     
-    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let info = self.datas[safe: indexPath.row] else { return nil }
         if info.doNotDisturb {
             if let index = Appearance.conversation.swipeLeftActions.firstIndex(where: { $0 == .unmute }) {
@@ -132,9 +132,17 @@ extension ConversationList: UITableViewDelegate,UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: self.actions(leading: false,info: info,indexPath: indexPath))
     }
 
-    public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let info = self.datas[safe: indexPath.row] else { return nil }
         return UISwipeActionsConfiguration(actions: self.actions(leading: true,info: info,indexPath: indexPath))
+    }
+    
+    public func onConversationSwipe(indexPath: IndexPath, type: UIContextualActionType) {
+        guard let info = self.datas[safe: indexPath.row] else { return }
+        
+        for listener in self.eventHandlers.allObjects {
+            listener.onConversationSwipe(type: type, info: info)
+        }
     }
     
     private func actions(leading: Bool,info: ConversationInfo,indexPath: IndexPath) -> [UIContextualActionChatUIKit] {

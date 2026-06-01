@@ -1,6 +1,6 @@
 //
 //  AlertViewController.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/9/22.
 //
@@ -31,7 +31,7 @@ import UIKit
     @objc public required convenience init(custom: UIView,size: CGSize,customPosition: Bool) {
         self.init()
         if customPosition {
-            self.presentedViewComponent = PresentedViewComponent(contentSize: size,destination: .custom(center: CGPoint(x: ScreenWidth/2.0-custom.frame.width/2.0, y: ScreenHeight/2.0-custom.frame.height/2.0)))
+            self.presentedViewComponent = PresentedViewComponent(contentSize: size,destination: .custom(center: CGPoint(x: ScreenWidth/2.0, y: ScreenHeight/2.0-size.height/3.0)),keyboardPadding: 20)
         } else {
             self.presentedViewComponent = PresentedViewComponent(contentSize: size,destination: .center)
         }
@@ -42,6 +42,8 @@ import UIKit
         super.viewDidLoad()
         if self.customView != nil {
             self.customView?.cornerRadius(Appearance.alertStyle == .small ? .extraSmall:.medium)
+            self.customView?.setNeedsLayout()
+            self.customView?.layoutIfNeeded()
             self.view.addSubview(self.customView!)
         }
     }
@@ -69,7 +71,7 @@ import UIKit
         let label = UILabel()
         label.text = ""
         label.textColor = UIColor(red: 27/255.0, green: 16/255.0, blue: 103/255.0, alpha: 1.0)
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.theme.titleLarge
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -77,13 +79,13 @@ import UIKit
         let label = UILabel()
         label.text = ""
         label.numberOfLines = 0
-        label.textColor = UIColor(red: 27/255.0, green: 16/255.0, blue: 103/255.0, alpha: 0.5)
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = Theme.style == .dark ? UIColor.theme.neutralColor6:UIColor.theme.neutralColor5
+        label.font = UIFont.theme.labelMedium
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         return label
     }()
-    private lazy var textField: UITextField = {
+    public private(set) lazy var textField: UITextField = {
        let textField = UITextField()
         textField.placeholder = "Aa"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +118,7 @@ import UIKit
         let button = UIButton()
         button.setTitle("barrage_long_press_menu_cancel".chat.localize, for: .normal)
         button.setTitleColor(UIColor(red: 120/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1.0), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.theme.headlineSmall
         button.layer.cornerRadius = 25
         button.layer.borderColor = UIColor(red: 120/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         button.layer.borderWidth = 1
@@ -129,7 +131,7 @@ import UIKit
         let button = UIButton()
         button.setTitle("Confirm".chat.localize, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.theme.headlineSmall
         button.layer.cornerRadius = 25
         button.backgroundColor = UIColor(red: 120/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1.0)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -268,6 +270,18 @@ import UIKit
         return self
     }
     @discardableResult
+    public func textFieldRightView(rightView: UIView) -> AlertView {
+        textField.rightView = rightView
+        textField.rightViewMode = .always
+        return self
+    }
+    @discardableResult
+    public func textFieldDelegate(delegate: UITextFieldDelegate) -> AlertView {
+        textField.delegate = delegate
+        return self
+    }
+    
+    @discardableResult
     public func leftButton(title: String?) -> AlertView {
         leftButton.isHidden = title == nil
         leftButton.setTitle(title, for: .normal)
@@ -397,10 +411,10 @@ import UIKit
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: Appearance.alertContainerConstraintsSize.width).isActive = true
         
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: (ScreenWidth-Appearance.alertContainerConstraintsSize.width)/2.0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(ScreenWidth-Appearance.alertContainerConstraintsSize.width)/2.0).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: topAnchor, constant: (ScreenWidth-Appearance.alertContainerConstraintsSize.width)/2.0).isActive = true
+        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: titleLabelContainer.topAnchor).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: titleLabelContainer.centerXAnchor).isActive = true

@@ -1,6 +1,6 @@
 //
 //  ContactService.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/1.
 //
@@ -116,6 +116,7 @@ import Foundation
     case agree
     case decline
     case fetchContacts
+    case cleanFriendBadge
 }
 
 @objc public protocol ContactEmergencyListener: NSObjectProtocol {

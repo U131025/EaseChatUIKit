@@ -1,6 +1,6 @@
 //
 //  JoinedGroupsViewController.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/24.
 //
@@ -15,7 +15,7 @@ import UIKit
     
     private var loadFinished = false
     
-    public private(set) var datas: [EaseProfileProtocol] = [] {
+    public private(set) var datas: [ChatUserProfileProtocol] = [] {
         didSet {
             if self.datas.count <= 0 {
                 self.groupList.backgroundView = self.empty
@@ -25,24 +25,24 @@ import UIKit
         }
     }
     
-    public private(set) lazy var navigation: EaseChatNavigationBar = {
-        EaseChatNavigationBar(showLeftItem: true, textAlignment: .left, hiddenAvatar: true).backgroundColor(.clear)
+    public private(set) lazy var navigation: ChatNavigationBar = {
+        self.createNavigation()
     }()
     
+    @objc open func createNavigation() -> ChatNavigationBar {
+        ChatNavigationBar(showLeftItem: true, textAlignment: .left, hiddenAvatar: true).backgroundColor(.clear)
+    }
+    
     public private(set) lazy var groupList: UITableView = {
-        UITableView(frame: CGRect(x: 0, y: self.navigation.frame.maxY+10, width: self.view.frame.width, height: self.view.frame.height-self.navigation.frame.maxY-10), style: .plain).delegate(self).dataSource(self).tableFooterView(UIView()).rowHeight(60).backgroundColor(.clear)
+        UITableView(frame: CGRect(x: 0, y: self.navigation.frame.maxY+10, width: self.view.frame.width, height: self.view.frame.height-self.navigation.frame.maxY-10), style: .plain).delegate(self).dataSource(self).tableFooterView(UIView()).rowHeight(60).backgroundColor(.clear).separatorStyle(.none)
     }()
     
     private lazy var empty: EmptyStateView = {
-        EmptyStateView(frame: CGRect(x: 0, y: 0, width: self.groupList.frame.width, height: self.groupList.frame.height),emptyImage: UIImage(named: "empty",in: .chatBundle, with: nil), onRetry: { [weak self] in
+        EmptyStateView(frame: CGRect(x: 0, y: 0, width: self.groupList.frame.width, height: self.groupList.frame.height),emptyImage: UIImage(chatNamed: "empty"), onRetry: { [weak self] in
             self?.requestGroups()
         }).backgroundColor(.clear)
     }()
-    
-    open override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        self.tabBarController?.tabBar.isHidden = true
-    }
+
 
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +57,21 @@ import UIKit
         Theme.registerSwitchThemeViews(view: self)
         self.switchTheme(style: Theme.style)
         self.requestGroups()
+        NotificationCenter.default.addObserver(self, selector: #selector(removeGroup(notification:)), name: Notification.Name("EaseChatUIKit_leaveGroup"), object: nil)
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: cache_update_notification), object: nil, queue: .main) { [weak self] notify in
+            guard let `self` = self else { return }
+            self.groupList.reloadData()
+        }
     }
     
-    private func navigationClick(type: EaseChatNavigationBarClickEvent,indexPath: IndexPath?) {
+    @objc open func removeGroup(notification: Notification) {
+        if let groupId = notification.object as? String {
+            self.datas.removeAll { $0.id == groupId }
+            self.groupList.reloadData()
+        }
+    }
+    
+    @objc open func navigationClick(type: ChatNavigationBarClickEvent,indexPath: IndexPath?) {
         switch type {
         case .back: self.pop()
         default: break
@@ -74,16 +86,17 @@ import UIKit
         }
     }
     
-    private func requestGroups() {
+    @objc open func requestGroups() {
         if !self.loadFinished {
             self.groupService.getJoinedGroups(page: self.page, pageSize: 20, needMemberCount: true, needRole: true) { [weak self] groups, error in
                 guard let `self` = self else { return }
                 if error == nil {
                     if let groups = groups {
                         self.datas.append(contentsOf: groups.map({
-                            let profile = EaseProfile()
+                            let profile = ChatUserProfile()
                             profile.id = $0.groupId
-                            profile.nickName = $0.groupName
+                            profile.nickname = $0.groupName
+                            profile.avatarURL = ChatUIKitContext.shared?.groupCache?[$0.groupId]?.avatarURL ?? ""
                             return profile
                         }))
                         self.groupList.reloadData()
@@ -109,7 +122,11 @@ extension JoinedGroupsViewController: UITableViewDelegate,UITableViewDataSource 
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "GroupListCell") as? GroupListCell
+        self.cellForRowAt(indexPath: indexPath)
+    }
+    
+    @objc open func cellForRowAt(indexPath: IndexPath) -> UITableViewCell {
+        var cell = self.groupList.dequeueReusableCell(withIdentifier: "GroupListCell") as? GroupListCell
         if cell == nil {
             cell = GroupListCell(style: .default, reuseIdentifier: "GroupListCell")
         }
@@ -133,23 +150,22 @@ extension JoinedGroupsViewController: UITableViewDelegate,UITableViewDataSource 
         }
     }
     
-    private func chatTo(group: String) {
-        let vc = GroupInfoViewController(group: group) { [weak self] groupId, name in
+    @objc open func chatTo(group: String) {
+        let vc = ComponentsRegister.shared.GroupInfoController.init(group: group) { [weak self] groupId, name in
             self?.refreshGroup(groupId: groupId, name: name)
         }
+        vc.modalPresentationStyle = .fullScreen
         ControllerStack.toDestination(vc: vc)
     }
     
-    private func refreshGroup(groupId: String,name: String) {
-        var idx = 0
+    @objc open func refreshGroup(groupId: String,name: String) {
         for (index,profile) in self.datas.enumerated() {
             if profile.id == groupId {
-                idx = index
-                profile.nickName = name
+                profile.nickname = name
                 break
             }
         }
-        self.groupList.reloadRows(at: [IndexPath(row: idx, section: 0)], with: .automatic)
+        self.groupList.reloadData()
     }
 }
 

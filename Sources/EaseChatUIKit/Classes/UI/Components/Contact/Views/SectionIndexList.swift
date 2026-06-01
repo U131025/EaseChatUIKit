@@ -1,15 +1,23 @@
 //
 //  SectionIndexList.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/22.
 //
 
 import UIKit
 
+/// A protocol that defines the driver for a section index list.
 @objc public protocol ISectionIndexListDriver: NSObjectProtocol {
+    
+    /// Refreshes the titles of the section index list.
+    ///
+    /// - Parameter titles: An array of strings representing the titles for each section.
     func refresh(titles: [String])
     
+    /// Selects an item at the specified index path.
+    ///
+    /// - Parameter indexPath: The index path of the item to be selected.
     func selectItem(indexPath: IndexPath)
 }
 
@@ -17,13 +25,13 @@ import UIKit
         
     @objc public var selectClosure: ((IndexPath) -> Void)?
     
-    @objc public var selectedColor = UIColor.theme.primaryColor5
+    @objc public var selectedColor = UIColor.theme.primaryLightColor
     
     private var selectIndex = 0
     
     private var indexTitles = [String]()
 
-    public override init(frame: CGRect, style: UITableView.Style) {
+    public required override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         self.registerCell(UITableViewCell.self, forCellReuseIdentifier: "SectionIndexListCell")
         self.rowHeight = 16
@@ -37,14 +45,20 @@ import UIKit
         Theme.registerSwitchThemeViews(view: self)
     }
     
-    @objc public func refresh(titles: [String]) {
+    /// Refresh method of the ``SectionIndexList``.
+    /// - Parameter titles: Display titles.
+    @objc(refreshWithTitles:)
+    public func refresh(titles: [String]) {
         self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: 16, height: CGFloat(titles.count*16))
         self.indexTitles.removeAll()
         self.indexTitles.append(contentsOf: titles)
         self.reloadData()
     }
     
-    @objc public func selectItem(indexPath: IndexPath) {
+    /// Select some item only display.
+    /// - Parameter indexPath: ``IndexPath``
+    @objc(selectItemWithIndexPath:)
+    public func selectItem(indexPath: IndexPath) {
         self.selectIndex = indexPath.section
         self.reloadData()
     }
@@ -71,7 +85,7 @@ extension SectionIndexList: UITableViewDelegate,UITableViewDataSource {
         cell?.contentView.backgroundColor = indexPath.row == self.selectIndex ? self.selectedColor:.clear
         cell?.contentView.cornerRadius(8)
         cell?.textLabel?.backgroundColor = .clear
-        cell?.textLabel?.font = UIFont.theme.bodyExtraSmall
+        cell?.textLabel?.font = UIFont.theme.labelExtraSmall
         cell?.selectionStyle = .none
         if self.selectIndex != indexPath.row {
             cell?.textLabel?.textColor = Theme.style == .dark ? UIColor.theme.neutralColor6:UIColor.theme.neutralColor5
@@ -93,7 +107,7 @@ extension SectionIndexList: UITableViewDelegate,UITableViewDataSource {
 
 extension SectionIndexList: ThemeSwitchProtocol {
     public func switchTheme(style: ThemeStyle) {
-        self.selectedColor = style == .dark ? UIColor.theme.primaryColor6:UIColor.theme.primaryColor5
+        self.selectedColor = style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor
         self.reloadData()
     }
     

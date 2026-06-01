@@ -1,6 +1,6 @@
 //
 //  Contants.swift
-//  ZSwiftBaseLib
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2020/12/16.
 //
@@ -20,7 +20,7 @@ public let edgeZero: UIEdgeInsets = .zero
 public let BottomBarHeight = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
 
 /// The height of the status bar.
-public let StatusBarHeight :CGFloat = BottomBarHeight > 0 ? 43:20
+public let StatusBarHeight :CGFloat = UIApplication.shared.statusBarFrame.height
 
 /// The height of the navigation bar, which includes the status bar.
 public let NavigationHeight :CGFloat = StatusBarHeight + 44

@@ -1,6 +1,6 @@
 //
 //  ControllerStack.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/23.
 //
@@ -8,29 +8,25 @@
 import UIKit
 
 
-class ControllerStack {
+@objc open class ControllerStack: NSObject {
     
-    static func toDestination(vc: UIViewController) {
-        if let current = UIViewController.currentController {
-            if current.navigationController != nil {
-                current.hidesBottomBarWhenPushed = true
-                current.navigationController?.pushViewController(vc, animated: true)
+    @objc public static func toDestination(vc: UIViewController) {
+        let current = UIViewController.currentController
+        if current?.navigationController != nil {
+            vc.hidesBottomBarWhenPushed = true
+            current?.navigationController?.pushViewController(vc, animated: true)
+            return
+        } else {
+            if current?.presentingViewController?.navigationController != nil {
+                vc.hidesBottomBarWhenPushed = true
+                current?.presentingViewController?.navigationController?.pushViewController(vc, animated: true)
                 return
             } else {
-                if current.presentedViewController?.navigationController != nil {
-                    current.presentedViewController?.hidesBottomBarWhenPushed = true
-                    current.presentedViewController?.navigationController?.pushViewController(vc, animated: true)
-                    return
-                } else {
-                    if current.presentedViewController != nil {
-                        current.presentedViewController?.present(vc, animated: true)
-                    } else {
-                        current.present(vc, animated: true)
-                    }
-                    return
+                if current != nil {
+                    current?.present(vc, animated: true)
                 }
+                return
             }
-            
         }
     }
 }

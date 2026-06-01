@@ -1,6 +1,6 @@
 //
 //  AudioTools.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/29.
 //
@@ -58,14 +58,23 @@ import AVFoundation
     }
     
     @objc public func playRecording(stopPlay: @escaping () -> Void) {
-        guard let fileURL = self.audioFileURL else { return }
-        do {
-            self.audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
-            self.audioPlayer?.delegate = self
-            self.audioPlayer?.play()
-        } catch {
-            consoleLogInfo("Failed to play recording: \(error.localizedDescription)", type: .error)
+        guard let url = self.audioFileURL else { return }
+        if AudioTools.canPlay(url: url) {
+            guard let fileURL = self.audioFileURL else { return }
+            do {
+                self.audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+                self.audioPlayer?.delegate = self
+                self.audioPlayer?.play()
+            } catch {
+                consoleLogInfo("Failed to play recording: \(error.localizedDescription)", type: .error)
+            }
+        } else {
+            if let path = MediaConvertor.convertAMRToWAV(url: url).1 {
+                self.audioFileURL = URL(fileURLWithPath: path)
+                self.playRecording(stopPlay: stopPlay)
+            }
         }
+        
     }
     
     @objc public func playRecording(path: String,stopPlay: @escaping (String) -> Void) {
@@ -84,20 +93,16 @@ import AVFoundation
         if url.path.hasSuffix(".amr") {
             return false
         } else {
-            if url.path.hasSuffix(".mp3") || url.path.hasSuffix(".wav") || url.path.hasSuffix(".m4a") || url.path.hasSuffix(".aac") {
-                return true
+            guard let data = try? Data(contentsOf: url)  else { return false }
+            let dataString = String(data: data, encoding: .ascii) ?? ""
+            if dataString.starts(with: "#!AMR\n") || dataString.starts(with: "#!AMR-WB\n") {
+                return false
             } else {
-                guard let data = try? Data(contentsOf: url)  else { return false }
-                let dataString = String(data: data, encoding: .ascii) ?? ""
-                if dataString.starts(with: "#!AMR\n") || dataString.starts(with: "#!AMR-WB\n") {
+                do {
+                    _ = try AVAudioPlayer(contentsOf: url)
+                    return true
+                } catch {
                     return false
-                } else {
-                    do {
-                        _ = try AVAudioPlayer(contentsOf: url)
-                        return true
-                    } catch {
-                        return false
-                    }
                 }
             }
         }

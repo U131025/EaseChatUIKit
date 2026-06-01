@@ -27,6 +27,7 @@ public final class PresentationController: UIPresentationController {
         let backgroundView = UIView(frame: containerbounds)
         backgroundView.backgroundColor = UIColor.theme.barrageLightColor2
         backgroundView.alpha = 0.0
+        backgroundView.isUserInteractionEnabled = true
         if component.canTapBGDismiss {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundViewDidTapped))
             backgroundView.addGestureRecognizer(tapGesture)
@@ -82,7 +83,7 @@ public final class PresentationController: UIPresentationController {
     /// 将要弹出时添加背景按钮
     override public func presentationTransitionWillBegin() {
         /// 注册键盘通知
-        if component.destination != .topBaseline, component.destination != .center {
+        if component.destination != .topBaseline {
             registerObservers()
         }
         /// 背景动画
@@ -258,11 +259,16 @@ extension PresentationController {
             let inputViewBottom = inputViewFrame.maxY + component.keyboardPadding
             let offset = inputViewBottom - keyboardTop
             newFrame.origin.y -= offset
+        case .noTreatment:
+            break
         }
         return newFrame
     }
 
     private func handleKeyboardAdjustAnimation() {
+        if self.component.keyboardTranslationType == .noTreatment {
+            return
+        }
         guard let keyboardFrame = keyboardFrame,
               let keyboardAnimationDuration = keyboardAnimationDuration else { return }
         if let textInputView = textInputView {

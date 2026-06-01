@@ -1,6 +1,6 @@
 //
 //  TypealiasWrapper.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/8/31.
 //
@@ -27,9 +27,11 @@ public typealias ChatImageMessageBody = EMImageMessageBody
 public typealias ChatVideoMessageBody = EMVideoMessageBody
 public typealias ChatAudioMessageBody = EMVoiceMessageBody
 public typealias ChatFileMessageBody = EMFileMessageBody
+public typealias ChatCombineMessageBody = EMCombineMessageBody
 public typealias ChatMessageAttachmentStatus = EMDownloadStatus
 public typealias ChatLocationMessageBody = EMLocationMessageBody
 public typealias ChatCustomMessageBody = EMCustomMessageBody
+public typealias ChatCMDMessageBody = EMCmdMessageBody
 public typealias ChatMessageBodyType = EMMessageBodyType
 public typealias ChatroomEventsListener = EMChatroomManagerDelegate
 public typealias ChatRoom = EMChatroom
@@ -55,7 +57,12 @@ public typealias ChatGroupOption = EMGroupOptions
 public typealias SilentModeResult = EMSilentModeResult
 public typealias SilentModeParam = EMSilentModeParam
 public typealias Contact = EMContact
-
+public typealias UserInfoType = EMUserInfoType
+public typealias GroupChatThreadListener = EMThreadManagerDelegate
+public typealias GroupChatThreadEvent = EMChatThreadEvent
+public typealias GroupChatThread = EMChatThread
+public typealias MessagePinOperation = EMMessagePinOperation
+public typealias MessagePinInfo = EMMessagePinInfo
 #elseif canImport(AgoraChat)
 import AgoraChat
 public typealias ChatClient = AgoraChatClient
@@ -70,9 +77,11 @@ public typealias ChatImageMessageBody = AgoraChatImageMessageBody
 public typealias ChatVideoMessageBody = AgoraChatVideoMessageBody
 public typealias ChatAudioMessageBody = AgoraChatVoiceMessageBody
 public typealias ChatFileMessageBody = AgoraChatFileMessageBody
+public typealias ChatCombineMessageBody = AgoraChatCombineMessageBody
 public typealias ChatMessageAttachmentStatus = AgoraChatDownloadStatus
 public typealias ChatLocationMessageBody = AgoraChatLocationMessageBody
 public typealias ChatCustomMessageBody = AgoraChatCustomMessageBody
+public typealias ChatCMDMessageBody = AgoraChatCmdMessageBody
 public typealias ChatMessageBodyType = AgoraChatMessageBodyType
 public typealias ChatroomEventsListener = AgoraChatroomManagerDelegate
 public typealias ChatRoom = AgoraChatroom
@@ -98,6 +107,12 @@ public typealias ChatGroupOption = AgoraChatGroupOptions
 public typealias SilentModeResult = AgoraChatSilentModeResult
 public typealias SilentModeParam = AgoraChatSilentModeParam
 public typealias Contact = AgoraChatContact
+public typealias UserInfoType = AgoraChatUserInfoType
+public typealias GroupChatThreadListener = AgoraChatThreadManagerDelegate
+public typealias GroupChatThreadEvent = AgoraChatThreadEvent
+public typealias GroupChatThread = AgoraChatThread
+public typealias MessagePinOperation = AgoraChatMessagePinOperation
+public typealias MessagePinInfo = AgoraChatMessagePinInfo
 #endif
 
 

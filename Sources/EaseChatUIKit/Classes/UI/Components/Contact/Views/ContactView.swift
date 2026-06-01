@@ -7,7 +7,6 @@ import UIKit
     case contact
     case newGroup
     case shareContact
-    case transferOwner
     case addGroupParticipant
 }
 
@@ -28,8 +27,8 @@ import UIKit
     /// The method'll called on contact list cell clicked.
     /// - Parameters:
     ///   - indexPath: ``IndexPath``
-    ///   - profile: Conform to ``EaseProfileProtocol`` object.
-    func didSelected(indexPath: IndexPath,profile: EaseProfileProtocol)
+    ///   - profile: Conform to ``ChatUserProfileProtocol`` object.
+    func didSelected(indexPath: IndexPath,profile: ChatUserProfileProtocol)
 }
 
 
@@ -48,24 +47,24 @@ import UIKit
     func occurError()
     
     /// This method can be used when you want refresh some  display info  of datas.
-    /// - Parameter infos: Array of conform to``EaseProfileProtocol`` object.
-    func refreshProfiles(infos: [EaseProfileProtocol])
+    /// - Parameter infos: Array of conform to``ChatUserProfileProtocol`` object.
+    func refreshProfiles(infos: [ChatUserProfileProtocol])
     
     /// This method can be used when pulling down to refresh.
-    /// - Parameter infos: Array of conform to``EaseProfileProtocol`` objects.
-    func refreshList(infos: [EaseProfileProtocol])
+    /// - Parameter infos: Array of conform to``ChatUserProfileProtocol`` objects.
+    func refreshList(infos: [ChatUserProfileProtocol])
     
     /// The method can be used when you want to refresh header of the contact list.
     /// - Parameter info: ``ContactListHeaderItemProtocol``
     func refreshHeader(info: ContactListHeaderItemProtocol)
     
     /// The method can be used when you want to remove a contact.
-    /// - Parameter info: ``EaseProfileProtocol``
-    func remove(info: EaseProfileProtocol)
+    /// - Parameter info: ``ChatUserProfileProtocol``
+    func remove(info: ChatUserProfileProtocol)
     
     /// The method can be user when you want to add someone to contact list.
-    /// - Parameter info: ``EaseProfileProtocol``
-    func appendThenRefresh(info: EaseProfileProtocol)
+    /// - Parameter info: ``ChatUserProfileProtocol``
+    func appendThenRefresh(info: ChatUserProfileProtocol)
 }
 
 @objc open class ContactView: UIView {
@@ -74,11 +73,11 @@ import UIKit
     
     private var selectIndex = false
     
-    public private(set) var rawData = [EaseProfileProtocol]()
+    public private(set) var rawData = [ChatUserProfileProtocol]()
     
     public private(set) var headerStyle: ContactListHeaderStyle = .contact
     
-    public private(set) var contacts = [[EaseProfileProtocol]]()
+    public private(set) var contacts = [[ChatUserProfileProtocol]]()
     
     public private(set) var sectionTitles = [String]() {
         willSet {
@@ -90,12 +89,16 @@ import UIKit
         }
     }
     
+    public var selectClosure: ((ChatUserProfileProtocol) -> ())?
+    
+    public var firstRefresh = true
+    
     public private(set) lazy var header: ContactListHeader = {
-        ContactListHeader(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: CGFloat(54*(self.headerStyle == .contact ? Appearance.contact.headerExtensionActions.count:0))), style: .plain).backgroundColor(.clear)
+        ContactListHeader(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: CGFloat(Appearance.contact.headerRowHeight*CGFloat((self.headerStyle == .contact ? Appearance.contact.listHeaderExtensionActions.count:0)))), style: .plain).backgroundColor(.clear)
     }()
     
     public private(set) lazy var empty: EmptyStateView = {
-        EmptyStateView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height),emptyImage: UIImage(named: "empty",in: .chatBundle, with: nil), onRetry: { [weak self] in
+        EmptyStateView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height),emptyImage: UIImage(chatNamed: "empty"), onRetry: { [weak self] in
             guard let `self` = self else { return }
             for listener in self.eventsDelegates.allObjects {
                 listener.onContactListOccurErrorWhenFetchServer()
@@ -108,19 +111,27 @@ import UIKit
     }()
     
     public private(set) lazy var indexIndicator: SectionIndexList = {
-        SectionIndexList(frame: CGRect(x: self.frame.width-16, y: self.header.frame.height+20, width: 16, height: CGFloat(Appearance.contact.headerExtensionActions.count)*Appearance.contact.rowHeight+20), style: .plain).backgroundColor(.clear)
+        SectionIndexList(frame: CGRect(x: self.frame.width-18, y: self.header.frame.height+20, width: 16, height: CGFloat(Appearance.contact.listHeaderExtensionActions.count)*Appearance.contact.rowHeight+20), style: .plain).backgroundColor(.clear)
     }()
 
     internal override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    @objc public required convenience init(frame: CGRect,headerStyle: ContactListHeaderStyle) {
-        self.init(frame: frame)
-        self.contactList.keyboardDismissMode = .onDrag
+    /// ``ContactView`` init method.
+    /// - Parameters:
+    ///   - frame: ``CGRect``
+    ///   - headerStyle: ``ContactListHeaderStyle``
+    @objc(initWithFrame:headerStyle:)
+    public required init(frame: CGRect,headerStyle: ContactListHeaderStyle) {
         self.headerStyle = headerStyle
-        self.contactList.tableHeaderView(headerStyle == .contact ? self.header:nil)
+        super.init(frame: frame)
+        if Appearance.contact.listHeaderExtensionActions.count > 0 {
+            self.contactList.tableHeaderView(headerStyle == .contact ? self.header:nil)
+        }
+        self.contactList.keyboardDismissMode = .onDrag
         self.addSubViews([self.contactList,self.indexIndicator])
+        self.indexIndicator.center = CGPoint(x: self.indexIndicator.center.x, y: self.contactList.center.y)
         Theme.registerSwitchThemeViews(view: self)
         self.switchTheme(style: Theme.style)
         self.indexIndicator.selectClosure = { [weak self] in
@@ -161,13 +172,14 @@ extension ContactView: UITableViewDelegate,UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(with: ComponentsRegister.shared.ContactsCell.self, reuseIdentifier: "EaseUIKit_ContactsCell")
+        let style:ContactDisplayStyle = (self.headerStyle == .newGroup || self.headerStyle == .addGroupParticipant) ? .withCheckBox:.normal
         if cell == nil {
-            cell = ComponentsRegister.shared.ContactsCell.init(displayStyle: (self.headerStyle == .newGroup || self.headerStyle == .addGroupParticipant) ? .withCheckBox:.normal,identifier: "EaseUIKit_ContactsCell")
+            cell = ComponentsRegister.shared.ContactsCell.init(displayStyle: style,identifier: "EaseUIKit_ContactsCell")
         }
         if let item = self.contacts[safe:indexPath.section]?[safe: indexPath.row] {
+            cell?.display = style
             cell?.refresh(profile: item)
         }
-        cell?.selectionStyle = .none
         cell?.backgroundColor = .clear
         return cell ?? UITableViewCell()
     }
@@ -176,7 +188,7 @@ extension ContactView: UITableViewDelegate,UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         if self.headerStyle == .newGroup || self.headerStyle == .addGroupParticipant {
             if let item = self.contacts[safe:indexPath.section]?[safe: indexPath.row] {
-                if let hooker = ComponentViewsActionHooker.Contact.groupWithSelected {
+                if let hooker = ComponentViewsActionHooker.shared.contact.groupWithSelected {
                     hooker(indexPath,item)
                 } else {
                     item.selected = !item.selected
@@ -186,17 +198,25 @@ extension ContactView: UITableViewDelegate,UITableViewDataSource {
                         handler.didSelected(indexPath: indexPath, profile: item)
                     }
                 }
+//                self.selectClosure?(item)
             }
         } else {
             if let item = self.contacts[safe:indexPath.section]?[safe: indexPath.row] {
-                if let hooker = ComponentViewsActionHooker.Contact.didSelectedContact {
+                if let hooker = ComponentViewsActionHooker.shared.contact.didSelectedContact {
                     hooker(indexPath,item)
                 } else {
                     for handler in self.eventsDelegates.allObjects {
                         handler.didSelected(indexPath: indexPath, profile: item)
                     }
                 }
+                self.selectClosure?(item)
             }
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !self.firstRefresh {
+            self.requestDisplayInfo()
         }
     }
     
@@ -212,11 +232,23 @@ extension ContactView: UITableViewDelegate,UITableViewDataSource {
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        self.requestDisplayInfo()
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+//            self.requestDisplayInfo()
+        }
+    }
+    
+    @objc open func requestDisplayInfo() {
         var unknownInfoIds = [String]()
         if let visiblePaths = self.contactList.indexPathsForVisibleRows {
             for indexPath in visiblePaths {
                 if let item = self.contacts[safe: indexPath.section]?[safe: indexPath.row] {
-                    unknownInfoIds.append(item.id)
+                    if item.nickname.isEmpty, item.avatarURL.isEmpty {
+                        unknownInfoIds.append(item.id)
+                    }
                 }
             }
         }
@@ -226,7 +258,6 @@ extension ContactView: UITableViewDelegate,UITableViewDataSource {
             }
         }
     }
-    
 }
 //MARK: - IContactListDriver
 extension ContactView: IContactListDriver {
@@ -240,12 +271,12 @@ extension ContactView: IContactListDriver {
     }
     
     
-    public func appendThenRefresh(info: EaseProfileProtocol) {
+    public func appendThenRefresh(info: ChatUserProfileProtocol) {
         self.rawData.append(info)
         self.refreshList(infos: self.rawData)
     }
     
-    public func remove(info: EaseProfileProtocol) {
+    public func remove(info: ChatUserProfileProtocol) {
         var indexPath: IndexPath?
         for (section,sections) in self.contacts.enumerated() {
             if indexPath != nil {
@@ -267,7 +298,7 @@ extension ContactView: IContactListDriver {
     
     
     public func refreshHeader(info: ContactListHeaderItemProtocol) {
-        for item in Appearance.contact.headerExtensionActions {
+        for item in Appearance.contact.listHeaderExtensionActions {
             if item.featureIdentify == info.featureIdentify {
                 item.showBadge = info.showBadge
                 item.showNumber = info.showNumber
@@ -289,23 +320,37 @@ extension ContactView: IContactListDriver {
         }
     }
     
-    public func refreshProfiles(infos: [EaseProfileProtocol]) {
-        for info in infos {
-            if let profile = self.rawData.first(where: { $0.id == info.id }) {
-                profile.nickName =  info.nickName.isEmpty ? info.id:info.nickName
-                profile.avatarURL = info.avatarURL
-                profile.type = .contact
-                profile.selected = info.selected
+    public func refreshProfiles(infos: [ChatUserProfileProtocol]) {
+        for sectionData in self.contacts {
+            for item in sectionData {
+                if let profile = infos.first(where: { $0.id == item.id }) {
+                    item.nickname = profile.nickname.isEmpty ? profile.id:profile.nickname
+                    item.avatarURL = profile.avatarURL
+                    item.remark = profile.remark
+                    item.selected = profile.selected
+                }
             }
         }
-        self.refreshList(infos: self.rawData)
     }
     
-    public func refreshList(infos: [EaseProfileProtocol]) {
+    public func refreshList(infos: [ChatUserProfileProtocol]) {
         self.empty.state = .empty
         self.contacts.removeAll()
         self.sectionTitles.removeAll()
         self.rawData = infos
+        
+        if self.firstRefresh {
+            self.firstRefresh = false
+            var unknownInfoIds = [String]()
+            for info in infos {
+                if info.nickname.isEmpty || info.avatarURL.isEmpty {
+                    unknownInfoIds.append(info.id)
+                }
+            }
+            for eventHandle in self.eventsDelegates.allObjects {
+                eventHandle.onContactListEndScrollNeededDisplayInfos(ids: unknownInfoIds)
+            }
+        }
         let tuple = ContactSorter.sort(contacts: self.rawData)
         self.contacts.append(contentsOf: tuple.0)
         self.sectionTitles.append(contentsOf: tuple.1)
@@ -318,18 +363,21 @@ extension ContactView: IContactListDriver {
 
 extension ContactView: ThemeSwitchProtocol {
     public func switchTheme(style: ThemeStyle) {
+        self.header.reloadData()
         self.contactList.reloadData()
     }
 }
 
 //MARK: - ContactSorter
 struct ContactSorter {
-    static func sort(contacts: [EaseProfileProtocol]) -> ([[EaseProfileProtocol]],[String]) {
+    static func sort(contacts: [ChatUserProfileProtocol]) -> ([[ChatUserProfileProtocol]],[String]) {
+        var contactMap = [String:ChatUserProfileProtocol]()
+        
         if contacts.count == 0 {
             return ([], [])
         }
         var sectionTitles: [String] = []
-        var result: [[EaseProfileProtocol]] = []
+        var result: [[ChatUserProfileProtocol]] = []
         let indexCollation = UILocalizedIndexedCollation.current()
         sectionTitles.append(contentsOf: indexCollation.sectionTitles)
         if !sectionTitles.contains("#") {
@@ -338,27 +386,44 @@ struct ContactSorter {
         for _ in sectionTitles {
             result.append([])
         }
-        var sortArray: [String] = []
-        var userInfos: [EaseProfileProtocol] = []
-        userInfos.append(contentsOf: contacts)
-        
-        userInfos.sort {
-            $0.nickName.caseInsensitiveCompare($1.nickName) == .orderedAscending
+        var _: [String] = []
+        var userInfos: [ChatUserProfileProtocol] = []
+        for contact in contacts {
+            contactMap[contact.id] = contact
+            let profile = ChatUserProfile()
+            profile.id = contact.id
+            var showName = contact.remark
+            if showName.isEmpty {
+                showName = contact.nickname
+            }
+            if showName.isEmpty {
+                showName = contact.id
+            }
+            profile.nickname = showName
+            profile.avatarURL = contact.avatarURL
+            profile.selected = contact.selected
+            userInfos.append(profile)
         }
-        
+        userInfos.sort {
+            $0.nickname.caseInsensitiveCompare($1.nickname) == .orderedAscending
+        }
         for user in userInfos {
-            if let firstLetter = user.nickName.first?.uppercased() {
+            if let firstLetter = user.nickname.chat.pinYin.first?.uppercased() {
                 if let sectionIndex = sectionTitles.firstIndex(of: firstLetter) {
-                    let contact = EaseProfile()
+                    let contact = ChatUserProfile()
                     contact.id = user.id
-                    contact.nickName = user.nickName
+                    contact.nickname = contactMap[contact.id]?.nickname ?? ""
                     contact.avatarURL = user.avatarURL
-                    contact.type = user.type
+                    contact.remark = contactMap[contact.id]?.remark ?? ""
                     contact.selected = user.selected
                     result[sectionIndex].append(contact)
                 } else {
-                    let contact = EaseProfile()
+                    let contact = ChatUserProfile()
                     contact.id = user.id
+                    contact.nickname = contactMap[contact.id]?.nickname ?? ""
+                    contact.avatarURL = user.avatarURL
+                    contact.remark = contactMap[contact.id]?.remark ?? ""
+                    contact.selected = user.selected
                     result[sectionTitles.count-1].append(contact)
                 }
             }

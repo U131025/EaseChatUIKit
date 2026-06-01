@@ -1,6 +1,6 @@
 //
 //  PlaceHolderTextView.swift
-//  ZSwiftBaseLib
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2020/12/16.
 //
@@ -10,10 +10,6 @@ import UIKit
 
 /**
  A subclass of UITextView that provides a placeholder text when the text view is empty.
- 
- - Author: GitHub Copilot
- - Version: 1.0.0
- - Date: 2021-10-14
  */
 @objcMembers public class PlaceHolderTextView: UITextView {
     
@@ -76,12 +72,12 @@ import UIKit
         }
         var newRect = rect
         let size = self.placeHolder.chat.sizeWithText(font: self.font ?? UIFont.theme.bodyLarge, size: rect.size)
-        newRect.size.width = size.width-20
+        newRect.size.width = size.width+20
         newRect.size.height = size.height
-        newRect.origin.x = 10
-        newRect.origin.y = (rect.height-size.height)/2.0
-        
+        newRect.origin.x = self.contentInset.left+self.bounds.minX+8
+        newRect.origin.y = self.contentInset.top+self.bounds.minY+(rect.height-size.height)/2.0-4
         (self.placeHolder as NSString).draw(in: newRect, withAttributes: [.font: self.font ?? UIFont.theme.bodyLarge,.foregroundColor: self.placeHolderColor])
+        self.cornerRadius(Appearance.chat.inputBarCorner)
     }
     
     public override func layoutSubviews() {

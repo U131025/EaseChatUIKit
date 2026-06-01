@@ -1,6 +1,6 @@
 //
 //  UIButtonSafeExtension.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/27.
 //
@@ -30,7 +30,7 @@ extension UIButton {
         return super.point(inside: point, with: event)
     }
     
-    open func setHitTestEdgeInsets(_ edgeInsets: UIEdgeInsets) {
+    public func setHitTestEdgeInsets(_ edgeInsets: UIEdgeInsets) {
         self.hitTestEdgeInsets = edgeInsets
     }
 }

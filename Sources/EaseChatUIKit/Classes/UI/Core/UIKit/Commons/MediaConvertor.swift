@@ -1,6 +1,6 @@
 //
 //  MediaConvertor.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/12/6.
 //
@@ -8,11 +8,12 @@
 import UIKit
 import AVFoundation
 import Photos
-import AssetsLibrary
+//import AssetsLibrary
+import AVFAudio
 
-final class MediaConvertor: NSObject {
+public final class MediaConvertor: NSObject {
 
-    static func videoConvertor(videoURL: URL) -> URL? {
+    public static func videoConvertor(videoURL: URL) -> URL? {
         var url: URL? = nil
         let avAsset = AVURLAsset(url: videoURL, options: nil)
         let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
@@ -45,7 +46,7 @@ final class MediaConvertor: NSObject {
         return url
     }
     
-    static func filePath() -> String {
+    public static func filePath() -> String {
         var path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
         path = (path as NSString).appendingPathComponent("appdata/chatbuffer/")
         if !FileManager.default.fileExists(atPath: path) {
@@ -55,19 +56,7 @@ final class MediaConvertor: NSObject {
         return path
     }
     
-    static func imagePath(imageURL: URL,completion: @escaping (String?) -> Void) {
-        let result = PHAsset.fetchAssets(withALAssetURLs: [imageURL], options: nil)
-        if result.count > 0,let asset = result.firstObject {
-            let options = PHImageRequestOptions()
-            options.isSynchronous = true
-            PHImageManager.default().requestImageData(for: asset, options: options) { (imageData, dataUTI, orientation, info) in
-                let imagePath = info?["PHImageFileURLKey"] as? NSURL
-                completion(imagePath?.absoluteString)
-            }
-        }
-    }
-    
-    static func firstFrame(from videoPath: String, completion: @escaping (UIImage?) -> Void) {
+    public static func firstFrame(from videoPath: String, completion: @escaping (UIImage?) -> Void) {
         let videoAsset = AVURLAsset(url: URL(fileURLWithPath: videoPath))
         let imageGenerator = AVAssetImageGenerator(asset: videoAsset)
         imageGenerator.appliesPreferredTrackTransform = true
@@ -95,7 +84,7 @@ final class MediaConvertor: NSObject {
         }
     }
     
-    static func writeFile(to path: String,data: Data) {
+    public static func writeFile(to path: String,data: Data) {
         if FileManager.default.fileExists(atPath: path) {
             do {
                 try FileManager.default.removeItem(atPath: path)
@@ -110,7 +99,7 @@ final class MediaConvertor: NSObject {
         }
     }
     
-    static func convertAMRToWAV(url: URL) -> (Data?,String?) {
+    public static func convertAMRToWAV(url: URL) -> (Data?,String?) {
         do {
             let data = try Data(contentsOf: url)
             let path = url.path
@@ -127,7 +116,7 @@ final class MediaConvertor: NSObject {
         
     }
     
-    static func convertWAVToAMR(url: URL) -> (Data?,String?) {
+    public static func convertWAVToAMR(url: URL) -> (Data?,String?) {
         do {
             let data = try Data(contentsOf: url)
             let path = url.path
@@ -171,5 +160,35 @@ final class MediaConvertor: NSObject {
 //        print("Frames Per Packet: \(audioFormat.streamDescription.pointee.mFramesPerPacket)")
 //    }
 
+    //检测录音权限
+    public static func checkRecordPermission() -> Bool {
+        var permission = false
+        let session = AVAudioSession.sharedInstance()
+        if #available(iOS 17.0, *) {
+            permission = AVAudioApplication.shared.recordPermission == .granted
+        } else {
+            permission = session.recordPermission == .granted
+        }
+        return permission
+    }
+    
+    //请求录音权限
+    public static func requestRecordPermission(completion: @escaping (Bool) -> Void) {
+        let session = AVAudioSession.sharedInstance()
+        if #available(iOS 17.0, *) {
+            AVAudioApplication.requestRecordPermission { (granted) in
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
+            }
+
+        } else {
+            session.requestRecordPermission { (granted) in
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
+            }
+        }
+    }
     
 }

@@ -1,6 +1,6 @@
 //
 //  GroupParticipantsRemoveController.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/27.
 //
@@ -9,33 +9,38 @@ import UIKit
 
 @objc open class GroupParticipantsRemoveController: UIViewController {
     
-    private let service: GroupService = GroupServiceImplement()
+    public let service: GroupService = GroupServiceImplement()
     
     private var deleteClosure: (([String]) -> Void)?
     
     public private(set) var chatGroup = ChatGroup()
     
-    public private(set) var participants: [EaseProfileProtocol] = []
+    public var participants: [ChatUserProfileProtocol] = []
     
-    public private(set) lazy var navigation: EaseChatNavigationBar = {
-        EaseChatNavigationBar(textAlignment: .left,rightTitle: "conversation_left_slide_menu_delete".chat.localize)
+    public private(set) lazy var navigation: ChatNavigationBar = {
+        self.createNavigation()
     }()
+    
+    @objc open func createNavigation() -> ChatNavigationBar {
+        ChatNavigationBar(textAlignment: .left,rightTitle: "conversation_left_slide_menu_delete".chat.localize)
+    }
     
     public private(set) lazy var participantsList: UITableView = {
-        UITableView(frame: CGRect(x: 0, y: NavigationHeight, width: self.view.frame.width, height: self.view.frame.height-NavigationHeight), style: .plain).delegate(self).dataSource(self).tableFooterView(UIView()).rowHeight(60).backgroundColor(.clear)
+        UITableView(frame: CGRect(x: 0, y: self.navigation.frame.maxY, width: self.view.frame.width, height: self.view.frame.height-self.navigation.frame.maxY), style: .plain).delegate(self).dataSource(self).tableFooterView(UIView()).rowHeight(60).backgroundColor(.clear).separatorStyle(.none)
     }()
     
-    @objc required public convenience init(group: ChatGroup,profiles: [EaseProfileProtocol],removeClosure: @escaping ([String]) -> Void) {
-        self.init()
+    @objc required public init(group: ChatGroup,profiles: [ChatUserProfileProtocol],removeClosure: @escaping ([String]) -> Void) {
         self.chatGroup = group
+        profiles.forEach { $0.selected = false }
         self.participants = profiles
         self.deleteClosure = removeClosure
+        super.init(nibName: nil, bundle: nil)
     }
     
-    open override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        self.tabBarController?.tabBar.isHidden = true
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
 
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +60,7 @@ import UIKit
         self.switchTheme(style: Theme.style)
     }
     
-    private func navigationClick(type: EaseChatNavigationBarClickEvent,indexPath: IndexPath?) {
+    @objc open func navigationClick(type: ChatNavigationBarClickEvent,indexPath: IndexPath?) {
         switch type {
         case .back: self.pop()
         case .rightTitle: self.rightAction()
@@ -64,7 +69,7 @@ import UIKit
         }
     }
     
-    private func pop() {
+    @objc open func pop() {
         if self.navigationController != nil {
             self.navigationController?.popViewController(animated: true)
         } else {
@@ -72,14 +77,14 @@ import UIKit
         }
     }
 
-    private func rightAction() {
+    @objc open func rightAction() {
         let userIds = self.participants.filter { $0.selected == true }.map { $0.id }
-        let nickNames = self.participants.filter { $0.selected == true }.map { $0.nickName }
+        let nickNames = self.participants.filter { $0.selected == true }.map { $0.nickname }
         var removeAlert = "\("group_delete_members_alert".chat.localize) \(userIds.count) \("group members".chat.localize) "
         if nickNames.count > 1 {
-            removeAlert += "\(nickNames.first) , \(nickNames[1])"
+            removeAlert += "\(nickNames.first ?? "") , \(nickNames[1])"
         } else {
-            removeAlert += "\(nickNames.first)"
+            removeAlert += "\(nickNames.first ?? "")"
         }
         DialogManager.shared.showAlert(title: "", content: removeAlert, showCancel: true, showConfirm: true) { [weak self] _ in
             guard let `self` = self else { return }
@@ -103,7 +108,11 @@ extension GroupParticipantsRemoveController: UITableViewDelegate,UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "GroupParticipantsSelectCell") as? GroupParticipantsSelectCell
+        self.cellForRowAt(indexPath: indexPath)
+    }
+    
+    @objc open func cellForRowAt(indexPath: IndexPath) -> UITableViewCell {
+        var cell = self.participantsList.dequeueReusableCell(withIdentifier: "GroupParticipantsSelectCell") as? GroupParticipantsSelectCell
         if cell == nil {
             cell = GroupParticipantsSelectCell(style: .default, reuseIdentifier: "GroupParticipantsSelectCell")
         }
@@ -116,9 +125,13 @@ extension GroupParticipantsRemoveController: UITableViewDelegate,UITableViewData
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.didSelectRowAt(indexPath: indexPath)
+    }
+    
+    @objc open func didSelectRowAt(indexPath: IndexPath) {
         if let profile = self.participants[safe: indexPath.row] {
             profile.selected = !profile.selected
-            tableView.reloadData()
+            self.participantsList.reloadData()
         }
         let count = self.participants.filter({ $0.selected }).count
         if count > 0 {
@@ -132,7 +145,7 @@ extension GroupParticipantsRemoveController: UITableViewDelegate,UITableViewData
 }
 
 extension GroupParticipantsRemoveController: ThemeSwitchProtocol {
-    public func switchTheme(style: ThemeStyle) {
+    open func switchTheme(style: ThemeStyle) {
         self.view.backgroundColor = style == .dark ? UIColor.theme.neutralColor1:UIColor.theme.neutralColor98
     }
 }

@@ -1,6 +1,6 @@
 //
 //  MessageReplyView.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/12/1.
 //
@@ -9,12 +9,14 @@ import UIKit
 
 @objc public class MessageInputReplyView: UIView {
     
-    private var replyPhotoImage = UIImage(named: "reply_image", in: .chatBundle, with: nil)
-    private var replyAudioImage = UIImage(named: "reply_audio", in: .chatBundle, with: nil)
-    private var replyVideoImage = UIImage(named: "reply_video", in: .chatBundle, with: nil)
-    private var replyFileImage = UIImage(named: "reply_file", in: .chatBundle, with: nil)
+    private var replyPhotoImage = UIImage(chatNamed: "reply_image")
+    private var replyAudioImage = UIImage(chatNamed: "reply_audio")
+    private var replyVideoImage = UIImage(chatNamed: "reply_video")
+    private var replyFileImage = UIImage(chatNamed: "reply_file")
+    private var replyContactImage = UIImage(chatNamed: "reply_contact")
+    private var replyHistoryImage = UIImage(chatNamed: "reply_history")
     
-    private var cancelImage = UIImage(named: "reply_cancel", in: .chatBundle, with: nil)
+    private var cancelImage = UIImage(chatNamed: "reply_cancel")
     
     public private(set) lazy var line: UIView = {
         UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.5)).backgroundColor(UIColor.theme.neutralColor8)
@@ -46,7 +48,7 @@ import UIKit
     @MainActor
     @objc public func refresh(message: ChatMessage) {
         var replyTo = message.from
-        if let nickName = message.user?.nickName {
+        if let nickName = message.user?.nickname {
             replyTo = nickName
         }
         self.replyUser.attributedText = NSAttributedString {
@@ -56,10 +58,10 @@ import UIKit
         self.replyContent.attributedText = self.constructReplyContent(message: message, replyTo: replyTo)
         if message.body.type == .image || message.body.type == .video {
             self.replyIcon.isHidden = false
-            self.constructIcon(message: message)
         } else {
             self.replyIcon.isHidden = true
         }
+        self.constructIcon(message: message)
     }
     
     required init?(coder: NSCoder) {
@@ -67,17 +69,22 @@ import UIKit
     }
     
     private func constructReplyContent(message: ChatMessage,replyTo: String) -> NSAttributedString {
-        let showName = message.user?.nickName ?? message.from
         let reply = NSMutableAttributedString()
         if let icon = message.replyIcon?.withTintColor(Theme.style == .dark ? Color.theme.neutralColor6:Color.theme.neutralColor5) {
             reply.append(NSAttributedString {
                 ImageAttachment(icon, bounds: CGRect(x: 0, y: -3.5, width: 16, height: 16))
             })
         }
-        reply.append(NSAttributedString {
-            AttributedText("  "+message.showType).font(Font.theme.labelSmall).foregroundColor(Theme.style == .dark ? Color.theme.neutralColor6:Color.theme.neutralColor5)
-            AttributedText(message.showContent).font(Font.theme.bodySmall).foregroundColor(Theme.style == .dark ? Color.theme.neutralColor6:Color.theme.neutralColor5)
-        })
+        if message.body.type == .text {
+            reply.append(NSAttributedString {
+                AttributedText(message.showContent).font(Font.theme.bodySmall).foregroundColor(Theme.style == .dark ? Color.theme.neutralColor6:Color.theme.neutralColor5)
+            })
+        } else {
+            reply.append(NSAttributedString {
+                AttributedText("  "+message.showType).font(Font.theme.labelSmall).foregroundColor(Theme.style == .dark ? Color.theme.neutralColor6:Color.theme.neutralColor5)
+                AttributedText("  "+message.showContent).font(Font.theme.bodySmall).foregroundColor(Theme.style == .dark ? Color.theme.neutralColor6:Color.theme.neutralColor5)
+            })
+        }
         return reply
     }
     
@@ -101,6 +108,14 @@ import UIKit
         case .voice: return self.replyAudioImage
         case .video: return self.replyVideoImage
         case .file: return self.replyFileImage
+        case .combine: return self.replyHistoryImage
+        case .custom:
+            if let body = message.body as? ChatCustomMessageBody {
+                if body.event == EaseChatUIKit_user_card_message {
+                    return self.replyContactImage
+                }
+            }
+            return nil
         default:
             return nil
         }
@@ -122,7 +137,9 @@ extension MessageInputReplyView: ThemeSwitchProtocol {
         self.backgroundColor = style == .dark ? UIColor.theme.neutralColor2:UIColor.theme.neutralColor95
         self.line.backgroundColor(style == .dark ? UIColor.theme.neutralColor3:UIColor.theme.neutralColor8)
         if style == .light {
-            self.cancelImage?.withTintColor(UIColor.theme.neutralColor3)
+            self.cancelImage = self.cancelImage?.withTintColor(UIColor.theme.neutralColor3)
+        } else {
+            self.cancelImage = self.cancelImage?.withTintColor(UIColor.theme.neutralColor5)
         }
         self.cancel.setImage(self.cancelImage, for: .normal)
     }

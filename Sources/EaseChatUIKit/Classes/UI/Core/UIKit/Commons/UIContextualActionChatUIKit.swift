@@ -1,6 +1,6 @@
 //
 //  UIContextualActionCutom.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/7.
 //
@@ -9,12 +9,12 @@ import UIKit
 
 @objc public enum UIContextualActionType: UInt {
     case pin
-    case more
     case unpin
     case delete
     case mute
     case unmute
     case read
+    case more
 }
 
 @objcMembers open class UIContextualActionChatUIKit: UIContextualAction {

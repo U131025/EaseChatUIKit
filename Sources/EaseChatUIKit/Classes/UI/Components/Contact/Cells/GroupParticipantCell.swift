@@ -1,6 +1,6 @@
 //
 //  GroupParticipantCell.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/27.
 //
@@ -15,7 +15,7 @@ import UIKit
     }()
     
     lazy var avatar: ImageView = {
-        ImageView(frame: CGRect(x: self.display == .normal ? 16:self.checkbox.frame.maxX+12, y: (self.contentView.frame.height-40)/2.0, width: 40, height: 40)).contentMode(.scaleAspectFit).backgroundColor(.clear).cornerRadius(Appearance.avatarRadius)
+        ImageView(frame: CGRect(x: self.display == .normal ? 16:self.checkbox.frame.maxX+12, y: (self.contentView.frame.height-40)/2.0, width: 40, height: 40)).contentMode(.scaleAspectFill).backgroundColor(.clear).cornerRadius(Appearance.avatarRadius).contentMode(.scaleAspectFill)
     }()
     
     lazy var nickName: UILabel = {
@@ -28,9 +28,9 @@ import UIKit
     
     public private(set) var display = ContactDisplayStyle.normal
     
-    @objc public required convenience init(displayStyle: ContactDisplayStyle,identifier: String?) {
-        self.init(style: .default, reuseIdentifier: identifier)
+    @objc public required init(displayStyle: ContactDisplayStyle,identifier: String?) {
         self.display = displayStyle
+        super.init(style: .default, reuseIdentifier: identifier)
         if displayStyle == .normal {
             self.contentView.addSubViews([self.avatar,self.nickName,self.separatorLine])
         } else {
@@ -43,20 +43,24 @@ import UIKit
     }
     
     
-    @objc public func refresh(profile: EaseProfileProtocol) {
+    @objc public func refresh(profile: ChatUserProfileProtocol) {
         self.avatar.image(with: profile.avatarURL, placeHolder: Appearance.avatarPlaceHolder)
-        self.nickName.text = profile.nickName.isEmpty ? profile.id:profile.nickName
-        if self.display == .withCheckBox,let item = profile as? EaseProfile {
-            self.checkbox.image = UIImage(named: item.selected ? "select":"unselect", in: .chatBundle, compatibleWith: nil)
+        self.nickName.text = profile.nickname.isEmpty ? profile.id:profile.nickname
+        if self.display == .withCheckBox,let item = profile as? ChatUserProfile {
+            self.checkbox.image = UIImage(chatNamed: item.selected ? "select":"unselect")
         }
     }
     
-    @objc public func refresh(profile: EaseProfileProtocol,keyword: String) {
-        let nickName = profile.nickName.isEmpty ? profile.id:profile.nickName
+    @objc public func refresh(profile: ChatUserProfileProtocol,keyword: String) {
+        let nickName = profile.nickname.isEmpty ? profile.id:profile.nickname
         self.nickName.attributedText = self.highlightKeywords(keyword: keyword, in: nickName)
-        self.avatar.image(with: profile.avatarURL, placeHolder: profile.type == .chat ? Appearance.conversation.singlePlaceHolder:Appearance.conversation.groupPlaceHolder)
-        if self.display == .withCheckBox,let item = profile as? EaseProfile {
-            self.checkbox.image = UIImage(named: item.selected ? "select":"unselect", in: .chatBundle, compatibleWith: nil)
+        if profile.avatarURL.lowercased() == "all" {
+            self.avatar.image = UIImage(chatNamed: "all")
+        } else {
+            self.avatar.image(with: profile.avatarURL, placeHolder:Appearance.conversation.singlePlaceHolder)
+        }
+        if self.display == .withCheckBox,let item = profile as? ChatUserProfile {
+            self.checkbox.image = UIImage(chatNamed: item.selected ? "select":"unselect")
         }
     }
     
@@ -67,7 +71,7 @@ import UIKit
         if !keyword.isEmpty {
             var range = (string as NSString).range(of: keyword, options: .caseInsensitive)
             while range.location != NSNotFound {
-                attributedString.addAttribute(.foregroundColor, value: Theme.style == .dark ? UIColor.theme.primaryColor6:UIColor.theme.primaryColor5, range: range)
+                attributedString.addAttribute(.foregroundColor, value: Theme.style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor, range: range)
                 let remainingRange = NSRange(location: range.location + range.length, length: string.count - (range.location + range.length))
                 range = (string as NSString).range(of: keyword, options: .caseInsensitive, range: remainingRange)
             }

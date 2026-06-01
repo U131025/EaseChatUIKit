@@ -1,6 +1,6 @@
 //
 //  PageContainer.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/9/1.
 //
@@ -65,8 +65,8 @@ public final class PageContainer:  UIView {
      
      - Returns: A new `PageContainer` instance.
      */
-    @objc public convenience init(frame: CGRect, viewControllers: [UIViewController],indicators: [String]) {
-        self.init(frame: frame)
+    @objc public init(frame: CGRect, viewControllers: [UIViewController],indicators: [String]) {
+        super.init(frame: frame)
         self.indicators = indicators
         self.controllers = viewControllers
         self.pageController.setViewControllers([viewControllers[0]], direction: .forward, animated: false)

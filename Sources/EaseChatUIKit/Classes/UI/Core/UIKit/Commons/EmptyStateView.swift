@@ -1,6 +1,6 @@
 //
 //  EmptyView.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/9/18.
 //
@@ -40,8 +40,8 @@ import UIKit
     /// - Parameters:
     ///   - frame: CGRect
     ///   - emptyImage: UIImage?
-    @objc public required convenience init(frame: CGRect,emptyImage: UIImage?,onRetry: @escaping () -> ()) {
-        self.init(frame: frame)
+    @objc public required init(frame: CGRect,emptyImage: UIImage?,onRetry: @escaping () -> ()) {
+        super.init(frame: frame)
         self.retryClosure = onRetry
         self.setupView()
         self.imageContainer.image = emptyImage
@@ -55,7 +55,7 @@ import UIKit
         self.addSubview(self.imageContainer)
         self.imageContainer.translatesAutoresizingMaskIntoConstraints = false
         self.imageContainer.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        self.imageContainer.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        self.imageContainer.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -NavigationHeight).isActive = true
         self.imageContainer.widthAnchor.constraint(equalToConstant: 107).isActive = true
         self.imageContainer.heightAnchor.constraint(equalToConstant: 107).isActive = true
         

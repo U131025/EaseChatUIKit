@@ -1,6 +1,6 @@
 //
 //  AlertMessageCell.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/12/4.
 //
@@ -14,7 +14,7 @@ import UIKit
     }()
     
     public private(set) lazy var content: UILabel = {
-        UILabel(frame: CGRect(x: 16, y: 32, width: ScreenWidth-32, height: 16)).textAlignment(.center).backgroundColor(.clear)
+        UILabel(frame: CGRect(x: 16, y: 32, width: ScreenWidth-32, height: 16)).textAlignment(.center).backgroundColor(.clear).tag(bubbleTag)
     }()
 
     internal override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,8 +34,18 @@ import UIKit
         self.replyContent.isHidden = true
         self.bubbleWithArrow.isHidden = true
         self.bubbleMultiCorners.isHidden = true
+        self.topicView.isHidden = true
+        self.checkbox.isHidden = true
+        self.reactionView.isHidden = true
         self.contentView.addSubViews([self.time,self.content])
+        self.addGestureTo(view: self.content, target: self)
         self.switchTheme(style: Theme.style)
+    }
+    
+    open override func clickAction(gesture: UITapGestureRecognizer) {
+        if !self.entity.message.alertMessageThreadId.isEmpty {
+            self.clickAction?(.cell,self.entity)
+        }
     }
     
     open override func layoutSubviews() {
@@ -44,7 +54,9 @@ import UIKit
         self.content.frame = CGRect(x: 16, y: 32, width: ScreenWidth-32, height: 16)
     }
     
-    public override func refresh(entity: MessageEntity) {
+    open override func refresh(entity: MessageEntity) {
+        self.checkbox.isHidden = true
+        self.entity = entity
         self.content.attributedText = entity.content
         self.time.text = entity.message.showDate
     }
@@ -53,3 +65,5 @@ import UIKit
         self.time.textColor = style == .dark ? UIColor.theme.neutralColor6:UIColor.theme.neutralColor7
     }
 }
+
+

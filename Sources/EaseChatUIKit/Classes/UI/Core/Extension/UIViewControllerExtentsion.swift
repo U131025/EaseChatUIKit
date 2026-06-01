@@ -50,7 +50,7 @@ extension UIViewController {
     ///   - content: ``String`` value.
     ///   - duration: ``TimeInterval``.How long show
     public func showToast(toast content: String, duration: TimeInterval = 2.0, delay: TimeInterval = 0.0) {
-        let toastView = UIVisualEffectView(effect: UIBlurEffect(style: .light)).cornerRadius(.medium)
+        let toastView = UIVisualEffectView(effect: UIBlurEffect(style: Theme.style == .dark ? .light:.dark)).cornerRadius(.medium)
         toastView.alpha = 0
         toastView.backgroundColor = Theme.style == .dark ? UIColor.theme.barrageLightColor3:UIColor.theme.barrageDarkColor3
         toastView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,8 +73,8 @@ extension UIViewController {
         toastView.contentView.addSubview(label)
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: toastView.leadingAnchor, constant: 10),
-            label.trailingAnchor.constraint(equalTo: toastView.trailingAnchor, constant: -10),
+            label.leadingAnchor.constraint(equalTo: toastView.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(equalTo: toastView.trailingAnchor, constant: -16),
             label.topAnchor.constraint(equalTo: toastView.topAnchor, constant: 8),
             label.bottomAnchor.constraint(equalTo: toastView.bottomAnchor, constant: -8)
         ])
@@ -82,10 +82,8 @@ extension UIViewController {
         UIView.animate(withDuration: 0.3, delay: delay, options: .curveEaseOut, animations: {
             toastView.alpha = 1
         }, completion: { (finished) in
-            if finished {
-                DispatchQueue.main.asyncAfter(deadline: .now()+duration) {
-                    toastView.removeFromSuperview()
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now()+duration) {
+                toastView.removeFromSuperview()
             }
         })
     }

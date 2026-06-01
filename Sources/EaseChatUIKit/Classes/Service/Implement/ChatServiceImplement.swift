@@ -1,6 +1,6 @@
 //
 //  ChatServiceImplement.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/6.
 //
@@ -15,7 +15,7 @@ import UIKit
     @objc required public init(to: String) {
         super.init()
         self.to = to
-        ChatClient.shared().chatManager?.add(self, delegateQueue: .main)
+        ChatClient.shared().chatManager?.add(self, delegateQueue: nil)
     }
     
     deinit {
@@ -24,6 +24,32 @@ import UIKit
 }
 
 extension ChatServiceImplement: ChatService {
+    public func fetchChatThreadHistoryMessages(conversationId: String, start messageId: String, pageSize: UInt, completion: @escaping (ChatError?, [ChatMessage]) -> Void) {
+        ChatClient.shared().chatManager?.asyncFetchHistoryMessages(fromServer: conversationId, conversationType: .groupChat, startMessageId: messageId, fetch: .down, pageSize: Int32(pageSize), completion: { result, error in
+            completion(error, result?.list ?? [])
+        })
+    }
+    
+    
+    public func reaction(reaction: String, message: ChatMessage, completion: @escaping (ChatError?) -> Void) {
+        let messageReaction = ChatClient.shared().chatManager?.getMessageWithMessageId(message.messageId)?.reactionList?.first(where: { $0.reaction ?? "" == reaction })
+        if messageReaction == nil {
+            ChatClient.shared().chatManager?.addReaction(reaction, toMessage: message.messageId, completion: { error in
+                completion(error)
+            })
+        } else {
+            if messageReaction!.isAddedBySelf {
+                ChatClient.shared().chatManager?.removeReaction(reaction, fromMessage: message.messageId, completion: { error in
+                    completion(error)
+                })
+            } else {
+                ChatClient.shared().chatManager?.addReaction(reaction, toMessage: message.messageId, completion: { error in
+                    completion(error)
+                })
+            }
+        }
+    }
+    
     public func edit(messageId: String, text: String, completion: @escaping (ChatError?, ChatMessage?) -> Void) {
         let rawMessage = ChatClient.shared().chatManager?.getMessageWithMessageId(messageId)
         let body = ChatTextMessageBody(text: text)
@@ -55,22 +81,11 @@ extension ChatServiceImplement: ChatService {
     }
     
     public func send(message: ChatMessage, completion: @escaping (ChatError?, ChatMessage?) -> Void) {
-        if let exist = ChatClient.shared().chatManager?.getMessageWithMessageId(message.messageId) {
-            ChatClient.shared().chatManager?.resend(exist, progress: nil,completion: { [weak self] message, error in
-                self?.pushSendNotification(message: message)
-                completion(error,message)
-            })
-        } else {
-            let message = message
-            if let type = ChatClient.shared().chatManager?.getConversationWithConvId(message.to)?.type {
-                message.chatType = (type.rawValue == 0 ? .chat:.groupChat)
-            }
-            
-            ChatClient.shared().chatManager?.send(message, progress: nil, completion: { [weak self] message, error in
-                self?.pushSendNotification(message: message)
-                completion(error,message)
-            })
-        }
+        let message = message
+        ChatClient.shared().chatManager?.send(message, progress: nil, completion: { [weak self] message, error in
+//            self?.pushSendNotification(message: message)
+            completion(error,message)
+        })
     }
     
     private func pushSendNotification(message: ChatMessage?) {
@@ -81,6 +96,7 @@ extension ChatServiceImplement: ChatService {
     
     public func removeLocalMessage(messageId: String) {
         ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.deleteMessage(withId: messageId, error: nil)
+        
     }
     
     public func removeHistoryMessages() {
@@ -95,37 +111,118 @@ extension ChatServiceImplement: ChatService {
         ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.markAllMessages(asRead: nil)
     }
     
-    public func loadMessages(start messageId: String, pageSize: UInt, completion: @escaping (ChatError?, [ChatMessage]) -> Void) {
-        if EaseChatUIKitClient.shared.option.option_chat.loadHistoryMessages {
-            ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.loadMessagesStart(fromId: messageId, count: Int32(pageSize), searchDirection: .up,completion: { messages, error in
+    public func loadMessages(start messageId: String, pageSize: UInt, searchMessage: Bool, completion: @escaping (ChatError?, [ChatMessage]) -> Void) {
+        if ChatUIKitContext.shared?.chatCache == nil {
+            ChatUIKitContext.shared?.chatCache = [String:ChatUserProfileProtocol]()
+        }
+        if ChatUIKitClient.shared.option.option_UI.loadLocalHistoryMessages {
+            ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.loadMessagesStart(fromId: messageId, count: Int32(pageSize), searchDirection: searchMessage ? .down:.up,completion: { messages, error in
+                if error == nil,let messages = messages {
+                    for message in messages {
+                        if let dic = message.ext?["ease_chat_uikit_user_info"] as? Dictionary<String,Any> {
+                            let user = ChatUIKitContext.shared?.userCache?[message.from] as? ChatUserProfile
+                            if user?.modifyTime ?? 0 < message.timestamp {
+                                let user = ChatUserProfile()
+                                user.setValuesForKeys(dic)
+                                if user.id.isEmpty {
+                                    user.id = message.from
+                                }
+                                user.modifyTime = message.timestamp
+                                ChatUIKitContext.shared?.chatCache?[message.from] = user
+                            }
+                        }
+                        if let dic = message.ext?["ease_chat_uikit_text_url_preview"] as? Dictionary<String,String>,let url = dic["url"] {
+                            let content = URLPreviewManager.HTMLContent()
+                            if let description = dic["description"] {
+                                content.descriptionHTML = description
+                            }
+                            if let imageURL = dic["imageUrl"] {
+                                content.imageURL = imageURL
+                            }
+                            if let title = dic["title"] {
+                                content.title = title
+                                URLPreviewManager.caches[url] = content
+                            }
+                            content.towards = message.direction == .send ? .right:.left
+                        }
+                    }
+                }
                 completion(error,messages ?? [])
             })
         } else {
             let type = ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.type ?? .chat
-            ChatClient.shared().chatManager?.asyncFetchHistoryMessages(fromServer: self.to, conversationType: type, startMessageId: messageId, fetch: .up, pageSize: Int32(pageSize),completion: { result, error in
+            ChatClient.shared().chatManager?.asyncFetchHistoryMessages(fromServer: self.to, conversationType: type, startMessageId: messageId, fetch: searchMessage ? .down:.up, pageSize: Int32(pageSize),completion: { result, error in
+                if error == nil,let messages = result?.list {
+                    for message in messages {
+                        if let dic = message.ext?["ease_chat_uikit_user_info"] as? Dictionary<String,Any> {
+                            let user = ChatUIKitContext.shared?.userCache?[message.from] as? ChatUserProfile
+                            if user?.modifyTime ?? 0 < message.timestamp {
+                                let user = ChatUserProfile()
+                                user.setValuesForKeys(dic)
+                                if user.id.isEmpty {
+                                    user.id = message.from
+                                }
+                                user.modifyTime = message.timestamp
+                                ChatUIKitContext.shared?.chatCache?[message.from] = user
+                            }
+                        }
+                    }
+                }
                 completion(error,result?.list ?? [])
             })
         }
     }
     
     public func searchMessage(keyword: String, pageSize: UInt, userId: String, completion: @escaping (ChatError?, [ChatMessage]) -> Void) {
-        ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.loadMessages(withKeyword: keyword, timestamp: 0, count: Int32(pageSize), fromUser: userId, searchDirection: .up,completion: { messages, error in
+        ChatClient.shared().chatManager?.getConversationWithConvId(self.to)?.loadMessages(withKeyword: keyword, timestamp: -1, count: Int32(pageSize), fromUser: userId, searchDirection: .up, scope: .content, completion: { messages, error in
             completion(error,messages ?? [])
+        })
+    }
+    
+    public func translateMessage(message: ChatMessage, completion: @escaping (ChatError?, ChatMessage?) -> Void) {
+        ChatClient.shared().chatManager?.translate(message, targetLanguages: [Appearance.chat.targetLanguage.rawValue], completion: { message,error in
+            completion(error,message)
+        })
+    }
+    
+    public func pinMessage(messageId: String, completion: @escaping (ChatError?) -> Void) {
+        ChatClient.shared().chatManager?.pinMessage(messageId, completion: { message,error in
+            completion(error)
+        })
+    }
+    
+    public func unpinMessage(messageId: String, completion: @escaping (ChatError?) -> Void) {
+        ChatClient.shared().chatManager?.unpinMessage(messageId, completion: { message,error in
+            completion(error)
+        })
+    }
+    
+    public func pinnedMessages(conversationId: String, completion: @escaping ([ChatMessage]?, ChatError?) -> Void) {
+        ChatClient.shared().chatManager?.getPinnedMessages(fromServer: conversationId, completion: { messages, error in
+            completion(messages,error)
         })
     }
 }
 
 extension ChatServiceImplement: ChatEventsListener {
     
+    public func cmdMessagesDidReceive(_ aCmdMessages: [ChatMessage]) {
+        for listener in self.responseDelegates.allObjects {
+            for message in aCmdMessages {
+                listener.onCMDMessageDidReceived(message: message)
+            }
+        }
+    }
+    
+    public func onMessagePinChanged(_ messageId: String, conversationId: String, operation pinOperation: MessagePinOperation, pinInfo: MessagePinInfo) {
+        for listener in self.responseDelegates.allObjects {
+            listener.onMessageStickiedTop(conversationId: conversationId, messageId: messageId, operation: pinOperation, info: pinInfo)
+        }
+    }
+    
     public func messagesDidReceive(_ aMessages: [ChatMessage]) {
         for listener in self.responseDelegates.allObjects {
             for message in aMessages {
-                if let dic = message.ext?["ease_chat_uikit_user_info"] as? Dictionary<String,Any> {
-                    let profile = EaseProfile()
-                    profile.setValuesForKeys(dic)
-                    EaseChatUIKitContext.shared?.chatCache?[message.from] = profile
-                }
-                
                 listener.onMessageDidReceived(message: message)
             }
         }
@@ -172,5 +269,22 @@ extension ChatServiceImplement: ChatEventsListener {
             }
         }
     }
+    
+    public func onMessageContentChanged(_ message: ChatMessage, operatorId: String, operationTime: UInt) {
+        for listener in self.responseDelegates.allObjects {
+            listener.onMessageDidEdited(message: message)
+        }
+    }
+    
+    public func onConversationRead(_ from: String, to: String) {
+        if ChatUIKitContext.shared?.currentUserId ?? "" != from {
+            for listener in self.responseDelegates.allObjects {
+                listener.messagesAlreadyRead(conversationId: from)
+            }
+        } else {
+           //如果是多设备服务端会投递对方已读的状态给其他设备
+        }
+    }
+    
 }
 

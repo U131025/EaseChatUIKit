@@ -1,6 +1,6 @@
 //
 //  ArrayExtension.swift
-//  ZSwiftBaseLib
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2020/12/17.
 //
@@ -23,7 +23,7 @@ import Foundation
 
 // MARK: - ArrayExtension
 public extension Array {
-    var chatroom: ChatWrapper<Array<Element>> {
+    var chat: ChatWrapper<Array<Element>> {
         return ChatWrapper.init(self)
     }
     
@@ -47,7 +47,7 @@ public extension Array {
             let data = try JSONSerialization.data(withJSONObject: self, options: [])
             return String(data: data, encoding: .utf8) ?? ""
         } catch {
-            assert(false, "\(error)")
+            consoleLogInfo("parser failed: \(error.localizedDescription)", type: .error)
         }
         return ""
     }

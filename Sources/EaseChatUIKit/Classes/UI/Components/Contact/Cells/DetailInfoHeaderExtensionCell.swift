@@ -1,6 +1,6 @@
 //
 //  DetailInfoHeaderExtensionCell.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/22.
 //
@@ -10,7 +10,7 @@ import UIKit
 @objc open class DetailInfoHeaderExtensionCell: UICollectionViewCell {
     
     public private(set) lazy var icon: UIImageView = {
-        UIImageView(frame: .zero).backgroundColor(.clear).contentMode(.scaleAspectFit)
+        UIImageView(frame: .zero).backgroundColor(.clear).contentMode(.scaleAspectFill)
     }()
     
     public private(set) lazy var title: UILabel = {
@@ -50,6 +50,7 @@ import UIKit
 extension DetailInfoHeaderExtensionCell: ThemeSwitchProtocol {
     public func switchTheme(style: ThemeStyle) {
         self.contentView.backgroundColor = style == .dark ? UIColor.theme.neutralColor3:UIColor.theme.neutralColor95
-        self.title.textColor = style == .dark ? UIColor.theme.primaryColor6:UIColor.theme.primaryColor5
+        self.title.textColor = style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor
+        
     }
 }

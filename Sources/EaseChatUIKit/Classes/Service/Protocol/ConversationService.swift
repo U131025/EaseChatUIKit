@@ -1,6 +1,6 @@
 //
 //  ChannelService.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/1.
 //
@@ -26,8 +26,7 @@ import Foundation
     func unregisterEmergencyListener(listener: ConversationEmergencyListener)
     
     /// Get all conversations from database.
-    /// - Returns: Array of the ``ChatConversation`` object.
-    func loadExistConversations(completion: @escaping ([ConversationInfo],ChatError?) -> Void)
+    func loadExistConversations()
     
     /// Get the session where the server is set to silent state
     /// - Parameters:
@@ -84,7 +83,6 @@ import Foundation
     /// - Parameters:
     ///   - conversationId: The ID of the conversation.
     ///   - type: The ``ChatConversationType`` of the conversation.
-    /// - Returns: ``ChatConversation`` object.
     func loadIfNotExistCreate(conversationId: String,type: ChatConversationType) -> ChatConversation?
 }
 
@@ -114,7 +112,7 @@ import Foundation
     case clearSilent
     case fetchSilent
     case fetchPinned
-    case loadAllMessageFirstLoadUIKit
+    case loadAllConversationFirstLoadUIKit
 }
 
 @objc public protocol ConversationEmergencyListener: NSObjectProtocol {
@@ -130,4 +128,8 @@ import Foundation
     ///   - message: ``ChatMessage``
     ///   - info: ``ConversationInfo``
     func onConversationLastMessageUpdate(message: ChatMessage,info: ConversationInfo)
+    
+    /// You'll receive the result on some conversation last message update.
+    /// - Parameter unreadCount: Total unread count.
+    func onConversationsUnreadCountUpdate(unreadCount: UInt)
 }

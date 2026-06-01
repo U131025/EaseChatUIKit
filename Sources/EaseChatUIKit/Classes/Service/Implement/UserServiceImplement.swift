@@ -1,11 +1,15 @@
 //
 //  UserServiceImplement.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/8/30.
 //
 
 import UIKit
+
+public var saveIdentifier: String {
+    ChatClient.shared().options.appkey+(ChatUIKitContext.shared?.currentUserId ?? "")
+}
 
 @objc public final class UserServiceImplement: NSObject {
         
@@ -13,22 +17,36 @@ import UIKit
     
     /// Init method
     /// - Parameters:
-    ///   - userInfo: ``EaseProfileProtocol``
+    ///   - userInfo: ``ChatUserProfileProtocol``
     ///   - token: Chat token
     ///   - completion: Callback,login successful or failure.
-    @objc public init(userInfo: EaseProfileProtocol,token: String,completion: @escaping (ChatError?) -> Void) {
+    @objc public init(userInfo: ChatUserProfileProtocol,token: String,completion: @escaping (ChatError?) -> Void) {
         super.init()
+        self.registerEventListener()
         self.login(userId: userInfo.id.lowercased(), token: token) { success, error in
             if !success {
                 let errorInfo = error?.errorDescription ?? ""
                 consoleLogInfo(errorInfo, type: .error)
-                completion(error)
             }
             completion(error)
         }
     }
     
+    @objc public override init() {
+        super.init()
+        self.registerEventListener()
+    }
+    
+    @objc public func registerEventListener() {
+        ChatClient.shared().add(self, delegateQueue: nil)
+    }
+    
+    @objc public func removeEventListener() {
+        ChatClient.shared().removeDelegate(self)
+    }
+    
     deinit {
+        removeEventListener()
         consoleLogInfo("\(self.swiftClassName ?? "") deinit", type: .debug)
     }
 
@@ -49,62 +67,62 @@ extension UserServiceImplement:UserServiceProtocol {
         }
     }
     
-    public func userInfo(userId: String, completion: @escaping (EaseProfileProtocol?,ChatError?) -> Void) {
-        self.userInfos(userIds: [userId]) { infos,error in
-            completion(infos.first,error)
-        }
+    public func userInfo(userId: String, completion: @escaping (ChatUserProfileProtocol?,ChatError?) -> Void) {
+//        self.userInfos(userIds: [userId]) { infos,error in
+//            completion(infos.first,error)
+//        }
     }
     
-    public func userInfos(userIds: [String], completion: @escaping ([EaseProfileProtocol],ChatError?) -> Void) {
-        ChatClient.shared().userInfoManager?.fetchUserInfo(byId: userIds,completion: { [weak self] infoMap, error in
-            guard let dic = infoMap as? Dictionary<String,UserInfo> else { return }
-            var users = [EaseProfile]()
-            for userId in userIds {
-                if let info = dic[userId] {
-                    if let user = self?.convertToUser(info: info) {
-                        users.append(user)
-                    }
-                }
-            }
-            completion(users,error)
-        })
+    public func userInfos(userIds: [String], completion: @escaping ([ChatUserProfileProtocol],ChatError?) -> Void) {
+//        ChatClient.shared().userInfoManager?.fetchUserInfo(byId: userIds,completion: { [weak self] infoMap, error in
+//            guard let dic = infoMap as? Dictionary<String,UserInfo> else { return }
+//            var users = [EaseProfile]()
+//            for userId in userIds {
+//                if let info = dic[userId] {
+//                    if let user = self?.convertToUser(info: info) {
+//                        users.append(user)
+//                    }
+//                }
+//            }
+//            completion(users,error)
+//        })
     }
     
-    public func updateUserInfo(userInfo: EaseProfileProtocol, completion: @escaping (Bool, ChatError?) -> Void) {
-        ChatClient.shared().userInfoManager?.updateOwn(self.convertToUserInfo(user: userInfo),completion: { user, error in
-            completion(error == nil,error)
-        })
+    public func updateUserInfo(userInfo: ChatUserProfileProtocol, completion: @escaping (Bool, ChatError?) -> Void) {
+//        if userInfo.id == ChatUIKitContext.shared?.currentUserId ?? "" {
+//            ChatUIKitContext.shared?.currentUser = userInfo
+//            ChatUIKitContext.shared?.userCache?[userInfo.id] = userInfo
+//        } else {
+//            ChatUIKitContext.shared?.updateCache(type: .chat, profile: userInfo)
+//            ChatUIKitContext.shared?.updateCache(type: .user, profile: userInfo)
+//            ChatUIKitContext.shared?.updateCache(type: .group, profile: userInfo)
+//        }
     }
     
     public func login(userId: String, token: String, completion: @escaping (Bool, ChatError?) -> Void) {
-        if token.hasPrefix("00") {
-            ChatClient.shared().login(withUsername: userId, agoraToken: token) { user_id, error in
-                completion(error == nil,error)
-            }
-        } else {
-            ChatClient.shared().login(withUsername: userId, token: token) { user_id, error in
-                completion(error == nil,error)
-            }
+        ChatClient.shared().login(withUsername: userId, token: token) { user_id, error in
+            completion(error == nil,error)
         }
     }
     
-    public func logout(completion: @escaping (Bool, ChatError?) -> Void) {
-        ChatClient.shared().logout(false)
-        completion(true,nil)
+    public func logout(unbindNotificationDeviceToken: Bool = false, completion: @escaping (Bool, ChatError?) -> Void) {
+        ChatClient.shared().logout(unbindNotificationDeviceToken) { error in
+            completion(error == nil,error)
+        }
     }
     
-    private func convertToUser(info: UserInfo) -> EaseProfile {
-        let user = EaseProfile()
+    private func convertToUser(info: UserInfo) -> ChatUserProfile {
+        let user = ChatUserProfile()
         user.id = info.userId ?? ""
-        user.nickName = info.nickname ?? ""
+        user.nickname = info.nickname ?? ""
         user.avatarURL = info.avatarUrl ?? ""
         return user
     }
     
-    private func convertToUserInfo(user: EaseProfileProtocol) -> UserInfo {
+    private func convertToUserInfo(user: ChatUserProfileProtocol) -> UserInfo {
         let info = UserInfo()
         info.userId = user.id
-        info.nickname = user.nickName
+        info.nickname = user.nickname
         info.avatarUrl = user.avatarURL
         return info
     }
@@ -155,6 +173,12 @@ extension UserServiceImplement: ChatClientListener {
     public func userAccountDidForced(toLogout aError: ChatError?) {
         for response in self.responseDelegates.allObjects {
             response.userAccountDidForcedToLogout(error: aError)
+        }
+    }
+    
+    public func autoLoginDidCompleteWithError(_ aError: ChatError?) {
+        for response in self.responseDelegates.allObjects {
+            response.onUserAutoLoginCompletion(error: aError)
         }
     }
 }

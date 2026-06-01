@@ -1,6 +1,6 @@
 //
 //  MessageAudioRecordView.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/29.
 //
@@ -48,18 +48,18 @@ import UIKit
     
     private var timer: Timer?
     
-    private let icon = UIImage(named: "mic_on", in: .chatBundle, with: nil)
+    private var icon = UIImage(chatNamed: "mic_on")
     
-    private let trashIcon = UIImage(named: "trash", in: .chatBundle, with: nil)
+    private var trashIcon = UIImage(chatNamed: "trash")
     
-    private let sendIcon = UIImage(named: "send_audio", in: .chatBundle, with: nil)
+    private var sendIcon = UIImage(chatNamed: "send_audio")
     
     public private(set) lazy var recordCover: UIView = {
         UIView(frame: CGRect(x: self.frame.width/2.0-45, y: 60, width: 90, height: 68)).cornerRadius(.large).backgroundColor(UIColor.theme.primaryColor95)
     }()
 
     public private(set) lazy var recordIcon: RippleButton = {
-        RippleButton(type: .custom).frame(CGRect(x: self.frame.width/2.0-35, y: 70, width: 72, height: 48)).cornerRadius(.large).backgroundColor(UIColor.theme.primaryColor5).textColor(UIColor.theme.neutralColor98, .normal).image(self.icon, .normal).addTargetFor(self, action: #selector(buttonAction), for: .touchUpInside)
+        RippleButton(type: .custom).frame(CGRect(x: self.frame.width/2.0-35, y: 70, width: 72, height: 48)).cornerRadius(.large).backgroundColor(UIColor.theme.primaryLightColor).textColor(UIColor.theme.neutralColor98, .normal).image(self.icon, .normal).addTargetFor(self, action: #selector(buttonAction), for: .touchUpInside)
     }()
 
     public private(set) lazy var recordTitle: UILabel = {
@@ -75,7 +75,7 @@ import UIKit
     }()
     
     public private(set) lazy var send: UIButton = {
-        UIButton(type: .custom).frame(CGRect(x: self.recordIcon.frame.maxX+60, y: 76, width: 36, height: 36)).backgroundColor(UIColor.theme.primaryColor5).cornerRadius(.large).image(self.sendIcon, .normal).addTargetFor(self, action: #selector(sendAudio), for: .touchUpInside)
+        UIButton(type: .custom).frame(CGRect(x: self.recordIcon.frame.maxX+60, y: 76, width: 36, height: 36)).backgroundColor(UIColor.theme.primaryLightColor).cornerRadius(.large).image(self.sendIcon, .normal).addTargetFor(self, action: #selector(sendAudio), for: .touchUpInside)
     }()
     
     override init(frame: CGRect) {
@@ -87,10 +87,10 @@ import UIKit
     ///   - frame: ``CGRect``
     ///   - sendClosure: Send closure,contain file url and audio duration.
     ///   - trashClosure: Trash closure.
-    @objc public required convenience init(frame: CGRect,sendClosure: @escaping (URL,Int) -> (),trashClosure: @escaping () -> ()) {
-        self.init(frame: frame)
+    @objc public required init(frame: CGRect,sendClosure: @escaping (URL,Int) -> (),trashClosure: @escaping () -> ()) {
         self.sendAction = sendClosure
         self.trashAction = trashClosure
+        super.init(frame: frame)
         self.addSubViews([self.recordCover,self.recordIcon,self.recordTitle,self.recordAlert,self.trash,self.send])
         self.trash.isHidden = true
         self.send.isHidden = true
@@ -100,6 +100,11 @@ import UIKit
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        AudioTools.shared.stopRecording()
+        AudioTools.shared.stopPlaying()
     }
     
     private func buildTimer() {
@@ -120,6 +125,7 @@ import UIKit
                     self.stopPlay(send: false)
                 }
             }
+            self.recordIcon.isEnabled = true
         }
 
         if let timer = self.timer {
@@ -129,6 +135,7 @@ import UIKit
     
     @objc private func buttonAction() {
         self.recordIcon.isSelected = !self.recordIcon.isSelected
+        self.recordIcon.isEnabled = false
         if self.duration > 0 {
             if self.recordIcon.isSelected {
                 self.startPlay()
@@ -146,24 +153,43 @@ import UIKit
     }
     
     private func startRecord() {
+        if !MediaConvertor.checkRecordPermission() {
+            MediaConvertor.requestRecordPermission { [weak self] success in
+                if success {
+                    self?.accessPassRecord()
+                }
+            }
+            return
+        }
+        self.accessPassRecord()
+    }
+    
+    private func accessPassRecord() {
         self.recordCount = 0
+        self.timer?.invalidate()
+        self.timer = nil
         self.buildTimer()
         self.recordTitle.text = "Recording".chat.localize
         AudioTools.shared.startRecording()
+        self.recordIcon.setImage(nil, for: .normal)
+        self.recordIcon.setTitle("1s", for: .normal)
     }
     
     private func stopRecord() {
+        self.recordIcon.isEnabled = true
         self.recordAlert.text = nil
         self.trash.isHidden = false
         self.send.isHidden = false
         self.duration = self.recordCount
         self.recordCount = 0
         self.timer?.invalidate()
+        self.timer = nil
         self.recordTitle.text = "Play".chat.localize
         AudioTools.shared.stopRecording()
     }
     
     private func startPlay() {
+        self.recordIcon.isEnabled = true
         self.playCount = self.duration
         self.recordTitle.text = "Playing".chat.localize
         self.buildTimer()
@@ -176,20 +202,24 @@ import UIKit
     
     private func stopPlay(send: Bool) {
         self.playCount = self.duration
-        self.recordTitle.text = "Play"
+        self.recordTitle.text = "Play".chat.localize
         self.timer?.invalidate()
+        self.timer = nil
         AudioTools.shared.stopPlaying()
         self.recordIcon.stopAnimation()
+        self.recordIcon.isEnabled = true
     }
     
     @objc private func removeRecord() {
         self.recordAlert.text = nil
-        AudioTools.shared.stopPlaying()
+        self.stopRecord()
+        self.stopPlay(send: false)
         self.recordIcon.stopAnimation()
         self.recordTitle.text = "Record".chat.localize
         self.duration = 0
         self.recordCount = 0
         self.playCount = 0
+        self.recordIcon.isEnabled = true
         self.recordIcon.setTitle(nil, for: .normal)
         self.recordIcon.setImage(self.icon, for: .normal)
         self.trash.isHidden = true
@@ -223,14 +253,12 @@ import UIKit
 
 extension MessageAudioRecordView: ThemeSwitchProtocol {
     public func switchTheme(style: ThemeStyle) {
-        self.backgroundColor = style == .dark ? UIColor.theme.neutralColor1:UIColor.theme.primaryColor98
+        self.backgroundColor = style == .dark ? UIColor.theme.neutralColor1:UIColor.theme.neutralColor98
         self.recordCover.backgroundColor(style == .dark ? UIColor.theme.primaryColor2:UIColor.theme.primaryColor95)
-        self.recordIcon.backgroundColor(style == .dark ? UIColor.theme.primaryColor6:UIColor.theme.primaryColor5)
-        self.send.backgroundColor(style == .dark ? UIColor.theme.primaryColor6:UIColor.theme.primaryColor5)
-        self.trash.backgroundColor(style == .light ? UIColor.theme.neutralColor9:UIColor.theme.neutralColor2)
-        if style == .dark {
-            self.trashIcon?.withTintColor(UIColor.theme.neutralColor7)
-        }
+        self.recordIcon.backgroundColor(style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor)
+        self.send.backgroundColor(style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor)
+        self.trash.backgroundColor(style == .dark ? UIColor.theme.neutralColor2:UIColor.theme.neutralColor9)
+        self.trashIcon = self.trashIcon?.withTintColor(style == .dark ? UIColor.theme.neutralColor7:UIColor.theme.neutralColor5)
         self.trash.setImage(self.trashIcon, for: .normal)
     }
     
@@ -245,7 +273,7 @@ extension MessageAudioRecordView: ThemeSwitchProtocol {
     
     var borderWidth: CGFloat = 5.0
     
-    var rippleRadius: CGFloat = 1.5
+    var rippleRadius: CGFloat = 1.1618
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -278,6 +306,7 @@ extension MessageAudioRecordView: ThemeSwitchProtocol {
     @objc func stopAnimation() {
         self.borderColor = .clear
         self.timer?.invalidate()
+        self.timer = nil
     }
 
     @objc private func handleTimer() {
@@ -300,7 +329,7 @@ extension MessageAudioRecordView: ThemeSwitchProtocol {
         
         let scaleAnimation = CABasicAnimation()
         scaleAnimation.keyPath = "transform.scale"
-        scaleAnimation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(self.rippleRadius, self.rippleRadius, 1.0))
+        scaleAnimation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(self.rippleRadius, self.rippleRadius, 1))
         
         let alphaAnimation = CABasicAnimation()
         alphaAnimation.keyPath = "opacity"

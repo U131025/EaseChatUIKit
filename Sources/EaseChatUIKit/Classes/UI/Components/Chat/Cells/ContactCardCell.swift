@@ -1,6 +1,6 @@
 //
 //  ContactCardCell.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/12/5.
 //
@@ -9,14 +9,18 @@ import UIKit
 
 @objc open class ContactCardCell: MessageCell {
     
-    public private(set) lazy var content: ContactCardView = {
-        ContactCardView(frame: .zero, towards: self.towards).backgroundColor(.clear).tag(200)
+    public private(set) lazy var content: UIView = {
+        self.createContent()
     }()
+    
+    @objc open func createContent() -> UIView {
+        ContactCardView(frame: .zero, towards: self.towards).backgroundColor(.clear).tag(bubbleTag)
+    }
 
     @objc required public init(towards: BubbleTowards,reuseIdentifier: String) {
         super.init(towards: towards, reuseIdentifier: reuseIdentifier)
         if Appearance.chat.bubbleStyle == .withArrow {
-            self.bubbleWithArrow.addSubview(self.content)
+            self.bubbleWithArrow.bubble.addSubview(self.content)
         } else {
             self.bubbleMultiCorners.addSubview(self.content)
         }
@@ -27,12 +31,11 @@ import UIKit
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func refresh(entity: MessageEntity) {
+    open override func refresh(entity: MessageEntity) {
         super.refresh(entity: entity)
         let frame = Appearance.chat.bubbleStyle == .withArrow ? self.bubbleWithArrow.frame:self.bubbleMultiCorners.frame
-        let size = frame.size
-        self.content.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        self.content.refresh(entity: entity)
+        self.content.frame = CGRect(x: 0, y: 0, width: frame.width-(Appearance.chat.bubbleStyle == .withArrow ? 5:0), height: frame.height)
+        (self.content as? ContactCardView)?.refresh(entity: entity)
     }
 
 }

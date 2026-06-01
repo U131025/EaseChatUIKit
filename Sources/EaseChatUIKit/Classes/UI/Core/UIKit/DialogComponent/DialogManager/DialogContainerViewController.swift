@@ -1,6 +1,6 @@
 //
 //  DialogContainerViewController.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/9/6.
 //
@@ -14,9 +14,9 @@ import UIKit
 @objc final public class DialogContainerViewController:  UIViewController, PresentedViewType {
     
    
-    public var presentedViewComponent: PresentedViewComponent? = PresentedViewComponent(contentSize: Appearance.alertContainerConstraintsSize,destination: .bottomBaseline, canTapBGDismiss: true)
+    public var presentedViewComponent: PresentedViewComponent? = PresentedViewComponent(contentSize: Appearance.pageContainerConstraintsSize,destination: .bottomBaseline,canTapBGDismiss: true)
 
-    var customView: UIView?
+    public var customView: UIView?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -35,13 +35,13 @@ import UIKit
 
      - Returns: A new `DialogContainerViewController` instance.
      */
-    @objc public convenience init(custom: UIView,constraintsSize:CGSize = .zero,canPanDismiss: Bool = false) {
-        self.init()
+    @objc public init(custom: UIView,constraintsSize:CGSize = .zero,canPanDismiss: Bool = true) {
         if constraintsSize != .zero {
             self.presentedViewComponent?.contentSize = constraintsSize
             self.presentedViewComponent?.canTapBGDismiss = canPanDismiss
         }
         self.customView = custom
+        super.init(nibName: nil, bundle: nil)
     }
 
     override public func viewDidLoad() {

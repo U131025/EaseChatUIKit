@@ -1,6 +1,6 @@
 //
 //  ImageLoader.swift
-//  ChatroomUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/9/1.
 //
@@ -22,25 +22,34 @@ import Combine
  */
 
 /// An Image loader
-struct ImageLoader {
-    static let shared = ImageLoader()
+public struct ImageLoader {
+    public static let shared = ImageLoader()
     private let cache = ImageCacheManager.shared
     
     /// Load image from url.
     /// - Parameter url: image url
     /// - Returns: An
     /// - How to user? See above the ImageLoader.
-    func loadImage(from url: URL) -> AnyPublisher<UIImage?, Never> {
+    public func loadImage(from url: URL) -> AnyPublisher<UIImage?, Never> {
         if let cachedImage = cache.image(for: url.absoluteString) {
             return Just(cachedImage).eraseToAnyPublisher()
         } else {
             return URLSession.shared.dataTaskPublisher(for: url)
-                .map({ UIImage(data: $0.data) ?? UIImage() })
-                .map({ image in
-                    self.cache.cacheImage(image, for: url.absoluteString)
-                    return image
+                .map({
+                    if ($0.response as? HTTPURLResponse)?.statusCode ?? 0 != 200 {
+                        return Appearance.chat.imagePlaceHolder ?? UIImage()
+                    } else {
+                        return UIImage(data: $0.data) ?? UIImage()
+                    }
                 })
-                .replaceError(with: nil)
+                .map({ image in
+                    if image.size != .zero {
+                        self.cache.cacheImage(image, for: url.absoluteString)
+                        return image
+                    }
+                    return UIImage()
+                })
+                .replaceError(with: Appearance.chat.imagePlaceHolder)
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }

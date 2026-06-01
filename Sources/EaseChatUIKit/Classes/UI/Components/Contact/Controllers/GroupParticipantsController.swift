@@ -1,13 +1,27 @@
 //
 //  GroupParticipantsController.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/27.
 //
 
 import UIKit
 
-@objc open class GroupParticipantsController: UIViewController {
+/**
+ An enumeration representing the possible operations for group participants.
+ 
+ - normal: Represents a normal operation.
+ - mention: Represents an operation related to mentioning participants.
+ - transferOwner: Represents an operation related to transferring ownership of the group.
+ */
+@objc public enum GroupParticipantsOperation: UInt {
+    case normal
+    case mention
+    case transferOwner
+}
+
+/// A view controller that displays the participants of a group.
+@objcMembers open class GroupParticipantsController: UIViewController {
     
     private var pageSize = UInt(200)
     
@@ -19,44 +33,62 @@ import UIKit
     
     private var loadFinished = false
     
-    public private(set) var participants: [EaseProfileProtocol] = []
+    /**
+     The array of participants in the group.
+     */
+    public private(set) var participants: [ChatUserProfileProtocol] = []
     
     public private(set) var chatGroup = ChatGroup()
     
-    public var mentionClosure: ((EaseProfileProtocol) -> Void)?
+    public var mentionClosure: ((ChatUserProfileProtocol) -> Void)?
     
-    public private(set) var mention = false
+    public private(set) var operation = GroupParticipantsOperation.normal
     
-    public private(set) lazy var navigation: EaseChatNavigationBar = {
-        EaseChatNavigationBar(frame: self.mention ? CGRect(x: 0, y: 0, width: ScreenWidth, height: 44):CGRect(x: 0, y: 0, width: ScreenWidth, height: NavigationHeight),showLeftItem: true, textAlignment: .left, rightImages:  self.rightImages ,hiddenAvatar: true).backgroundColor(.clear)
+    public private(set) lazy var navigation: ChatNavigationBar = {
+        self.createNavigation()
     }()
     
+    /// Creates and returns a navigation bar for the GroupParticipantsController.
+    /// - Returns: An instance of EaseChatNavigationBar.
+    @objc open func createNavigation() -> ChatNavigationBar {
+        ChatNavigationBar(show: self.operation == .mention ? CGRect(x: 0, y: 0, width: ScreenWidth, height: 44):CGRect(x: 0, y: 0, width: ScreenWidth, height: NavigationHeight),showLeftItem: true, textAlignment: .left, rightImages:  self.rightImages ,hiddenAvatar: true).backgroundColor(.clear)
+    }
+    
     private var rightImages: [UIImage] {
-        ((self.chatGroup.owner == EaseChatUIKitContext.shared?.currentUserId ?? "" && !self.chatGroup
-            .isDisabled)&&self.mention == false) ? [UIImage(named: "person_add", in: .chatBundle, with: nil)!,UIImage(named: "members_remove", in: .chatBundle, with: nil)!]:[]
+        ((self.chatGroup.owner == ChatUIKitContext.shared?.currentUserId ?? "" && !self.chatGroup
+            .isDisabled)&&self.operation == .normal) ? [UIImage(chatNamed: "person_add")!,UIImage(chatNamed: "members_remove")!]:[]
     }
     
     public private(set) lazy var participantsList: UITableView = {
-        UITableView(frame: CGRect(x: 0, y: self.navigation.frame.height, width: self.view.frame.width, height: self.view.frame.height-self.navigation.frame.height), style: .plain).delegate(self).dataSource(self).tableFooterView(UIView()).rowHeight(60).backgroundColor(.clear)
+        UITableView(frame: CGRect(x: 0, y: self.navigation.frame.height, width: self.view.frame.width, height: self.view.frame.height-self.navigation.frame.height), style: .plain).delegate(self).dataSource(self).tableFooterView(UIView()).rowHeight(60).backgroundColor(.clear).separatorStyle(.none)
     }()
     
-    @objc required public convenience init(groupId: String,mention: Bool = false) {
-        self.init()
+    /**
+     Initializes a `GroupParticipantsController` with the specified group ID and operation.
+     
+     - Parameters:
+        - groupId: The ID of the group.
+        - operation: The operation to be performed on the group participants. Default value is `.normal`.
+     
+     - Returns: An initialized `GroupParticipantsController` instance.
+     */
+    @objc required public init(groupId: String, operation: GroupParticipantsOperation = .normal) {
         self.chatGroup = ChatGroup(id: groupId)
-        self.mention = mention
+        self.operation = operation
+        super.init(nibName: nil, bundle: nil)
     }
     
-    open override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        self.tabBarController?.tabBar.isHidden = true
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+
 
     open override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.theme.neutralColor98
-        
-        self.navigation.title = "group_details_button_members".chat.localize
+        self.setupTitle()
         self.view.addSubViews([self.navigation,self.participantsList])
         // Do any additional setup after loading the view.
         //click of the navigation
@@ -67,9 +99,52 @@ import UIKit
         
         Theme.registerSwitchThemeViews(view: self)
         self.switchTheme(style: Theme.style)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshList), name: Notification.Name(rawValue: cache_update_notification), object: nil)
     }
     
-    private func navigationClick(type: EaseChatNavigationBarClickEvent,indexPath: IndexPath?) {
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refreshList()
+    }
+    
+    @objc private func refreshList() {
+        DispatchQueue.main.async {
+            for participant in self.participants {
+                if let user = ChatUIKitContext.shared?.userCache?[participant.id]{
+                    participant.nickname = user.nickname
+                    participant.remark = user.remark
+                    participant.avatarURL = user.avatarURL
+                }
+            }
+            self.participantsList.reloadData()
+        }
+    }
+    
+    private func setupTitle() {
+        var text = ""
+        switch self.operation {
+        case .normal:
+            text = "group_details_button_members".chat.localize
+        case .mention:
+            text = "group_mention_title".chat.localize
+        case .transferOwner:
+            text = "group_details_extend_button_transfer".chat.localize
+        }
+        if self.participants.count > 0 {
+            text += "(\(self.participants.count))"
+        }
+        self.navigation.title = text
+    }
+    
+    
+    /**
+     Handles the navigation bar click events.
+     
+     - Parameters:
+        - type: The type of navigation bar click event.
+        - indexPath: The index path associated with the event (optional).
+     */
+    @objc open func navigationClick(type: ChatNavigationBarClickEvent, indexPath: IndexPath?) {
         switch type {
         case .back: self.pop()
         case .rightItems: self.rightActions(indexPath: indexPath ?? IndexPath())
@@ -78,7 +153,7 @@ import UIKit
         }
     }
     
-    private func pop() {
+    @objc open func pop() {
         if self.navigationController != nil {
             self.navigationController?.popViewController(animated: true)
         } else {
@@ -95,7 +170,7 @@ import UIKit
         }
     }
     
-    private func ignoreContacts() -> [String] {
+    @objc open func ignoreContacts() -> [String] {
         let contacts = ChatClient.shared().contactManager?.getContacts() ?? []
         var ignoreIds = [String]()
         for participant in self.participants {
@@ -108,16 +183,16 @@ import UIKit
         return ignoreIds
     }
     
-    private func toAdd() {
-        let vc = ContactViewController(headerStyle: .addGroupParticipant,provider: nil,ignoreIds: self.ignoreContacts())
+    @objc open func toAdd() {
+        let vc = ComponentsRegister.shared.ContactsController.init(headerStyle: .addGroupParticipant,ignoreIds: self.ignoreContacts())
         vc.confirmClosure = { [weak self] users in
             guard let `self` = self else { return }
-            vc.navigationController?.popViewController(animated: true)
             self.service
-                .invite(userIds: [users.first?.id ?? ""], to: self.chatGroup.groupId, message: "", completion: { [weak self] group, error in
+                .invite(userIds: users.map({ $0.id }), to: self.chatGroup.groupId, message: "", completion: { [weak self] group, error in
                     if error == nil {
                         self?.participants.append(contentsOf: users)
                         self?.participantsList.reloadData()
+                        self?.setupTitle()
                         self?.pop()
                     } else {
                         consoleLogInfo("Add participants  error:\(error?.errorDescription ?? "")", type: .error)
@@ -127,27 +202,20 @@ import UIKit
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func toRemove() {
-        let vc = GroupParticipantsRemoveController(group: self.chatGroup, profiles: self.participants.filter({ $0.id != self.chatGroup.owner })) { [weak self] userIds in
-            guard let `self` = self else { return }
-            self.service.remove(userIds: userIds, from: self.chatGroup.groupId) { [weak self] group, error in
-                if error == nil {
-                    for id in userIds {
-                        if let index = self?.participants.firstIndex(where: { $0.id == id }) {
-                            self?.participants.remove(at: index)
-                            self?.participantsList.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                        }
-                    }
-                } else {
-                    consoleLogInfo("remove participants error:\(error?.errorDescription ?? "")", type: .error)
-                }
+    @objc open func toRemove() {
+        let vc = ComponentsRegister.shared.RemoveGroupParticipantController.init(group: self.chatGroup, profiles: self.participants.filter({ $0.id != self.chatGroup.owner })) { [weak self] userIds in
+            for userId in userIds {
+                self?.participants.removeAll(where: { $0.id == userId })
             }
+            self?.participantsList.reloadData()
+            self?.setupTitle()
         }
+        vc.modalPresentationStyle = .fullScreen
         ControllerStack.toDestination(vc: vc)
     }
 
-    private func fetchParticipants() {
-        if self.recursiveCount > 0 {
+    @objc open func fetchParticipants() {
+        if self.participants.count < Appearance.chat.groupParticipantsLimitCount {
             self.service.fetchParticipants(groupId: self.chatGroup.groupId, cursor: self.cursor, pageSize: self.pageSize) { [weak self] result, error in
                 guard let `self` = self else { return }
                 if error == nil {
@@ -155,38 +223,75 @@ import UIKit
                         if self.cursor.isEmpty {
                             self.participants.removeAll()
                             self.participants = list.map({
-                                let profile = EaseProfile()
-                                profile.id = $0 as String
-                                profile.nickName = $0 as String
+                                let profile = ChatUserProfile()
+                                let id = $0 as String
+                                profile.id = id
+                                if let user = ChatUIKitContext.shared?.userCache?[id] {
+                                    profile.nickname = user.nickname
+                                    profile.avatarURL = user.avatarURL
+                                }
+                                if let user = ChatUIKitContext.shared?.chatCache?[id] {
+                                    profile.nickname = user.nickname
+                                    profile.avatarURL = user.avatarURL
+                                }
+                                
                                 return profile
                             })
-                            if list.count == self.pageSize {
-                                let profile = EaseProfile()
-                                profile.id = self.chatGroup.owner
-                                profile.nickName = self.chatGroup.owner
-                                self.participants.insert(profile, at: 0)
+                            if list.count <= self.pageSize {
+                                if self.operation != .transferOwner {
+                                    let profile = ChatUserProfile()
+                                    profile.id = self.chatGroup.owner
+                                    if let user = ChatUIKitContext.shared?.userCache?[self.chatGroup.owner] {
+                                        profile.nickname = user.nickname
+                                        profile.avatarURL = user.avatarURL
+                                    }
+                                    if let user = ChatUIKitContext.shared?.chatCache?[self.chatGroup.owner] {
+                                        profile.nickname = user.nickname
+                                        profile.avatarURL = user.avatarURL
+                                    }
+                                    self.participants.insert(profile, at: 0)
+                                }
+                                self.loadFinished = true
+                                self.participantsList.reloadData()
+                                return
                             }
                         } else {
                             self.participants.append(contentsOf: list.map({
-                                let profile = EaseProfile()
+                                let profile = ChatUserProfile()
                                 profile.id = $0 as String
+                                if let user = ChatUIKitContext.shared?.userCache?[profile.id] {
+                                    profile.nickname = user.nickname
+                                    profile.avatarURL = user.avatarURL
+                                }
+                                if let user = ChatUIKitContext.shared?.chatCache?[profile.id] {
+                                    profile.nickname = user.nickname
+                                    profile.avatarURL = user.avatarURL
+                                }
                                 return profile
                             }))
                         }
                     }
                     self.cursor = result?.cursor ?? ""
+                    if self.operation == .mention {
+                        self.participants.removeAll { $0.id == ChatUIKitContext.shared?.currentUserId ?? "" }
+                    }
                     self.participantsList.reloadData()
                     self.recursiveCount -= 1
-                    self.fetchParticipants()
+                    if self.participants.count < Appearance.chat.groupParticipantsLimitCount {
+                        self.fetchParticipants()
+                    }
                 } else {
                     consoleLogInfo("GroupParticipantsController fetch error:\(error?.errorDescription ?? "")", type: .error)
                 }
+                
+                self.setupTitle()
             }
         } else {
-            if self.mention {
-                let profile = EaseProfile()
+            if self.operation == .mention {
+                let profile = ChatUserProfile()
                 profile.id = "All"
-                profile.nickName = "All"
+                profile.nickname = "All"
+                profile.avatarURL = "all"
                 self.participants.insert(profile, at: 0)
             }
             self.participantsList.reloadData()
@@ -201,7 +306,11 @@ extension GroupParticipantsController: UITableViewDelegate,UITableViewDataSource
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "GroupParticipantCell") as? GroupParticipantCell
+        self.cellForRowAt(indexPath: indexPath)
+    }
+    
+    @objc open func cellForRowAt(indexPath: IndexPath) -> UITableViewCell {
+        var cell = self.participantsList.dequeueReusableCell(withIdentifier: "GroupParticipantCell") as? GroupParticipantCell
         if cell == nil {
             cell = GroupParticipantCell(displayStyle: .normal, identifier: "GroupParticipantCell")
         }
@@ -213,29 +322,56 @@ extension GroupParticipantsController: UITableViewDelegate,UITableViewDataSource
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.isKind(of: UICollectionView.self) {
+            return
+        }
+        self.requestDisplayInfos()
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            self.requestDisplayInfos()
+        }
+    }
+    
+    @objc open func requestDisplayInfos() {
         var unknownInfoIds = [String]()
         if let visiblePaths = self.participantsList.indexPathsForVisibleRows {
             for indexPath in visiblePaths {
-                if let nickName = self.participants[safe: indexPath.row]?.nickName,nickName.isEmpty {
-                    unknownInfoIds.append(self.participants[safe: indexPath.row]?.id ?? "")
+                if let nickName = self.participants[safe: indexPath.row]?.nickname,nickName.isEmpty {
+                    if let unknownId = self.participants[safe: indexPath.row]?.id {
+                        unknownInfoIds.append(unknownId)
+                    }
                 }
             }
         }
-        if !unknownInfoIds.isEmpty {
-            if EaseChatUIKitContext.shared?.groupMemberAttributeCache?.provider == nil,EaseChatUIKitContext.shared?.groupMemberAttributeCache?.providerOC == nil {
-                EaseChatUIKitContext.shared?.groupMemberAttributeCache?.fetchCacheValue(groupId: self.chatGroup.groupId, userIds: unknownInfoIds, key: "nickName") { [weak self] error, values in
-                    if error == nil,let values = values {
-                        self?.processCacheInfos(values: values)
+        if ChatUIKitContext.shared?.userProfileProvider != nil {
+            if !unknownInfoIds.isEmpty {
+                Task {
+                    let profiles = await ChatUIKitContext.shared?.userProfileProvider?.fetchProfiles(profileIds: unknownInfoIds) ?? []
+                    self.fillCache(profiles: profiles)
+                    DispatchQueue.main.async {
+                        self.processCacheProfiles(values: profiles)
                     }
                 }
+            }
+        } else {
+            ChatUIKitContext.shared?.userProfileProviderOC?.fetchProfiles(profileIds: unknownInfoIds, completion: { [weak self] profiles in
+                guard let `self` = self else { return }
+                self.fillCache(profiles: profiles)
+                self.processCacheProfiles(values: profiles)
+            })
+        }
+    }
+    
+    private func fillCache(profiles: [ChatUserProfileProtocol]) {
+        for profile in profiles {
+            if let profile = ChatUIKitContext.shared?.userCache?[profile.id] {
+                profile.nickname = profile.nickname
+                profile.remark = profile.remark
+                profile.avatarURL = profile.avatarURL
             } else {
-                if EaseChatUIKitContext.shared?.groupMemberAttributeCache?.provider != nil {
-                    self.processCacheProfiles(values: EaseChatUIKitContext.shared?.groupMemberAttributeCache?.fetchCacheProfile(groupId: self.chatGroup.groupId, userIds: unknownInfoIds) ?? [])
-                } else {
-                    EaseChatUIKitContext.shared?.groupMemberAttributeCache?.fetchCacheProfileOC(groupId: self.chatGroup.groupId, userIds: unknownInfoIds) { [weak self] profiles in
-                        self?.processCacheProfiles(values: profiles)
-                    }
-                }
+                ChatUIKitContext.shared?.userCache?[profile.id] = profile
             }
         }
     }
@@ -244,19 +380,20 @@ extension GroupParticipantsController: UITableViewDelegate,UITableViewDataSource
         for participant in self.participants {
             for value in values {
                 if value == participant.id {
-                    participant.nickName = value
+                    participant.nickname = value
                 }
             }
         }
         self.participantsList.reloadData()
     }
     
-    private func processCacheProfiles(values: [EaseProfileProtocol]) {
+    private func processCacheProfiles(values: [ChatUserProfileProtocol]) {
         for participant in self.participants {
             for value in values {
                 if value.id == participant.id {
-                    participant.nickName = value.nickName
+                    participant.nickname = value.nickname
                     participant.avatarURL = value.avatarURL
+                    participant.remark = value.remark
                 }
             }
         }
@@ -266,19 +403,22 @@ extension GroupParticipantsController: UITableViewDelegate,UITableViewDataSource
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let profile = self.participants[safe: indexPath.row] {
-            if !self.mention {
-                let vc = ContactInfoViewController(profile: profile)
+            switch self.operation {
+            case .normal:
+                let vc = ComponentsRegister.shared.ContactInfoController.init(profile: profile)
+                vc.modalPresentationStyle = .fullScreen
                 ControllerStack.toDestination(vc: vc)
-            } else {
+            case .mention,.transferOwner:
                 self.mentionClosure?(profile)
                 self.pop()
             }
+            
         }
     }
 }
 
 extension GroupParticipantsController: ThemeSwitchProtocol {
-    public func switchTheme(style: ThemeStyle) {
+    open func switchTheme(style: ThemeStyle) {
         self.view.backgroundColor = style == .dark ? UIColor.theme.neutralColor1:UIColor.theme.neutralColor98
     }
 }

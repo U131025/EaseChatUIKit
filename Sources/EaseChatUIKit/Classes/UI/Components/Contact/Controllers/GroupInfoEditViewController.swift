@@ -1,6 +1,6 @@
 //
 //  GroupInfoEditViewController.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/27.
 //
@@ -19,12 +19,20 @@ import UIKit
     
     public private(set) var editType = GroupInfoEditType.name
     
-    public private(set) lazy var navigation: EaseChatNavigationBar = {
-        EaseChatNavigationBar(textAlignment: .left,rightTitle: "Save".chat.localize)
+    public private(set) lazy var navigation: ChatNavigationBar = {
+        ChatNavigationBar(textAlignment: .left,rightTitle: "Save".chat.localize)
     }()
     
-    public private(set) lazy var contentEditor: PlaceHolderTextView = {
-        PlaceHolderTextView(frame: CGRect(x: 16, y: self.navigation.frame.maxY+16, width: self.view.frame.width-32, height: 35)).delegate(self).font(UIFont.theme.bodyLarge).backgroundColor(Theme.style == .dark ? UIColor.theme.neutralColor3:UIColor.theme.neutralColor95).cornerRadius(.small)
+    public private(set) lazy var container: UIView = {
+        UIView(frame: CGRect(x: 16, y: self.navigation.frame.maxY+16, width: self.view.frame.width-32, height: 114)).backgroundColor(Theme.style == .dark ? UIColor.theme.neutralColor3:UIColor.theme.neutralColor95).cornerRadius(.extraSmall)
+    }()
+    
+    public private(set) lazy var contentEditor: CustomTextView = {
+        CustomTextView(frame: CGRect(x: 16, y: self.container.frame.minY+13, width: self.view.frame.width-32, height: 114-38)).delegate(self).font(UIFont.theme.bodyLarge).backgroundColor(.clear)
+    }()
+    
+    public private(set) lazy var limitCount: UILabel = {
+        UILabel(frame: CGRect(x: self.container.frame.maxX-70, y: self.container.frame.maxY-35, width: 54, height: 22)).font(UIFont.theme.bodyLarge).textColor(Theme.style == .dark ? UIColor.theme.neutralColor5:UIColor.theme.neutralColor7).textAlignment(.right)
     }()
     
     @objc public required convenience init(groupId: String,type: GroupInfoEditType,rawText: String,modifyClosure: @escaping (String) -> Void) {
@@ -34,28 +42,30 @@ import UIKit
         self.raw = rawText
         self.modifySuccess = modifyClosure
     }
-    
-    open override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        self.tabBarController?.tabBar.isHidden = true
-    }
+
 
     open override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        self.contentEditor.placeHolderColor = Theme.style == .dark ? UIColor.theme.neutralColor5:UIColor.theme.neutralColor6
+        self.contentEditor.contentInset = UIEdgeInsets(top: -8, left: 10, bottom: 0, right: 10)
         let content = self.titleForHeader()
-        self.contentEditor.placeHolder = "Please input".chat.localize
+        self.contentEditor.placeholder = "Please input".chat.localize
         self.navigation.title = content
         self.contentEditor.text = self.raw
-        self.contentEditor.autoresizingMask = .flexibleHeight
         self.navigation.clickClosure = { [weak self] in
             self?.navigationClick(type: $0, indexPath: $1)
         }
-        self.view.addSubViews([self.navigation,self.contentEditor])
+        self.view.addSubViews([self.navigation,self.container,self.contentEditor,self.limitCount])
+        self.contentEditor.text = self.raw
+        self.limitCount.text = "\(self.raw.count)/\(self.textLimit())"
         Theme.registerSwitchThemeViews(view: self)
         self.switchTheme(style: Theme.style)
+        
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.contentEditor.becomeFirstResponder()
     }
     
     private func titleForHeader() -> String {
@@ -65,11 +75,12 @@ import UIKit
         case .alias: text = "group_details_button_alias".chat.localize
         case .description: text = "group_details_button_description".chat.localize
         case .announcement: text = "group_details_button_announcement".chat.localize
+        case .threadName: text = "thread_name".chat.localize
         }
         return text
     }
     
-    private func navigationClick(type: EaseChatNavigationBarClickEvent,indexPath: IndexPath?) {
+    private func navigationClick(type: ChatNavigationBarClickEvent,indexPath: IndexPath?) {
         switch type {
         case .back: self.pop()
         case .rightTitle: self.save()
@@ -79,12 +90,12 @@ import UIKit
     }
     
     private func textLimit() -> Int {
-        var limitCount = 128
+        var limitCount = 64
         switch self.editType {
-        case .name:
-            limitCount = 64
+        case .name,.threadName:
+            limitCount = 32
         case .description,.announcement:
-            limitCount = 512
+            limitCount = 256
         default:
             break
         }
@@ -92,6 +103,7 @@ import UIKit
     }
     
     private func save() {
+        self.view.endEditing(true)
         guard let text = self.contentEditor.text  else { return }
         if text.count > self.textLimit() {
             self.showToast(toast: "Reach content character limit.".chat.localize)
@@ -120,8 +132,11 @@ import UIKit
 
 extension GroupInfoEditViewController: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n",self.editType == .name {
+            return false
+        }
         self.navigation.rightItem.isEnabled = (!(textView.text ?? "").isEmpty || !text.isEmpty)
-        if text.count + (textView.text ?? "").count > self.textLimit() {
+        if (textView.text ?? "").count > self.textLimit(),!text.isEmpty {
             self.showToast(toast: "Reach content character limit.".chat.localize)
             return false
         } else {
@@ -131,15 +146,12 @@ extension GroupInfoEditViewController: UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {
         let limitCount = self.textLimit()
-        if (textView.text ?? "").count > limitCount {
+        let count = (textView.text ?? "").count
+        if count > limitCount {
             self.showToast(toast: "Reach content character limit.".chat.localize)
             textView.text = textView.text.chat.subStringTo(limitCount)
-        } else {
-            let fixedWidth = textView.frame.size.width
-            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-            textView.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
         }
-        
+        self.limitCount.text = "\(count)/\(limitCount)"
     }
 }
 

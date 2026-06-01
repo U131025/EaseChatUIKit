@@ -1,6 +1,6 @@
 //
 //  ContactListHeaderCell.swift
-//  EaseChatUIKit
+//  ChatUIKit
 //
 //  Created by 朱继超 on 2023/11/20.
 //
@@ -38,7 +38,19 @@ import UIKit
 @objc open class ContactListHeaderCell: UITableViewCell {
     
     public private(set) lazy var badge: UILabel = {
-        UILabel(frame: CGRect(x: ScreenWidth-70, y: self.contentView.frame.height/2.0-9, width: 32, height: 18)).cornerRadius(.large).font(UIFont.theme.bodySmall)
+        UILabel(frame: CGRect(x: self.frame.width-70, y: self.contentView.frame.height/2.0-9, width: 32, height: 18)).cornerRadius(.large).font(UIFont.theme.bodySmall)
+    }()
+    
+    public private(set) lazy var separatorLine: UIView = {
+        self.createSeparatorLine()
+    }()
+    
+    @objc open func createSeparatorLine() -> UIView {
+        UIView(frame: CGRect(x: 16, y: self.contentView.frame.height-0.5, width: self.contentView.frame.width-16, height: 0.5))
+    }
+    
+    lazy var indicator: UIImageView = {
+        UIImageView(frame: CGRect(x: self.frame.width-37, y: 0, width: 20, height: 20)).contentMode(.scaleAspectFill).backgroundColor(.clear)
     }()
         
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,14 +58,20 @@ import UIKit
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
         self.imageView?.contentMode = .scaleAspectFit
-        self.textLabel?.font = UIFont.theme.labelMedium
+        self.textLabel?.font = UIFont.theme.titleMedium
         self.textLabel?.textColor = UIColor.theme.neutralColor1
         self.contentView.addSubview(self.badge)
+        self.contentView.addSubview(self.separatorLine)
+        self.contentView.addSubview(self.indicator)
 //        self.accessoryView = self.badge
+        Theme.registerSwitchThemeViews(view: self)
+        self.switchTheme(style: Theme.style)
     }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
+        self.separatorLine.frame = CGRect(x: 16, y: self.contentView.frame.height-0.5, width: self.frame.width, height: 0.5)
+        self.indicator.frame = CGRect(x: self.frame.width-28, y: (self.frame.height-20)/2.0, width: 10, height: 20)
     }
     
     /// Refresh cell on needed.
@@ -62,15 +80,22 @@ import UIKit
         self.imageView?.image = item.featureIcon
         self.textLabel?.text = item.featureName
         if item.showBadge {
-            self.badge.backgroundColor(Theme.style == .dark ? UIColor.theme.primaryColor6:UIColor.theme.primaryColor5).textColor(UIColor.theme.neutralColor98).textAlignment(.center)
+            self.badge.backgroundColor(Theme.style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor).textColor(UIColor.theme.neutralColor98).textAlignment(.center)
         } else {
             self.badge.textAlignment(.right).textColor(Theme.style == .dark ? UIColor.theme.neutralColor6:UIColor.theme.neutralColor5).backgroundColor(.clear)
         }
         if item.numberCount > 0 {
             self.badge.text = "\(item.numberCount)"
+        } else {
+            self.badge.text = nil
         }
-        self.badge.frame = CGRect(x: ScreenWidth-70, y: self.contentView.frame.height/2.0-9, width: item.numberCount > 9 ? 32:18, height: 18)
-        self.badge.isHidden = !item.showNumber
+        let badgeWidth = item.numberCount > 9 ? 32:18
+        self.badge.frame = CGRect(x: Int(ScreenWidth)-38-badgeWidth, y: Int(Appearance.contact.headerRowHeight/2.0)-9, width: badgeWidth, height: 18)
+        if item.showNumber {
+            self.badge.isHidden = item.numberCount <= 0
+        } else {
+            self.badge.isHidden = false
+        }
     }
     
     required public init?(coder: NSCoder) {
@@ -79,9 +104,24 @@ import UIKit
     
 }
 
+extension ContactListHeaderCell: ThemeSwitchProtocol {
+
+    @objc open func switchTheme(style: ThemeStyle) {
+        self.badge.backgroundColor(style == .dark ? UIColor.theme.primaryDarkColor:UIColor.theme.primaryLightColor).textColor(style == .dark ? UIColor.theme.neutralColor98:UIColor.theme.neutralColor1)
+        self.textLabel?.textColor(style == .dark ? UIColor.theme.neutralColor98:UIColor.theme.neutralColor1)
+        
+        let image = UIImage(chatNamed: "chevron_right")?.withTintColor(style == .dark ? UIColor.theme.neutralColor5:UIColor.theme.neutralColor3)
+        self.indicator.image = image
+        
+        self.separatorLine.backgroundColor = style == .dark ? UIColor.theme.neutralColor2:UIColor.theme.neutralColor9
+    }
+}
+
+
 public typealias ContactListItemActionClosure = ((ContactListHeaderItemProtocol) -> Void)
 
 @objc final public class ContactListHeaderItem: NSObject,ContactListHeaderItemProtocol {
+    
     public var numberCount: UInt = 0
     
     public var featureIdentify: String = ""
@@ -101,12 +141,12 @@ public typealias ContactListItemActionClosure = ((ContactListHeaderItemProtocol)
     ///   - featureName: The feature name of the contact header item
     ///   - featureIcon: The icon of the contact header item
     ///   - action: The callback on item clicked.
-    @objc public convenience init(featureIdentify: String ,featureName: String, featureIcon: UIImage?,action: @escaping ContactListItemActionClosure) {
-        self.init()
+    @objc public init(featureIdentify: String ,featureName: String, featureIcon: UIImage?,action: @escaping ContactListItemActionClosure) {
         self.actionClosure = action
         self.featureIdentify = featureIdentify
         self.featureName = featureName
         self.featureIcon = featureIcon
+        super.init()
     }
 
     
@@ -114,11 +154,11 @@ public typealias ContactListItemActionClosure = ((ContactListHeaderItemProtocol)
     /// - Parameters:
     ///   - featureName: The feature name of the contact header item
     ///   - featureIcon: The icon of the contact header item
-    @objc public convenience init(featureIdentify: String ,featureName: String, featureIcon: UIImage?) {
-        self.init()
+    @objc public init(featureIdentify: String ,featureName: String, featureIcon: UIImage?) {
         self.featureIcon = featureIcon
         self.featureName = featureName
         self.featureIdentify = featureIdentify
+        super.init()
     }
     
     public override init() {

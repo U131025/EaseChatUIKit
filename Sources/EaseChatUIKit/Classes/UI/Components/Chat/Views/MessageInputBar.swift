@@ -376,6 +376,12 @@ extension MessageInputBar: UITextViewDelegate {
             }
         }
         self.keyboardHeight = (Appearance.chat.inputExtendActions.count > 4 ? 230:132)
+        if BottomBarHeight == 0 {
+            self.keyboardHeight -= (60 - 28)
+        } else {
+            self.keyboardHeight += 60 + BottomBarHeight
+        }
+        
         self.attachment.isSelected = selected
         if selected {
             self.showExtensionMenus()

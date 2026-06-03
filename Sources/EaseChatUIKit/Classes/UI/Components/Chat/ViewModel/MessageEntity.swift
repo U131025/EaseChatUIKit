@@ -927,6 +927,9 @@ extension ChatMessage {
                 if body.event == "order" {
                     text = "[Order]"
                 }
+                if body.event == "location" {
+                    text = "[Location]"
+                }
             }
         default: break
         }

@@ -78,6 +78,14 @@ import UIKit
     /// Menu items that appear after swiping right in a conversation.You can choose to have just some of the features or all of them.``UIContextualActionType``
     public var swipeRightActions: [UIContextualActionType] = [.more,.read]
     
+    /// toolbar image
+    public var audioImage = UIImage(chatNamed: "audio")
+    public var emojiKeyboard = UIImage(chatNamed: "emojiKeyboard")
+    public var textKeyboard = UIImage(chatNamed: "textKeyboard")
+    public var attachmentImage = UIImage(chatNamed: "attachment")
+    public var selectedAttachmentImage = UIImage(chatNamed: "attachmentSelected")
+    
+    
     /// Single chat default place holder of avatar.
     public var singlePlaceHolder = UIImage(chatNamed: "single")
     

@@ -34,11 +34,12 @@ import UIKit
     public var textViewFirstResponder: ((Bool) -> Void)?
     
     
-    public private(set) var audioImage = UIImage(chatNamed: "audio")
+    public private(set) var audioImage = Appearance.conversation.audioImage
+//    public private(set) var audioImage = UIImage(chatNamed: "audio")
     
-    public private(set) var attachmentImage = UIImage(chatNamed: "attachment")
+    public private(set) var attachmentImage = Appearance.conversation.attachmentImage //UIImage(chatNamed: "attachment")
     
-    public private(set) var selectedAttachmentImage = UIImage(chatNamed: "attachmentSelected")
+    public private(set) var selectedAttachmentImage = Appearance.conversation.selectedAttachmentImage //UIImage(chatNamed: "attachmentSelected")
     
     public private(set) var collapsedState = false
     
@@ -656,7 +657,7 @@ extension MessageInputBar: ThemeSwitchProtocol {
         if style == .light {
             self.selectedAttachmentImage = self.selectedAttachmentImage?.withTintColor(UIColor.theme.neutralColor3)
             self.attachmentImage = self.attachmentImage?.withTintColor(UIColor.theme.neutralColor3)
-            self.audioImage = self.audioImage?.withTintColor(UIColor.theme.neutralColor3)
+//            self.audioImage = self.audioImage?.withTintColor(UIColor.theme.neutralColor3)
         }
         self.attachment.setImage(self.attachmentImage, for: .normal)
         self.attachment.setImage(self.selectedAttachmentImage, for: .selected)

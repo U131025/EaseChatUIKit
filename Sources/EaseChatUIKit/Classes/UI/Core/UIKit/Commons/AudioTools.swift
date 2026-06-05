@@ -13,7 +13,7 @@ import AVFoundation
         
     private var stopPlayClosure: ((String) -> Void)?
     
-    private var audioRecorder: AVAudioRecorder?
+    public var audioRecorder: AVAudioRecorder?
     
     private var audioPlayer: AVAudioPlayer?
     
@@ -44,6 +44,7 @@ import AVFoundation
             ] as [String : Any]
             
             self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            self.audioRecorder?.isMeteringEnabled = true
             self.audioRecorder?.delegate = self
             self.audioRecorder?.prepareToRecord()
             self.audioRecorder?.record()

@@ -91,6 +91,10 @@ import UIKit
         self.sendAction = sendClosure
         self.trashAction = trashClosure
         super.init(frame: frame)
+        self.setupSubViews()
+    }
+    
+    open func setupSubViews() {
         self.addSubViews([self.recordCover,self.recordIcon,self.recordTitle,self.recordAlert,self.trash,self.send])
         self.trash.isHidden = true
         self.send.isHidden = true
@@ -152,7 +156,7 @@ import UIKit
         
     }
     
-    private func startRecord() {
+    open func startRecord() {
         if !MediaConvertor.checkRecordPermission() {
             MediaConvertor.requestRecordPermission { [weak self] success in
                 if success {
@@ -164,7 +168,7 @@ import UIKit
         self.accessPassRecord()
     }
     
-    private func accessPassRecord() {
+    open func accessPassRecord() {
         self.recordCount = 0
         self.timer?.invalidate()
         self.timer = nil
@@ -175,7 +179,7 @@ import UIKit
         self.recordIcon.setTitle("1s", for: .normal)
     }
     
-    private func stopRecord() {
+    open func stopRecord() {
         self.recordIcon.isEnabled = true
         self.recordAlert.text = nil
         self.trash.isHidden = false
@@ -188,7 +192,7 @@ import UIKit
         AudioTools.shared.stopRecording()
     }
     
-    private func startPlay() {
+    open func startPlay() {
         self.recordIcon.isEnabled = true
         self.playCount = self.duration
         self.recordTitle.text = "Playing".chat.localize
@@ -200,7 +204,7 @@ import UIKit
         self.recordIcon.startAnimation()
     }
     
-    private func stopPlay(send: Bool) {
+    open func stopPlay(send: Bool) {
         self.playCount = self.duration
         self.recordTitle.text = "Play".chat.localize
         self.timer?.invalidate()
@@ -210,7 +214,7 @@ import UIKit
         self.recordIcon.isEnabled = true
     }
     
-    @objc private func removeRecord() {
+    @objc public func removeRecord() {
         self.recordAlert.text = nil
         self.stopRecord()
         self.stopPlay(send: false)
@@ -234,7 +238,7 @@ import UIKit
         self.trashAction?()
     }
     
-    @objc private func sendAudio() {
+    @objc public func sendAudio() {
         self.recordAlert.text = nil
         self.stopPlay(send: true)
         self.recordCount = 0
